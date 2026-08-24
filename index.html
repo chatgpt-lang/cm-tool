@@ -590,14 +590,26 @@ let curMonth=new Date().getMonth(); let curYear=new Date().getFullYear();
 let dragId=null; let currentFicheId=null; let clientsCache={};
 let currentPage='trends'; let currentContentTab='trends';
 const LOCAL_PREFIX='cmtool-demo-v2:';
+const memoryStore={};
 
 // ===== API =====
 function storeKey(table,type){return `${LOCAL_PREFIX}${table}:${type}`;}
 function readStore(table,type,fallback){
-  try{return JSON.parse(localStorage.getItem(storeKey(table,type))||'')||fallback;}
-  catch{return fallback;}
+  const key=storeKey(table,type);
+  if(Object.prototype.hasOwnProperty.call(memoryStore,key)) return memoryStore[key];
+  try{
+    const raw=localStorage.getItem(key);
+    if(!raw) return fallback;
+    const value=JSON.parse(raw);
+    memoryStore[key]=value;
+    return value;
+  }catch{return fallback;}
 }
-function writeStore(table,type,value){localStorage.setItem(storeKey(table,type),JSON.stringify(value));}
+function writeStore(table,type,value){
+  const key=storeKey(table,type);
+  memoryStore[key]=value;
+  try{localStorage.setItem(key,JSON.stringify(value));}catch(_){}
+}
 function localRecords(table){return readStore(table,'records',[]);}
 function localDeleted(table){return new Set(readStore(table,'deleted',[]));}
 function localOverrides(table){return readStore(table,'overrides',{});}
@@ -879,23 +891,25 @@ async function addOneTrend(trendId){
   const trend=allTrends.find(r=>r.id===trendId);
   if(!trend) return;
   const trendTitle=trend.fields['Titre de la trend']||trend.fields['Titre']||'Trend';
-  const date=selTrends[trendId]?.date||'';
+  const date=selTrends[trendId]?.date||new Date().toISOString().slice(0,10);
   const btn=document.querySelector(`#tfc-${trendId} button[onclick*="addOneTrend"]`);
   if(btn){btn.textContent='...';btn.disabled=true;}
+  const created=[];
   for(const acc of activeAccounts){
     const accData=ACCOUNTS[acc];
     const clientId=clientsCache[accData.name]||null;
     const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
-    if(date) fields['Date de tournage prévue']=date;
+    fields['Date de tournage prévue']=date;
     if(clientId) fields['Client']=[clientId];
     // Remove Trend field if it causes issues - it's optional
     const result=await atCreate('Sélections',fields);
     if(result.error) console.error('Create sel error:', result.error);
+    else created.push(result);
   }
-  // Force reload sels
-  allSels=[];
-  selsSaved=false;
+  allSels=allSels.concat(created.filter(r=>r&&r.id&&!allSels.some(s=>s.id===r.id)));
+  selsSaved=true;
   await loadSels(true);
+  if(currentPage==='planning') renderCal();
   // Show feedback on card
   const card=document.getElementById('tfc-'+trendId);
   if(card){
@@ -923,12 +937,13 @@ async function addSelectionsAndGo(){
       const accData=ACCOUNTS[acc];
         const clientId=clientsCache[accData.name]||null;
       const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
-      if(data.date) fields['Date de tournage prévue']=data.date;
+      fields['Date de tournage prévue']=data.date||new Date().toISOString().slice(0,10);
       if(clientId) fields['Client']=[clientId];
-      await atCreate('Sélections',fields);
+      const result=await atCreate('Sélections',fields);
+      if(result&&result.id&&!allSels.some(s=>s.id===result.id)) allSels.push(result);
     }
   }
-  selTrends={}; selsSaved=false;
+  selTrends={}; selsSaved=true;
   document.getElementById('selbar').classList.remove('visible');
   btn.textContent='Ajouter →'; btn.disabled=false;
   showPage('planning');
