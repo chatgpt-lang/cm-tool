@@ -321,6 +321,9 @@
         <div class="plan-month-label" id="cal-label"></div>
         <button class="mnav-btn" onclick="changeMonth(1)">›</button>
       </div>
+      <div style="display:flex;justify-content:flex-end;margin:-4px 0 10px">
+        <button onclick="resetPlanning()" style="font-size:11px;font-weight:700;padding:7px 12px;border-radius:18px;border:1.5px solid var(--border);background:#fff;color:var(--text-dim);cursor:pointer;font-family:'DM Sans',sans-serif">Reset planning</button>
+      </div>
       <div class="cal-days-header">
         <div class="cal-dh">L</div><div class="cal-dh">M</div><div class="cal-dh">M</div>
         <div class="cal-dh">J</div><div class="cal-dh">V</div><div class="cal-dh">S</div><div class="cal-dh">D</div>
@@ -586,8 +589,69 @@ let planStates={};
 let curMonth=new Date().getMonth(); let curYear=new Date().getFullYear();
 let dragId=null; let currentFicheId=null; let clientsCache={};
 let currentPage='trends'; let currentContentTab='trends';
+const LOCAL_PREFIX='cmtool-demo-v2:';
 
 // ===== API =====
+function storeKey(table,type){return `${LOCAL_PREFIX}${table}:${type}`;}
+function readStore(table,type,fallback){
+  try{return JSON.parse(localStorage.getItem(storeKey(table,type))||'')||fallback;}
+  catch{return fallback;}
+}
+function writeStore(table,type,value){localStorage.setItem(storeKey(table,type),JSON.stringify(value));}
+function localRecords(table){return readStore(table,'records',[]);}
+function localDeleted(table){return new Set(readStore(table,'deleted',[]));}
+function localOverrides(table){return readStore(table,'overrides',{});}
+function saveLocalRecords(table,records){writeStore(table,'records',records);}
+function saveLocalDeleted(table,set){writeStore(table,'deleted',[...set]);}
+function saveLocalOverrides(table,overrides){writeStore(table,'overrides',overrides);}
+function hasWriteRecord(data,id){
+  if(!data||data.error) return false;
+  if(data.deleted&&(!id||data.id===id)) return true;
+  if(data.id&&(!id||data.id===id)) return true;
+  if(Array.isArray(data.records)) return data.records.some(r=>r.id&&(!id||r.id===id));
+  return false;
+}
+function normalizeLocalRecord(table,fields,id){
+  return {id:id||`local_${table}_${Date.now()}_${Math.random().toString(36).slice(2,7)}`,createdTime:new Date().toISOString(),fields:{...fields}};
+}
+function applyLocalLayer(table,records){
+  const deleted=localDeleted(table);
+  const overrides=localOverrides(table);
+  const merged=(records||[])
+    .filter(r=>!deleted.has(r.id))
+    .map(r=>overrides[r.id]?{...r,fields:{...r.fields,...overrides[r.id]}}:r);
+  return merged.concat(localRecords(table).filter(r=>!deleted.has(r.id)));
+}
+function localCreate(table,fields){
+  const rec=normalizeLocalRecord(table,fields);
+  const records=localRecords(table);
+  records.push(rec);
+  saveLocalRecords(table,records);
+  return rec;
+}
+function localUpdate(table,id,fields){
+  const records=localRecords(table);
+  const idx=records.findIndex(r=>r.id===id);
+  if(idx>=0){
+    records[idx]={...records[idx],fields:{...records[idx].fields,...fields}};
+    saveLocalRecords(table,records);
+  }else{
+    const overrides=localOverrides(table);
+    overrides[id]={...(overrides[id]||{}),...fields};
+    saveLocalOverrides(table,overrides);
+  }
+  return {id,fields};
+}
+function localDelete(table,id){
+  saveLocalRecords(table,localRecords(table).filter(r=>r.id!==id));
+  const overrides=localOverrides(table);
+  delete overrides[id];
+  saveLocalOverrides(table,overrides);
+  const deleted=localDeleted(table);
+  deleted.add(id);
+  saveLocalDeleted(table,deleted);
+  return {id,deleted:true};
+}
 async function makeRequest(action,payload={}){
   if(!MAKE_WEBHOOK_URL) return null;
   try{
@@ -608,28 +672,37 @@ async function makeRequest(action,payload={}){
 async function atFetch(table,params=''){
   if(MAKE_WEBHOOK_URL){
     const data=await makeRequest('AIRTABLE_FETCH',{table,params});
-    if(Array.isArray(data)) return data;
-    if(Array.isArray(data?.records)) return data.records;
+    if(Array.isArray(data)) return applyLocalLayer(table,data);
+    if(Array.isArray(data?.records)) return applyLocalLayer(table,data.records);
     if(data?.error) console.warn('Make:',table,data.error);
-    return [];
+    return applyLocalLayer(table,[]);
   }
   if(!TOKEN||!BASE){console.warn('Airtable non configuré');return [];}
   const res=await fetch(`https://api.airtable.com/v0/${BASE}/${encodeURIComponent(table)}?${params}`,{headers:{'Authorization':`Bearer ${TOKEN}`}});
-  const d=await res.json(); if(d.error) console.warn('AT:',table,d.error); return d.records||[];
+  const d=await res.json(); if(d.error) console.warn('AT:',table,d.error); return applyLocalLayer(table,d.records||[]);
 }
 async function atCreate(table,fields){
-  if(MAKE_WEBHOOK_URL) return await makeRequest('AIRTABLE_CREATE',{table,fields});
+  if(MAKE_WEBHOOK_URL){
+    const data=await makeRequest('AIRTABLE_CREATE',{table,fields});
+    return hasWriteRecord(data)?data:localCreate(table,fields);
+  }
   if(!TOKEN||!BASE) return {error:{message:'Airtable non configuré'}};
   const res=await fetch(`https://api.airtable.com/v0/${BASE}/${encodeURIComponent(table)}`,{method:'POST',headers:{'Authorization':`Bearer ${TOKEN}`,'Content-Type':'application/json'},body:JSON.stringify({fields})});
   return await res.json();
 }
 async function atUpdate(table,id,fields){
-  if(MAKE_WEBHOOK_URL) return await makeRequest('AIRTABLE_UPDATE',{table,id,fields});
+  if(MAKE_WEBHOOK_URL){
+    const data=await makeRequest('AIRTABLE_UPDATE',{table,id,fields});
+    return hasWriteRecord(data,id)?data:localUpdate(table,id,fields);
+  }
   if(!TOKEN||!BASE) return;
   await fetch(`https://api.airtable.com/v0/${BASE}/${encodeURIComponent(table)}/${id}`,{method:'PATCH',headers:{'Authorization':`Bearer ${TOKEN}`,'Content-Type':'application/json'},body:JSON.stringify({fields})});
 }
 async function atDelete(table,id){
-  if(MAKE_WEBHOOK_URL) return await makeRequest('AIRTABLE_DELETE',{table,id});
+  if(MAKE_WEBHOOK_URL){
+    const data=await makeRequest('AIRTABLE_DELETE',{table,id});
+    return hasWriteRecord(data,id)?data:localDelete(table,id);
+  }
   if(!TOKEN||!BASE) return {error:{message:'Airtable non configuré'}};
   const res=await fetch(`https://api.airtable.com/v0/${BASE}/${encodeURIComponent(table)}/${id}`,{method:'DELETE',headers:{'Authorization':`Bearer ${TOKEN}`}});
   return await res.json();
@@ -859,6 +932,22 @@ async function addSelectionsAndGo(){
   document.getElementById('selbar').classList.remove('visible');
   btn.textContent='Ajouter →'; btn.disabled=false;
   showPage('planning');
+}
+
+async function resetPlanning(){
+  if(!confirm('Vider le planning visible et repartir à zéro ?')) return;
+  await loadSels(true);
+  const deleted=localDeleted('Sélections');
+  allSels.forEach(r=>deleted.add(r.id));
+  saveLocalDeleted('Sélections',deleted);
+  saveLocalRecords('Sélections',[]);
+  saveLocalOverrides('Sélections',{});
+  allSels=[];
+  selsSaved=true;
+  selTrends={};
+  document.getElementById('sel-count').textContent='0';
+  document.getElementById('selbar').classList.remove('visible');
+  renderCal();
 }
 
 async function deleteTrend(id){
