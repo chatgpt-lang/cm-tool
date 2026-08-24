@@ -608,7 +608,7 @@ function hasWriteRecord(data,id){
   if(!data||data.error) return false;
   if(data.deleted&&(!id||data.id===id)) return true;
   if(data.id&&(!id||data.id===id)) return true;
-  if(Array.isArray(data.records)) return data.records.some(r=>r.id&&(!id||r.id===id));
+  if(id&&Array.isArray(data.records)) return data.records.some(r=>r.id===id);
   return false;
 }
 function normalizeLocalRecord(table,fields,id){
