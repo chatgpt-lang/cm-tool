@@ -571,6 +571,7 @@
 const APP_CONFIG=window.CM_TOOL_CONFIG||{};
 const TOKEN=APP_CONFIG.AIRTABLE_TOKEN||'';
 const BASE=APP_CONFIG.AIRTABLE_BASE||'';
+const MAKE_WEBHOOK_URL=APP_CONFIG.MAKE_WEBHOOK_URL||'https://hook.eu1.make.com/0un9x522fe3a3db758vqh4fh6f42y82i';
 const MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
 const ACCOUNTS={
   lf:{name:'Le Foyer',emoji:'🍷',niche:'Food'},
@@ -587,21 +588,48 @@ let dragId=null; let currentFicheId=null; let clientsCache={};
 let currentPage='trends'; let currentContentTab='trends';
 
 // ===== API =====
+async function makeRequest(action,payload={}){
+  if(!MAKE_WEBHOOK_URL) return null;
+  try{
+    const res=await fetch(MAKE_WEBHOOK_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action,...payload})
+    });
+    const text=await res.text();
+    if(!text) return {};
+    try{return JSON.parse(text);}
+    catch(_){return {ok:res.ok,text};}
+  }catch(err){
+    console.warn('Make:',action,err);
+    return {error:{message:err.message}};
+  }
+}
 async function atFetch(table,params=''){
+  if(MAKE_WEBHOOK_URL){
+    const data=await makeRequest('AIRTABLE_FETCH',{table,params});
+    if(Array.isArray(data)) return data;
+    if(Array.isArray(data?.records)) return data.records;
+    if(data?.error) console.warn('Make:',table,data.error);
+    return [];
+  }
   if(!TOKEN||!BASE){console.warn('Airtable non configuré');return [];}
   const res=await fetch(`https://api.airtable.com/v0/${BASE}/${encodeURIComponent(table)}?${params}`,{headers:{'Authorization':`Bearer ${TOKEN}`}});
   const d=await res.json(); if(d.error) console.warn('AT:',table,d.error); return d.records||[];
 }
 async function atCreate(table,fields){
+  if(MAKE_WEBHOOK_URL) return await makeRequest('AIRTABLE_CREATE',{table,fields});
   if(!TOKEN||!BASE) return {error:{message:'Airtable non configuré'}};
   const res=await fetch(`https://api.airtable.com/v0/${BASE}/${encodeURIComponent(table)}`,{method:'POST',headers:{'Authorization':`Bearer ${TOKEN}`,'Content-Type':'application/json'},body:JSON.stringify({fields})});
   return await res.json();
 }
 async function atUpdate(table,id,fields){
+  if(MAKE_WEBHOOK_URL) return await makeRequest('AIRTABLE_UPDATE',{table,id,fields});
   if(!TOKEN||!BASE) return;
   await fetch(`https://api.airtable.com/v0/${BASE}/${encodeURIComponent(table)}/${id}`,{method:'PATCH',headers:{'Authorization':`Bearer ${TOKEN}`,'Content-Type':'application/json'},body:JSON.stringify({fields})});
 }
 async function atDelete(table,id){
+  if(MAKE_WEBHOOK_URL) return await makeRequest('AIRTABLE_DELETE',{table,id});
   if(!TOKEN||!BASE) return {error:{message:'Airtable non configuré'}};
   const res=await fetch(`https://api.airtable.com/v0/${BASE}/${encodeURIComponent(table)}/${id}`,{method:'DELETE',headers:{'Authorization':`Bearer ${TOKEN}`}});
   return await res.json();
