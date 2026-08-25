@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>CM Tool — Kairos</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --papaya:#BD6809; --paradise:#9A3F4A; --fuschia:#2F4731; --palm:#3D1419;
     --purple:#7C3AED;
-    --bg:#ffffff; --surface:#F5F0EB; --surface2:#EDE6DC;
+    --bg:#F3EEE8; --surface:#F8F4EF; --surface2:#E8DDD4;
     --text:#1a1009; --text-dim:#7a6a5a; --border:#DDD5CA;
     --text-on-dark:#F5EFE6; --text-dim-dark:rgba(245,239,230,0.6); --border-dark:rgba(245,239,230,0.15);
     --r:14px; --rs:10px; --nav-h:68px;
@@ -30,7 +30,7 @@
   .acc-cm { background:var(--fuschia); }
 
   /* MAIN */
-  .main { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:16px 16px calc(var(--nav-h)+16px); }
+  .main { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:18px 16px calc(var(--nav-h)+18px); }
   .page { display:none; }
   .page.active { display:block; }
 
@@ -81,13 +81,60 @@
   .modal-form.active { display:block; }
   .form-row { margin-bottom:14px; }
 
-  /* ===== PAGE 1 — FEED TRENDS ===== */
+  /* ===== PAGE 1 — TABLEAU DE BORD ===== */
+  .dashboard-page { max-width:980px; margin:0 auto; }
+  .dash-hero { text-align:center; padding:48px 0 34px; }
+  .dash-title { font-family:'Cormorant Garamond',serif; font-size:clamp(46px,10vw,96px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
+  .dash-script { font-family:'Caveat',cursive; font-size:clamp(34px,7vw,62px); color:#ff7b7d; line-height:0.72; font-weight:700; transform:translateY(-2px); }
+  .dashboard-grid { display:grid; grid-template-columns:minmax(220px,0.75fr) minmax(320px,1.45fr); gap:24px; align-items:start; }
+  .dash-card { background:#fff; border:none; border-radius:8px; padding:22px; box-shadow:none; }
+  .dash-card-title { font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:700; letter-spacing:0; text-transform:uppercase; text-align:center; margin-bottom:24px; color:#0d0a07; }
+  .dash-news-list { display:flex; flex-direction:column; gap:18px; }
+  .dash-news-item { display:grid; grid-template-columns:58px 1fr; gap:14px; align-items:center; min-height:58px; cursor:pointer; }
+  .dash-hash { width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:31px; font-family:'DM Sans',sans-serif; font-weight:500; }
+  .dash-hash.c1 { background:#ef7200; }
+  .dash-hash.c2 { background:#f69aa5; }
+  .dash-hash.c3 { background:#f7b919; }
+  .dash-news-text { font-size:22px; line-height:1.2; letter-spacing:1px; }
+  .dash-ideas { background:#d8ccc7; border-radius:34px; padding:0 0 22px; overflow:hidden; min-height:230px; }
+  .dash-search { height:52px; background:#fff; border-radius:28px; display:flex; align-items:center; gap:12px; padding:0 18px 0 32px; }
+  .dash-search input { flex:1; min-width:0; border:none; outline:none; font-family:'DM Mono',monospace; font-size:13px; letter-spacing:3px; text-transform:uppercase; background:transparent; color:#15100e; }
+  .dash-search-icon { width:24px; height:24px; border:3px solid #171413; border-radius:50%; position:relative; flex-shrink:0; }
+  .dash-search-icon::after { content:''; position:absolute; width:10px; height:3px; background:#171413; right:-8px; bottom:-5px; transform:rotate(45deg); border-radius:2px; }
+  .dash-idea-results { padding:14px 40px; display:flex; flex-direction:column; gap:14px; }
+  .dash-idea-row { font-family:'DM Mono',monospace; font-size:18px; letter-spacing:1px; cursor:pointer; }
+  .dash-trends-card { margin-top:28px; padding:32px 26px; border-radius:12px; }
+  .dash-main-col { display:flex; flex-direction:column; gap:26px; }
+  .dash-note-card { position:relative; background:#e7ece6; border-radius:0; min-height:330px; padding:66px 28px 24px; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.02); background-image:linear-gradient(rgba(60,80,60,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(60,80,60,0.08) 1px,transparent 1px); background-size:24px 24px; margin-top:22px; }
+  .dash-clip { position:absolute; top:-26px; left:50%; transform:translateX(-50%); width:82px; height:48px; background:#050505; border-radius:4px 4px 8px 8px; }
+  .dash-clip::before { content:''; position:absolute; left:23px; top:-43px; width:36px; height:55px; border:4px solid #050505; border-bottom:none; border-radius:24px 24px 0 0; }
+  .dash-clip::after { content:''; position:absolute; left:13px; right:13px; bottom:7px; height:18px; border:3px solid #fff; border-top:none; border-radius:0 0 18px 18px; }
+  .dash-note-title { font-family:'Cormorant Garamond',serif; font-size:29px; text-align:center; text-transform:uppercase; margin-bottom:14px; color:#0a0807; }
+  .dash-note-area { width:100%; min-height:170px; resize:vertical; border:none; background:rgba(255,255,255,0.52); border-radius:6px; padding:14px; outline:none; font-family:'Caveat',cursive; font-size:25px; line-height:1.15; color:#1c1714; }
+  .dash-photo-row { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; align-items:center; }
+  .dash-photo-btn { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:9px 15px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .dash-photos { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
+  .dash-photo { width:112px; height:138px; object-fit:cover; background:#fff; border:8px solid #fff; box-shadow:0 8px 18px rgba(0,0,0,0.12); transform:rotate(-5deg); }
+  .dash-photo:nth-child(even) { transform:rotate(6deg); }
+  .dash-photo-empty { font-size:12px; color:rgba(0,0,0,0.45); font-family:'DM Mono',monospace; }
+  @media (max-width:640px) {
+    .dash-hero { padding:34px 0 24px; }
+    .dashboard-grid { grid-template-columns:1fr; gap:18px; }
+    .dash-ideas { border-radius:24px; }
+    .dash-card { padding:20px; }
+  }
   .feed-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
   .feed-title { font-size:20px; font-weight:700; }
   .feed-sub { font-size:12px; color:var(--text-dim); margin-top:2px; }
   .feed-list { display:flex; flex-direction:column; gap:14px; }
 
   .trend-feed-card { background:#fff; border:1.5px solid var(--border); border-radius:var(--r); overflow:hidden; transition:all 0.15s; }
+  .dash-trends-card .trend-feed-card { border:none; border-radius:8px; background:#fbfaf8; }
+  .dash-trends-card .trend-feed-actions { padding:8px 0 0; margin:0 14px 12px; }
+  .dash-trends-card .trend-feed-top { padding:13px 14px 8px; }
+  .dash-trends-card .ttitle { font-size:16px; }
+  .dash-trends-card .tdesc { font-size:12px; }
+  .dash-trends-card .tag { font-size:9px; }
   .trend-feed-card.selected { border-color:var(--papaya); }
   .trend-feed-top { padding:14px 16px 10px; }
   .trend-feed-actions { display:flex; align-items:center; justify-content:space-between; padding:8px 16px 12px; border-top:1px solid var(--surface); }
@@ -285,13 +332,44 @@
   <div class="main">
     <!-- PAGE 1 : FEED TRENDS -->
     <div id="page-trends" class="page active">
-      <div class="feed-header">
-        <div>
-          <div class="feed-title">Trends 🌊</div>
-          <div class="feed-sub" id="trends-sub">Toutes les niches</div>
+      <div class="dashboard-page">
+        <div class="dash-hero">
+          <div class="dash-title">Tableau de bord</div>
+          <div class="dash-script" id="dash-week-title">de la semaine</div>
+        </div>
+        <div class="dashboard-grid">
+          <div>
+            <section class="dash-card">
+              <div class="dash-card-title">Actualités</div>
+              <div class="dash-news-list" id="dashboard-news"></div>
+            </section>
+            <section class="dash-card dash-trends-card">
+              <div class="dash-card-title">Trends</div>
+              <div id="trends-content"><div class="loading"><div class="spinner"></div>Chargement...</div></div>
+            </section>
+          </div>
+          <div class="dash-main-col">
+            <section class="dash-ideas">
+              <div class="dash-search">
+                <input id="dash-search-input" placeholder="SUCCESS" oninput="renderIdeaResults(this.value)">
+                <span class="dash-search-icon"></span>
+              </div>
+              <div class="dash-idea-results" id="dash-idea-results"></div>
+            </section>
+            <section class="dash-note-card">
+              <div class="dash-clip" aria-hidden="true"></div>
+              <div class="dash-note-title">Notes</div>
+              <textarea class="dash-note-area" id="dash-notes" placeholder="Notes, idées libres, rappels client..." oninput="saveDashboardNotes()"></textarea>
+              <div class="dash-photo-row">
+                <button class="dash-photo-btn" onclick="document.getElementById('dash-photo-input').click()">Ajouter photo</button>
+                <button class="dash-photo-btn" onclick="clearDashboardPhotos()">Vider photos</button>
+                <input id="dash-photo-input" type="file" accept="image/*" multiple style="display:none" onchange="addDashboardPhotos(this.files);this.value=''">
+              </div>
+              <div class="dash-photos" id="dash-photos"></div>
+            </section>
+          </div>
         </div>
       </div>
-      <div id="trends-content"><div class="loading"><div class="spinner"></div>Chargement...</div></div>
       <div class="selbar" id="selbar">
         <div class="selbar-txt">✓ <span id="sel-count">0</span> trend(s)</div>
         <button class="btn btn-fuschia" onclick="addSelectionsAndGo()" style="padding:9px 14px;font-size:12px" id="selbar-btn">Ajouter →</button>
@@ -765,8 +843,10 @@ function toggleAccount(acc){
 }
 function updateSubtitle(){
   const names=[...activeAccounts].map(a=>ACCOUNTS[a].emoji+' '+ACCOUNTS[a].name).join(' · ');
-  document.getElementById('trends-sub').textContent=names;
-  document.getElementById('content-sub').textContent=names;
+  const trendsSub=document.getElementById('trends-sub');
+  if(trendsSub) trendsSub.textContent=names;
+  const contentSub=document.getElementById('content-sub');
+  if(contentSub) contentSub.textContent=names;
   // Sync client dropdowns to first active account
   const first=[...activeAccounts][0];
   ['cv-client','cs-client'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=first;});
@@ -832,8 +912,111 @@ function accountClass(r){
 }
 function cp(btn,text){navigator.clipboard.writeText(text).then(()=>{const o=btn.textContent;btn.textContent='✓ Copié!';setTimeout(()=>btn.textContent=o,2000);});}
 function fmtDate(d){if(!d) return '—';return new Date(d).toLocaleDateString('fr-FR',{day:'2-digit',month:'short'});}
+function htmlSafe(value){
+  return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
 
 // ===== PAGE 1 : FEED TRENDS =====
+function dashboardTitle(r){
+  return r?.fields?.['Titre de la trend']||r?.fields?.['Titre']||'Nouvelle idée';
+}
+function dashboardDesc(r){
+  return r?.fields?.['Description courte']||r?.fields?.['Description']||'description';
+}
+function updateDashboardWeekTitle(){
+  const el=document.getElementById('dash-week-title');
+  if(!el) return;
+  const d=new Date();
+  const month=d.toLocaleDateString('fr-FR',{month:'long'});
+  el.textContent=`de la semaine du ${d.getDate()} ${month}`;
+}
+function dashboardFilteredTrends(query=''){
+  const q=query.trim().toLowerCase();
+  let records=allTrends.slice();
+  if(activeAccounts.size<3){
+    const niches=[...activeAccounts].map(a=>ACCOUNTS[a].niche);
+    records=records.filter(r=>{
+      const rn=[].concat(r.fields['Niches compatibles']||[]);
+      return rn.length===0||rn.some(n=>niches.includes(n));
+    });
+  }
+  if(q){
+    records=records.filter(r=>(dashboardTitle(r)+' '+dashboardDesc(r)).toLowerCase().includes(q));
+  }
+  return records;
+}
+function renderDashboardNews(records=dashboardFilteredTrends()){
+  const el=document.getElementById('dashboard-news');
+  if(!el) return;
+  const fallback=[
+    {id:'fb-news-1',fields:{'Titre de la trend':'canicule'}},
+    {id:'fb-news-2',fields:{'Titre de la trend':'pokemon 30ans'}},
+    {id:'fb-news-3',fields:{'Titre de la trend':'idée chaude'}}
+  ];
+  const items=(records.length?records:fallback).slice(0,3);
+  el.innerHTML=items.map((r,i)=>`<div class="dash-news-item" onclick="${allTrends.some(t=>t.id===r.id)?`toggleTrend('${r.id}')`:''}">
+    <div class="dash-hash c${(i%3)+1}">#</div>
+    <div class="dash-news-text">${htmlSafe(dashboardTitle(r))}</div>
+  </div>`).join('');
+}
+function renderIdeaResults(query=''){
+  const el=document.getElementById('dash-idea-results');
+  if(!el) return;
+  const records=dashboardFilteredTrends(query).slice(0,4);
+  if(!records.length){
+    el.innerHTML='<div class="dash-idea-row">aucune idee</div>';
+    return;
+  }
+  el.innerHTML=records.map((r,i)=>`<div class="dash-idea-row" onclick="toggleTrend('${r.id}')">idees ${i+1} · ${htmlSafe(dashboardTitle(r))}</div>`).join('');
+}
+function saveDashboardNotes(){
+  const el=document.getElementById('dash-notes');
+  if(el) writeStore('Dashboard','notes',el.value);
+}
+function loadDashboardNotes(){
+  const el=document.getElementById('dash-notes');
+  if(el) el.value=readStore('Dashboard','notes','');
+}
+function dashboardPhotos(){
+  return readStore('Dashboard','photos',[]);
+}
+function saveDashboardPhotos(photos){
+  writeStore('Dashboard','photos',photos.slice(0,4));
+}
+function renderDashboardPhotos(){
+  const el=document.getElementById('dash-photos');
+  if(!el) return;
+  const photos=dashboardPhotos();
+  el.innerHTML=photos.length
+    ? photos.map(src=>`<img class="dash-photo" src="${src}" alt="">`).join('')
+    : '<div class="dash-photo-empty">Ajoute des photos de refs ici.</div>';
+}
+function fileToDataUrl(file){
+  return new Promise(resolve=>{
+    const reader=new FileReader();
+    reader.onload=()=>resolve(reader.result);
+    reader.onerror=()=>resolve(null);
+    reader.readAsDataURL(file);
+  });
+}
+async function addDashboardPhotos(files){
+  const incoming=await Promise.all([...files].slice(0,4).map(fileToDataUrl));
+  const photos=dashboardPhotos().concat(incoming.filter(Boolean)).slice(0,4);
+  saveDashboardPhotos(photos);
+  renderDashboardPhotos();
+}
+function clearDashboardPhotos(){
+  saveDashboardPhotos([]);
+  renderDashboardPhotos();
+}
+function initDashboard(){
+  updateDashboardWeekTitle();
+  loadDashboardNotes();
+  renderDashboardPhotos();
+  renderDashboardNews();
+  renderIdeaResults();
+}
+
 async function loadTrends(){
   const el=document.getElementById('trends-content');
   el.innerHTML='<div class="loading"><div class="spinner"></div>Chargement...</div>';
@@ -845,15 +1028,9 @@ async function loadTrends(){
 
 function renderTrends(){
   const el=document.getElementById('trends-content');
-  // Filter by active accounts niches
-  let filtered=allTrends;
-  if(activeAccounts.size<3){
-    const niches=[...activeAccounts].map(a=>ACCOUNTS[a].niche);
-    filtered=allTrends.filter(r=>{
-      const rn=[].concat(r.fields['Niches compatibles']||[]);
-      return rn.length===0||rn.some(n=>niches.includes(n));
-    });
-  }
+  const filtered=dashboardFilteredTrends();
+  renderDashboardNews(filtered);
+  renderIdeaResults(document.getElementById('dash-search-input')?.value||'');
   if(!filtered.length){el.innerHTML='<div class="empty">Aucune trend — appuie sur + pour en créer une</div>';return;}
   el.innerHTML='<div class="feed-list">'+filtered.map(tFeedCard).join('')+'</div>'
     +'<div style="text-align:center;padding:20px 0"><button onclick="openModal(\'modal-trend\')" style="width:52px;height:52px;border-radius:50%;background:var(--papaya);color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 12px rgba(189,104,9,0.3)">+</button></div>';
@@ -1949,6 +2126,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 // Init - wait for DOM
 document.addEventListener('DOMContentLoaded', function() {
+  initDashboard();
   loadClients();
   loadTrends();
   loadSels();
