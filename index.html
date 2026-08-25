@@ -157,6 +157,9 @@
   .vp-montage { background:var(--paradise); color:#fff; }
   .vp-publie { background:var(--palm); color:var(--text-on-dark); }
   .vp-story { background:var(--purple); color:#fff; border:1px dashed #C4B5FD; }
+  .vp-acc-lf { background:var(--paradise); color:#fff; }
+  .vp-acc-cpc { background:var(--papaya); color:#fff; }
+  .vp-acc-cm { background:var(--fuschia); color:#fff; }
   .vcard { background:#fff; border:1.5px solid var(--border); border-radius:var(--r); padding:14px 16px; margin-bottom:10px; display:flex; align-items:center; gap:12px; cursor:pointer; transition:all 0.15s; }
   .vcard:active { transform:scale(0.98); }
 
@@ -819,6 +822,14 @@ function badgeClass(s){
   if(s==='Publié') return 'cb-publie';
   return 'cb-filmer';
 }
+function accountClass(r){
+  const title=r.fields['Titre']||'';
+  const clientIds=[].concat(r.fields['Client']||[]);
+  if(title.includes('Le Foyer')||clientIds.includes(clientsCache['Le Foyer'])) return 'vp-acc-lf';
+  if(title.includes('CPC')||clientIds.includes(clientsCache.CPC)) return 'vp-acc-cpc';
+  if(title.includes('CM au Japon')||clientIds.includes(clientsCache['CM au Japon'])) return 'vp-acc-cm';
+  return '';
+}
 function cp(btn,text){navigator.clipboard.writeText(text).then(()=>{const o=btn.textContent;btn.textContent='✓ Copié!';setTimeout(()=>btn.textContent=o,2000);});}
 function fmtDate(d){if(!d) return '—';return new Date(d).toLocaleDateString('fr-FR',{day:'2-digit',month:'short'});}
 
@@ -902,14 +913,16 @@ async function addOneTrend(trendId){
   const btn=document.querySelector(`#tfc-${trendId} button[onclick*="addOneTrend"]`);
   if(btn){btn.textContent='...';btn.disabled=true;}
   const created=[];
-  const accData=primaryActiveAccount();
-  const clientId=clientsCache[accData.name]||null;
-  const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
-  fields['Date de tournage prévue']=date;
-  if(clientId) fields['Client']=[clientId];
-  const result=await atCreate('Sélections',fields);
-  if(result.error) console.error('Create sel error:', result.error);
-  else created.push(result);
+  for(const acc of activeAccounts){
+    const accData=ACCOUNTS[acc];
+    const clientId=clientsCache[accData.name]||null;
+    const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
+    fields['Date de tournage prévue']=date;
+    if(clientId) fields['Client']=[clientId];
+    const result=await atCreate('Sélections',fields);
+    if(result.error) console.error('Create sel error:', result.error);
+    else created.push(result);
+  }
   allSels=allSels.concat(created.filter(r=>r&&r.id&&!allSels.some(s=>s.id===r.id)));
   selsSaved=true;
   showPage('planning');
@@ -932,16 +945,18 @@ async function addOneTrend(trendId){
 async function addSelectionsAndGo(){
   const btn=document.getElementById('selbar-btn');
   btn.textContent='...'; btn.disabled=true;
-  const accData=primaryActiveAccount();
-  const clientId=clientsCache[accData.name]||null;
   for(const [trendId,data] of Object.entries(selTrends)){
     const trend=allTrends.find(r=>r.id===trendId);
     const trendTitle=trend?.fields['Titre de la trend']||trend?.fields['Titre']||'Trend';
-    const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
-    fields['Date de tournage prévue']=data.date||new Date().toISOString().slice(0,10);
-    if(clientId) fields['Client']=[clientId];
-    const result=await atCreate('Sélections',fields);
-    if(result&&result.id&&!allSels.some(s=>s.id===result.id)) allSels.push(result);
+    for(const acc of activeAccounts){
+      const accData=ACCOUNTS[acc];
+      const clientId=clientsCache[accData.name]||null;
+      const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
+      fields['Date de tournage prévue']=data.date||new Date().toISOString().slice(0,10);
+      if(clientId) fields['Client']=[clientId];
+      const result=await atCreate('Sélections',fields);
+      if(result&&result.id&&!allSels.some(s=>s.id===result.id)) allSels.push(result);
+    }
   }
   selTrends={}; selsSaved=true;
   document.getElementById('selbar').classList.remove('visible');
@@ -1206,7 +1221,7 @@ function renderCal(){
       <div class="cal-dnum ${isToday?'today-n':''}">${day}</div>
       ${sels.map(r=>{
         const t=(r.fields['Titre']||'Vidéo').substring(0,14);
-        const pc=pillClass(r);
+        const pc=`${pillClass(r)} ${accountClass(r)}`;
         return `<button class="vpill ${pc}" draggable="true" ondragstart="dragStart(event,'${r.id}')" ondragend="dragEnd(event)" onmousedown="startLP(event,'${r.id}')" onmouseup="cancelLP()" onmouseleave="cancelLP()" ontouchstart="startLP(event,'${r.id}')" ontouchend="cancelLP()" ontouchmove="cancelLP()" onclick="openFiche('${r.id}')">${t}</button>`;
       }).join('')}
     </div>`;
