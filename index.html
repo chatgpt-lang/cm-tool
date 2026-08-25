@@ -616,6 +616,8 @@ function localOverrides(table){return readStore(table,'overrides',{});}
 function saveLocalRecords(table,records){writeStore(table,'records',records);}
 function saveLocalDeleted(table,set){writeStore(table,'deleted',[...set]);}
 function saveLocalOverrides(table,overrides){writeStore(table,'overrides',overrides);}
+function demoOnly(table){return readStore(table,'demoOnly',false);}
+function setDemoOnly(table,value){writeStore(table,'demoOnly',!!value);}
 function hasWriteRecord(data,id){
   if(!data||data.error) return false;
   if(data.deleted&&(!id||data.id===id)) return true;
@@ -682,6 +684,7 @@ async function makeRequest(action,payload={}){
   }
 }
 async function atFetch(table,params=''){
+  if(table==='Sélections'&&demoOnly(table)) return applyLocalLayer(table,[]);
   if(MAKE_WEBHOOK_URL){
     const data=await makeRequest('AIRTABLE_FETCH',{table,params});
     if(Array.isArray(data)) return applyLocalLayer(table,data);
@@ -908,8 +911,7 @@ async function addOneTrend(trendId){
   }
   allSels=allSels.concat(created.filter(r=>r&&r.id&&!allSels.some(s=>s.id===r.id)));
   selsSaved=true;
-  await loadSels(true);
-  if(currentPage==='planning') renderCal();
+  showPage('planning');
   // Show feedback on card
   const card=document.getElementById('tfc-'+trendId);
   if(card){
@@ -951,10 +953,8 @@ async function addSelectionsAndGo(){
 
 async function resetPlanning(){
   if(!confirm('Vider le planning visible et repartir à zéro ?')) return;
-  await loadSels(true);
-  const deleted=localDeleted('Sélections');
-  allSels.forEach(r=>deleted.add(r.id));
-  saveLocalDeleted('Sélections',deleted);
+  setDemoOnly('Sélections',true);
+  saveLocalDeleted('Sélections',new Set());
   saveLocalRecords('Sélections',[]);
   saveLocalOverrides('Sélections',{});
   allSels=[];
