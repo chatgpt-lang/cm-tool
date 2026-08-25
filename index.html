@@ -593,6 +593,10 @@ const LOCAL_PREFIX='cmtool-demo-v2:';
 const memoryStore={};
 
 // ===== API =====
+function primaryActiveAccount(){
+  const key=[...activeAccounts][0]||'lf';
+  return {key,...ACCOUNTS[key]};
+}
 function storeKey(table,type){return `${LOCAL_PREFIX}${table}:${type}`;}
 function readStore(table,type,fallback){
   const key=storeKey(table,type);
@@ -898,17 +902,14 @@ async function addOneTrend(trendId){
   const btn=document.querySelector(`#tfc-${trendId} button[onclick*="addOneTrend"]`);
   if(btn){btn.textContent='...';btn.disabled=true;}
   const created=[];
-  for(const acc of activeAccounts){
-    const accData=ACCOUNTS[acc];
-    const clientId=clientsCache[accData.name]||null;
-    const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
-    fields['Date de tournage prévue']=date;
-    if(clientId) fields['Client']=[clientId];
-    // Remove Trend field if it causes issues - it's optional
-    const result=await atCreate('Sélections',fields);
-    if(result.error) console.error('Create sel error:', result.error);
-    else created.push(result);
-  }
+  const accData=primaryActiveAccount();
+  const clientId=clientsCache[accData.name]||null;
+  const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
+  fields['Date de tournage prévue']=date;
+  if(clientId) fields['Client']=[clientId];
+  const result=await atCreate('Sélections',fields);
+  if(result.error) console.error('Create sel error:', result.error);
+  else created.push(result);
   allSels=allSels.concat(created.filter(r=>r&&r.id&&!allSels.some(s=>s.id===r.id)));
   selsSaved=true;
   showPage('planning');
@@ -931,19 +932,16 @@ async function addOneTrend(trendId){
 async function addSelectionsAndGo(){
   const btn=document.getElementById('selbar-btn');
   btn.textContent='...'; btn.disabled=true;
-  // For each active account, create a selection
+  const accData=primaryActiveAccount();
+  const clientId=clientsCache[accData.name]||null;
   for(const [trendId,data] of Object.entries(selTrends)){
     const trend=allTrends.find(r=>r.id===trendId);
     const trendTitle=trend?.fields['Titre de la trend']||trend?.fields['Titre']||'Trend';
-    for(const acc of activeAccounts){
-      const accData=ACCOUNTS[acc];
-        const clientId=clientsCache[accData.name]||null;
-      const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
-      fields['Date de tournage prévue']=data.date||new Date().toISOString().slice(0,10);
-      if(clientId) fields['Client']=[clientId];
-      const result=await atCreate('Sélections',fields);
-      if(result&&result.id&&!allSels.some(s=>s.id===result.id)) allSels.push(result);
-    }
+    const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
+    fields['Date de tournage prévue']=data.date||new Date().toISOString().slice(0,10);
+    if(clientId) fields['Client']=[clientId];
+    const result=await atCreate('Sélections',fields);
+    if(result&&result.id&&!allSels.some(s=>s.id===result.id)) allSels.push(result);
   }
   selTrends={}; selsSaved=true;
   document.getElementById('selbar').classList.remove('visible');
