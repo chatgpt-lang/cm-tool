@@ -85,7 +85,7 @@
   /* ===== PAGE 1 — TABLEAU DE BORD ===== */
   .dashboard-page { max-width:1220px; margin:0 auto; }
   .dash-hero { text-align:center; padding:22px 0 18px; }
-  .dash-stats-row { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin-bottom:14px; }
+  .dash-stats-row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-bottom:14px; }
   .dash-stat-card { background:var(--surface); border:none; border-radius:12px; padding:11px 12px; min-height:92px; }
   .dash-stat-icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:7px; }
   .dash-stat-icon svg { width:14px; height:14px; }
@@ -109,34 +109,34 @@
   .dash-news-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
   .dash-news-item { display:flex; align-items:center; justify-content:center; text-align:left; gap:10px; cursor:pointer; min-width:0; }
   .dash-hash { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; font-family:'DM Sans',sans-serif; font-weight:700; flex-shrink:0; }
-  .dash-news-text { font-size:14px; line-height:1.2; font-weight:700; color:var(--text); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .dash-news-text { font-size:12px; line-height:1.15; font-weight:700; color:var(--text); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .dash-ideas { background:#d8ccc7; border-radius:24px; padding:0 0 14px; overflow:hidden; min-height:150px; }
   .dash-ideas-help { padding:10px 24px 0; font-size:11.5px; color:rgba(26,16,9,0.58); line-height:1.35; }
   .dash-search { height:46px; background:#fff; border-radius:28px; display:flex; align-items:center; gap:12px; padding:0 18px 0 28px; }
   .dash-search input { flex:1; min-width:0; border:none; outline:none; font-family:'DM Mono',monospace; font-size:13px; letter-spacing:3px; text-transform:uppercase; background:transparent; color:#15100e; }
   .dash-search-icon { width:24px; height:24px; border:3px solid #171413; border-radius:50%; position:relative; flex-shrink:0; }
   .dash-search-icon::after { content:''; position:absolute; width:10px; height:3px; background:#171413; right:-8px; bottom:-5px; transform:rotate(45deg); border-radius:2px; }
-  .dash-idea-results { padding:12px 28px 0; display:flex; flex-direction:row; gap:10px; overflow-x:auto; }
+  .dash-idea-results { padding:0 28px; display:flex; flex-direction:row; gap:10px; overflow-x:auto; }
   .dash-idea-row { font-family:'DM Mono',monospace; font-size:13px; letter-spacing:1px; cursor:pointer; background:rgba(255,255,255,0.55); border-radius:999px; padding:8px 12px; white-space:nowrap; }
   .dash-trends-card { padding:16px; border-radius:12px; }
-  .dash-trend-row { display:flex; gap:12px; overflow-x:auto; padding:8px 2px 6px; }
-  .dash-trend-card { flex:0 0 210px; background:#fff; border-radius:16px; overflow:visible; cursor:pointer; scroll-snap-align:start; position:relative; }
+  .dash-trend-row { display:flex; gap:12px; overflow-x:auto; padding:22px 2px 6px; }
+  .dash-trend-card { flex:0 0 210px; background:#fff; border-radius:16px; overflow:visible; cursor:pointer; scroll-snap-align:start; position:relative; padding-top:16px; }
   .dash-trend-row { scroll-snap-type:x proximity; }
-  .dash-trend-img-wrap { position:relative; height:112px; background:var(--surface2); border-radius:16px 16px 0 0; overflow:hidden; }
+  .dash-trend-img-wrap { position:relative; height:112px; background:var(--surface2); border-radius:14px 14px 0 0; overflow:hidden; }
   .dash-trend-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
-  .dash-trend-num { position:absolute; top:-10px; left:-10px; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:800; font-family:'DM Sans',sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.18); z-index:2; }
+  .dash-trend-num { position:absolute; top:-2px; left:12px; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:800; font-family:'DM Sans',sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.18); z-index:2; }
   .dash-trend-body { padding:12px; }
   .dash-trend-title { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:700; line-height:1.05; margin-bottom:5px; text-transform:uppercase; }
   .dash-trend-desc { font-size:11px; color:var(--text-dim); line-height:1.25; margin-bottom:8px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
   .dash-trend-tags { display:flex; flex-wrap:wrap; gap:6px; }
   .dash-trend-tag { font-size:10.5px; font-weight:700; color:var(--text-dim); background:var(--surface2); border-radius:999px; padding:3px 9px; }
   .dash-trend-card.selected { box-shadow:0 0 0 2px var(--papaya); }
-  .dash-notes-row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding-top:20px; }
+  .dash-notes-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; padding-top:12px; }
   .dash-note-card { position:relative; border-radius:0; min-height:210px; padding:42px 16px 14px; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; }
   .dash-note-card.note-green { background:url('assets/note-paper-green.jpg') center/cover no-repeat #E4EAE1; }
   .dash-note-remove { position:absolute; top:8px; right:10px; background:none; border:none; font-size:14px; color:rgba(0,0,0,0.4); cursor:pointer; }
   .dash-note-add { min-height:210px; border-radius:16px; border:1.5px dashed var(--border); background:transparent; color:var(--text-dim); font-size:32px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
-  .dash-clip { position:absolute; top:-42px; left:50%; transform:translateX(-50%); width:90px; height:90px; background:url('assets/binder-clip.png') center/contain no-repeat; pointer-events:none; }
+  .dash-clip { position:absolute; top:-22px; left:50%; transform:translateX(-50%); width:45px; height:45px; background:url('assets/binder-clip.png') center/contain no-repeat; pointer-events:none; }
   .dash-note-title { font-family:'Cormorant Garamond',serif; font-size:22px; text-align:center; text-transform:uppercase; margin-bottom:8px; color:#0a0807; }
   .dash-note-area { width:100%; min-height:90px; resize:vertical; border:1.5px dashed transparent; background:transparent; border-radius:0; padding:10px; outline:none; font-family:'Nothing You Could Do',cursive; font-size:19px; line-height:1.25; color:#1c1714; }
   .dash-note-area:focus { border-color:rgba(26,16,9,0.32); }
@@ -252,6 +252,9 @@
   .plan-day-items { display:flex; flex-direction:column; gap:10px; }
   .plan-day-empty { font-family:'DM Sans',sans-serif; font-size:13px; color:rgba(26,16,9,0.45); text-align:center; padding:24px 0; }
   .plan-day-pill { border:none; border-radius:999px; padding:10px 14px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:800; color:#fff; text-align:left; cursor:pointer; }
+  .plan-add-btn { border:1.5px dashed var(--border); background:rgba(255,255,255,0.72); color:var(--text-dim); border-radius:999px; padding:7px 12px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:800; cursor:pointer; }
+  .plan-cell-add { position:absolute; right:6px; top:5px; width:22px; height:22px; border-radius:50%; border:none; background:#fff; color:var(--papaya); font-size:16px; line-height:20px; font-weight:800; cursor:pointer; box-shadow:0 2px 7px rgba(0,0,0,0.08); }
+  .cal-cell { position:relative; }
   .planning-notes { margin-top:18px; position:relative; border-radius:0; padding:34px 28px 24px; min-height:220px; background:url('assets/note-paper.png') center/cover no-repeat; }
   .planning-notes-title { font-family:'Cormorant Garamond',serif; font-size:26px; text-transform:uppercase; text-align:center; margin-bottom:10px; }
   .planning-notes textarea { width:100%; min-height:125px; border:1.5px dashed transparent; outline:none; resize:vertical; background:transparent; border-radius:0; padding:14px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
@@ -305,6 +308,9 @@
   .company-photo.large { min-height:330px; grid-row:span 2; }
   .company-photo img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
   .company-panel { border-radius:18px; padding:24px 20px; background:var(--fuschia); color:#fff; min-height:210px; }
+  .company-panels-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch; }
+  .company-panels-row .company-panel { min-height:190px; aspect-ratio:1/1; }
+  .company-reset-wrap { grid-column:1 / -1; text-align:center; opacity:0.55; }
   .company-panel-title { font-size:22px; font-style:italic; text-align:center; margin-bottom:18px; cursor:pointer; }
   .company-font-preview { font-family:'Cormorant Garamond',serif; font-size:34px; line-height:0.92; text-align:center; letter-spacing:3px; }
   .company-keywords { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
@@ -383,7 +389,9 @@
   .analysis-content-card input { border:none; border-bottom:1.5px dashed rgba(0,0,0,0.18); background:transparent; outline:none; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:700; padding:4px 0; }
   .analysis-ai-box { background:#111; color:#fff; border-radius:12px; padding:14px; font-size:13px; line-height:1.45; }
   .analysis-ai-box strong { color:#ffb86b; }
-  .analysis-note { background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; padding:40px 22px 18px; min-height:190px; position:relative; }
+  .analysis-export-btn { border:none; background:var(--papaya); color:#fff; border-radius:999px; padding:9px 16px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .analysis-note { background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; padding:56px 22px 18px; min-height:190px; position:relative; margin-top:22px; }
+  .analysis-note .dash-clip { top:-22px; width:45px; height:45px; }
   .analysis-note textarea { width:100%; min-height:100px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; font-family:'Nothing You Could Do',cursive; font-size:20px; line-height:1.25; color:#1c1714; }
   .analysis-note textarea:focus { border-color:rgba(26,16,9,0.32); }
   @media (max-width:720px) {
@@ -655,6 +663,7 @@
           <div class="analysis-hero">
             <div class="analysis-title">Analyse</div>
             <div class="analysis-script">du mois</div>
+            <button class="analysis-export-btn" onclick="alert('Export analyse bientôt disponible')">Exporter</button>
           </div>
           <div class="analysis-grid">
             <section class="analysis-card">
@@ -852,10 +861,6 @@
     <button class="nav-btn active" id="nb-trends" onclick="showPage('trends')">
       <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
       Tableau
-    </button>
-    <button class="nav-btn" id="nb-content" onclick="showPage('content')">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-      Contenu
     </button>
     <button class="nav-btn" id="nb-planning" onclick="showPage('planning')">
       <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -1274,14 +1279,7 @@ function updateSubtitle(){
 // ===== FAB =====
 function openFab(){
   if(currentPage==='trends') openModal('modal-trend');
-  else {
-    openModal('modal-content');
-    // Auto-switch tab based on current content tab
-    const isStoryTab = currentContentTab==='stories';
-    document.querySelectorAll('.modal-tab').forEach((t,i)=>t.classList.toggle('active',isStoryTab?i===1:i===0));
-    document.getElementById('mf-video').classList.toggle('active',!isStoryTab);
-    document.getElementById('mf-story').classList.toggle('active',isStoryTab);
-  }
+  else openContentModal(currentContentTab==='stories'?'story':'video');
 }
 function openModal(id){document.getElementById(id).classList.add('open');}
 function closeModal(id){document.getElementById(id).classList.remove('open');}
@@ -1291,6 +1289,28 @@ function switchModalTab(tab,btn){
   btn.classList.add('active');
   document.querySelectorAll('.modal-form').forEach(f=>f.classList.remove('active'));
   document.getElementById('mf-'+tab).classList.add('active');
+}
+function openContentModal(type='video',date=''){
+  const isStoryTab=type==='story';
+  openModal('modal-content');
+  document.querySelectorAll('.modal-tab').forEach((t,i)=>t.classList.toggle('active',isStoryTab?i===1:i===0));
+  document.getElementById('mf-video').classList.toggle('active',!isStoryTab);
+  document.getElementById('mf-story').classList.toggle('active',isStoryTab);
+  if(date){
+    const target=isStoryTab?'cs-date':'cv-date';
+    const input=document.getElementById(target);
+    if(input) input.value=date;
+  }
+  const first=[...activeAccounts][0]||'lf';
+  const client=document.getElementById(isStoryTab?'cs-client':'cv-client');
+  if(client) client.value=first;
+}
+function promptPlanningAdd(date){
+  const choice=(prompt('Ajouter quoi ? Tape : rdv, post, story ou video','post')||'').trim().toLowerCase();
+  if(!choice) return;
+  if(choice.startsWith('rdv')){promptAddRdv(date);return;}
+  if(choice.startsWith('story')){openContentModal('story',date);return;}
+  openContentModal('video',date);
 }
 
 // ===== UTILS =====
@@ -1419,18 +1439,19 @@ function renderDashboardNews(records=dashboardFilteredTrends()){
   const cls=['dsi-2','dsi-1','dsi-lin'];
   el.innerHTML=items.map((r,i)=>`<div class="dash-news-item" onclick="${allTrends.some(t=>t.id===r.id)?`toggleTrend('${r.id}')`:''}">
     <div class="dash-hash ${cls[i%3]}">#</div>
-    <div class="dash-news-text">${htmlSafe(toHashtag(dashboardTitle(r)))}</div>
+    <div class="dash-news-text">${htmlSafe(dashboardTitle(r))}</div>
   </div>`).join('');
 }
 function renderIdeaResults(query=''){
   const el=document.getElementById('dash-idea-results');
   if(!el) return;
+  if(!query.trim()){el.innerHTML='';return;}
   const records=dashboardFilteredTrends(query).slice(0,4);
   if(!records.length){
-    el.innerHTML='<div class="dash-idea-row">aucune idee</div>';
+    el.innerHTML='<div class="dash-idea-row">aucune idée trouvée</div>';
     return;
   }
-  el.innerHTML=records.map((r,i)=>`<div class="dash-idea-row" onclick="toggleTrend('${r.id}')">idees ${i+1} · ${htmlSafe(dashboardTitle(r))}</div>`).join('');
+  el.innerHTML=records.map(r=>`<div class="dash-idea-row" onclick="toggleTrend('${r.id}')">${htmlSafe(dashboardTitle(r))}</div>`).join('');
 }
 function renderDashboardStats(){
   const el=document.getElementById('dash-stats-row');
@@ -1438,16 +1459,12 @@ function renderDashboardStats(){
   const videos=allSels.filter(r=>!isStory(r));
   const stories=allSels.filter(r=>isStory(r));
   const videosPrevues=videos.filter(r=>publishDateField(r.fields)).length;
-  const videosATourner=videos.filter(r=>(r.fields['Statut']||'A filmer')!=='Filmé').length;
   const postsPrevus=stories.filter(r=>publishDateField(r.fields)).length;
   const postsAProgrammer=stories.filter(r=>!publishDateField(r.fields)).length;
-  const tendances=dashboardFilteredTrends().length;
   const stats=[
-    {n:tendances,label:'tendances à tester',icon:'ic-trend',cls:'dsi-1',link:'Voir les trends',go:"showPage('trends')"},
     {n:videosPrevues,label:'vidéos prévues',icon:'ic-cal',cls:'dsi-2',link:'Voir le planning',go:"showPage('planning')"},
-    {n:videosATourner,label:'vidéos à tourner',icon:'ic-cam',cls:'dsi-3',link:'Voir le contenu',go:"showPage('content')"},
     {n:postsPrevus,label:'posts prévus',icon:'ic-post',cls:'dsi-4',link:'Voir le planning',go:"showPage('planning')"},
-    {n:postsAProgrammer,label:'posts à programmer',icon:'ic-cal2',cls:'dsi-5',link:'Voir le contenu',go:"showPage('content')"}
+    {n:postsAProgrammer,label:'posts à programmer',icon:'ic-cal2',cls:'dsi-5',link:'Ajouter',go:"openContentModal('story')"}
   ];
   const icons={
     'ic-trend':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
@@ -1637,23 +1654,6 @@ function renderCompanyDetail(){
   while(photos.length<4) photos.push('');
   const keywordTags=(c.keywords||'').split('\n').filter(Boolean);
   el.innerHTML=`<div class="company-moodboard">
-    <div class="company-left">
-      <div class="company-logo" onclick="uploadCompanyAsset('logo')">${c.logo?`<img src="${c.logo}" alt="">`:'LOGO'}</div>
-      <button class="company-upload" onclick="uploadCompanyAsset('logo')">Changer le logo</button>
-      <button class="company-upload" style="background:transparent;text-decoration:underline;padding-left:0" onclick="resetCompanyProfile()">↺ Réinitialiser cette fiche</button>
-      <div class="company-photo-grid">
-        ${photos.slice(0,3).map((src,i)=>`<button class="company-photo ${i===0?'large':''}" onclick="uploadCompanyAsset('photo-${i}')">${src?`<img src="${src}" alt="">`:'Ajouter photo'}</button>`).join('')}
-      </div>
-      <div class="company-panel" style="background:${htmlSafe(c.colors[0])}">
-        <div class="company-panel-title" onclick="editCompanyFont()">Mes polices</div>
-        <div class="company-font-preview" style="font-family:${htmlSafe(c.font)},serif">ABCDEF<br>GHIJKL<br>MNOPQ<br>RSTUVW<br>XYZ</div>
-      </div>
-      <div class="company-panel" style="background:${htmlSafe(c.colors[2]||c.colors[0])}">
-        <div class="company-panel-title">Mots clés</div>
-        <div class="company-keywords">${keywordTags.map(k=>`<span class="company-keyword-tag">${htmlSafe(k)}</span>`).join('')}</div>
-        <button class="company-keyword-more" onclick="addCompanyKeyword()">•••</button>
-      </div>
-    </div>
     <div class="company-mid">
       <div>
         <input class="companies-title company-name-input" style="font-size:58px;color:${htmlSafe(c.colors[0])};font-family:${htmlSafe(c.font)},serif" value="${htmlSafe(c.name)}" oninput="saveCompanyField('name',this.value);renderCompanies()">
@@ -1663,12 +1663,30 @@ function renderCompanyDetail(){
         <div class="dash-clip" aria-hidden="true"></div>
         <textarea oninput="saveCompanyField('note',this.value)" placeholder="Notes de marque...">${htmlSafe(c.note)}</textarea>
       </div>
-      <button class="company-photo" style="min-height:280px;width:100%" onclick="uploadCompanyAsset('photo-3')">${photos[3]?`<img src="${photos[3]}" alt="">`:'Ajouter une grande photo'}</button>
+      <button class="company-photo company-wide-photo" style="min-height:220px;width:100%" onclick="uploadCompanyAsset('photo-3')">${photos[3]?`<img src="${photos[3]}" alt="">`:'Ajouter une grande photo'}</button>
+    </div>
+    <div class="company-left">
+      <div class="company-logo" onclick="uploadCompanyAsset('logo')">${c.logo?`<img src="${c.logo}" alt="">`:'LOGO'}</div>
+      <div class="company-photo-grid">
+        ${photos.slice(0,3).map((src,i)=>`<button class="company-photo ${i===0?'large':''}" onclick="uploadCompanyAsset('photo-${i}')">${src?`<img src="${src}" alt="">`:'Ajouter photo'}</button>`).join('')}
+      </div>
+      <div class="company-panels-row">
+        <div class="company-panel" style="background:${htmlSafe(c.colors[0])}">
+          <div class="company-panel-title" onclick="editCompanyFont()">Mes polices</div>
+          <div class="company-font-preview" style="font-family:${htmlSafe(c.font)},serif">ABCDEF<br>GHIJKL<br>MNOPQ<br>RSTUVW<br>XYZ</div>
+        </div>
+        <div class="company-panel" style="background:${htmlSafe(c.colors[2]||c.colors[0])}">
+          <div class="company-panel-title">Mots clés</div>
+          <div class="company-keywords">${keywordTags.map(k=>`<span class="company-keyword-tag">${htmlSafe(k)}</span>`).join('')}</div>
+          <button class="company-keyword-more" onclick="addCompanyKeyword()">•••</button>
+        </div>
+      </div>
     </div>
     <div class="company-swatches">
       ${c.colors.map((color,i)=>`<input class="company-swatch" type="color" value="${htmlSafe(color)}" oninput="saveCompanyColor(${i},this.value)">`).join('')}
       <button class="company-swatch-add" onclick="addCompanyColor()">+</button>
     </div>
+    <div class="company-reset-wrap"><button class="company-upload" style="background:transparent;text-decoration:underline" onclick="resetCompanyProfile()">Réinitialiser cette fiche</button></div>
   </div>`;
 }
 function saveCompanyField(field,value){
@@ -1770,9 +1788,10 @@ function tFeedCard(r,i=0){
   const isSel=!!selTrends[r.id];
   const numColor=['var(--fuschia)','var(--papaya)','#8a7355'][i%3];
   return `<div class="dash-trend-card ${image?'':'no-img'} ${isSel?'selected':''}" id="tfc-${r.id}">
+    <div class="dash-trend-num" style="background:${numColor}">${(i%3)+1}</div>
     ${image
-      ?`<div class="dash-trend-img-wrap"><img src="${image}" alt=""><div class="dash-trend-num" style="background:${numColor}">${(i%3)+1}</div></div>`
-      :`<div class="dash-trend-num" style="background:${numColor}">${(i%3)+1}</div>`}
+      ?`<div class="dash-trend-img-wrap"><img src="${image}" alt=""></div>`
+      :''}
     <div class="dash-trend-body">
       <div class="dash-trend-title">${title}</div>
       ${desc?`<div class="dash-trend-desc">${desc}</div>`:''}
@@ -2024,7 +2043,7 @@ function renderContentCard(r){
 
 function renderContentList(elId, recs, emptyMsg){
   const el=document.getElementById(elId);
-  const addBtn='<div style="text-align:center;padding:20px 0"><button onclick="openModal(\'modal-content\')" style="width:52px;height:52px;border-radius:50%;background:var(--papaya);color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 12px rgba(189,104,9,0.3)">+</button></div>';
+  const addBtn=`<div style="text-align:center;padding:20px 0"><button onclick="openContentModal(currentContentTab==='stories'?'story':'video')" style="width:52px;height:52px;border-radius:50%;background:var(--papaya);color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 12px rgba(189,104,9,0.3)">+</button></div>`;
   if(!recs.length){el.innerHTML=`<div class="empty">${emptyMsg}</div>`+addBtn;return;}
   el.innerHTML=recs.map(r=>renderContentCard(r)).join('')+addBtn;
 }
@@ -2056,7 +2075,7 @@ async function createVideo(){
     ['cv-titre','cv-produit','cv-note','cv-date'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('cv-ambiance').value='';
     allSels=[]; selsSaved=false;
-    setTimeout(async ()=>{document.getElementById('cv-msg').textContent='';closeModal('modal-content');await loadSels(true);if(currentPage==='content')loadContent();},2000);
+    setTimeout(async ()=>{document.getElementById('cv-msg').textContent='';closeModal('modal-content');await loadSels(true);if(currentPage==='content')loadContent();if(currentPage==='planning')renderCal();},900);
   }catch(e){document.getElementById('cv-msg').textContent='❌ '+e.message;document.getElementById('cv-msg').style.color='#dc2626';}
   btn.textContent='Créer + fiche IA →';btn.disabled=false;
 }
@@ -2080,7 +2099,7 @@ async function createStory(){
     document.getElementById('cs-msg').style.color='#2F4731';
     ['cs-titre','cs-note','cs-date'].forEach(id=>document.getElementById(id).value='');
     allSels=[]; selsSaved=false;
-    setTimeout(async ()=>{document.getElementById('cs-msg').textContent='';closeModal('modal-content');await loadSels(true);if(currentPage==='content')loadContent();},2000);
+    setTimeout(async ()=>{document.getElementById('cs-msg').textContent='';closeModal('modal-content');await loadSels(true);if(currentPage==='content')loadContent();if(currentPage==='planning')renderCal();},900);
   }catch(e){document.getElementById('cs-msg').textContent='❌ '+e.message;document.getElementById('cs-msg').style.color='#dc2626';}
   btn.textContent='Créer la story →';btn.disabled=false;
 }
@@ -2156,10 +2175,10 @@ function openRdvDetail(id){
     renderCal();
   }
 }
-function promptAddRdv(){
+function promptAddRdv(date=''){
   document.getElementById('rdv-titre').value='';
   document.getElementById('rdv-client').value='';
-  document.getElementById('rdv-date').value=dateISO(selectedPlanDate);
+  document.getElementById('rdv-date').value=date||dateISO(selectedPlanDate);
   document.getElementById('rdv-heure').value='';
   document.getElementById('rdv-note').value='';
   document.getElementById('rdv-msg').textContent='';
@@ -2185,6 +2204,7 @@ function planPillHtml(r,extraClass=''){
   return `<button class="${pc}" draggable="true" ondragstart="dragStart(event,'${r.id}')" ondragend="dragEnd(event)" onmousedown="startLP(event,'${r.id}')" onmouseup="cancelLP()" onmouseleave="cancelLP()" ontouchstart="startLP(event,'${r.id}')" ontouchend="cancelLP()" ontouchmove="cancelLP()" onclick="openFiche('${r.id}')">${title}</button>`;
 }
 function renderPlanningDay(){
+  const iso=dateISO(selectedPlanDate);
   const records=recordsForDate(selectedPlanDate);
   const posts=records.filter(r=>!isStory(r));
   const stories=records.filter(r=>isStory(r));
@@ -2195,15 +2215,15 @@ function renderPlanningDay(){
   document.getElementById('cal-grid').innerHTML=`<div class="plan-day-layout" style="grid-column:1/-1">
     <section class="plan-day-card large">
       <div class="plan-day-title">Post</div>
-      <div class="plan-day-items">${posts.length?posts.map(r=>planPillHtml(r,'plan-day-pill')).join(''):'<div class="plan-day-empty">Aucun post prévu.</div>'}</div>
+      <div class="plan-day-items">${posts.length?posts.map(r=>planPillHtml(r,'plan-day-pill')).join(''):'<div class="plan-day-empty">Aucun post prévu.</div>'}<button class="plan-add-btn" onclick="openContentModal('video','${iso}')">+ Ajouter</button></div>
     </section>
     <section class="plan-day-card large">
       <div class="plan-day-title">Story</div>
-      <div class="plan-day-items">${stories.length?stories.map(r=>planPillHtml(r,'plan-day-pill')).join(''):'<div class="plan-day-empty">Aucune story prévue.</div>'}</div>
+      <div class="plan-day-items">${stories.length?stories.map(r=>planPillHtml(r,'plan-day-pill')).join(''):'<div class="plan-day-empty">Aucune story prévue.</div>'}<button class="plan-add-btn" onclick="openContentModal('story','${iso}')">+ Ajouter</button></div>
     </section>
     <section class="plan-day-card large">
       <div class="plan-day-title">RDV</div>
-      <div class="plan-day-items">${rdvForDate(selectedPlanDate).length?rdvForDate(selectedPlanDate).map(rdvPostitHtml).join(''):'<div class="plan-day-empty">Aucun RDV prévu.</div>'}</div>
+      <div class="plan-day-items">${rdvForDate(selectedPlanDate).length?rdvForDate(selectedPlanDate).map(rdvPostitHtml).join(''):'<div class="plan-day-empty">Aucun RDV prévu.</div>'}<button class="plan-add-btn" onclick="promptAddRdv('${iso}')">+ Ajouter</button></div>
     </section>
   </div>`;
   setupTouchDrag();
@@ -2222,6 +2242,7 @@ function renderPlanningWeek(){
     const rdvs=rdvForDate(date);
     const empty=!sels.length&&!rdvs.length;
     const weekday=date.toLocaleDateString('fr-FR',{weekday:'long'});
+    const iso=dateISO(date);
     return `<div class="cal-cell week-cell ${isToday?'today':''}" data-date="${dateISO(date)}" ondragover="dragOver(event)" ondrop="dropOnDate(event,'${dateISO(date)}')" ondragleave="this.classList.remove('drag-over')">
       <div>
         <div class="week-day-head">${weekday}</div>
@@ -2231,6 +2252,7 @@ function renderPlanningWeek(){
         ${sels.map(r=>planPillHtml(r)).join('')}
         ${rdvs.map(rdvPostitHtml).join('')}
         ${empty?'<div class="plan-day-empty" style="padding:8px 0;text-align:left">Aucun contenu prévu.</div>':''}
+        <button class="plan-add-btn" onclick="promptPlanningAdd('${iso}')">+ Ajouter</button>
       </div>
     </div>`;
   }).join('');
@@ -2270,6 +2292,7 @@ function renderPlanningMonth(){
     const rdvs=byDayRdv[day]||[];
     html+=`<div class="cal-cell ${isToday?'today':''}" data-day="${day}" ondragover="dragOver(event,${day})" ondrop="dropOn(event,${day})" ondragleave="this.classList.remove('drag-over')">
       <div class="cal-dnum ${isToday?'today-n':''}">${day}</div>
+      <button class="plan-cell-add" onclick="promptPlanningAdd('${curYear}-${String(curMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}')">+</button>
       ${sels.map(r=>planPillHtml(r)).join('')}
       ${rdvs.map(rdvPostitHtml).join('')}
     </div>`;
@@ -2695,6 +2718,7 @@ function loadCreationDemo(){
   setPresetBg(creationFormat==='post'?'ice':'fire');
   if(creationFormat==='post'){
     addImageElement('assets/cpc-demo-card.png',{left:15,top:9,width:70,rotate:0,card:true});
+    addTextElement('NOUVELLE CARTE',{left:18,top:84,width:64,size:34});
   } else {
     addImageElement('assets/cpc-demo-card.png',{left:28,top:17,width:44,rotate:-3,card:true});
     addTextElement('A VENIR',{left:22,top:4,width:56,size:42});
