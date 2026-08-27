@@ -102,14 +102,14 @@
     .dash-stats-row { grid-template-columns:repeat(3,1fr); }
   }
   .dash-title { font-family:'Cormorant Garamond',serif; font-size:clamp(40px,7vw,76px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
-  .dash-script { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(24px,4vw,36px); color:#5f8466; line-height:1; font-weight:600; text-transform:uppercase; }
+  .dash-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(25px,4vw,38px); color:#6f9970; line-height:1; font-weight:700; text-transform:none; }
   .dashboard-grid { display:flex; flex-direction:column; gap:14px; }
   .dash-card { background:var(--surface); border:none; border-radius:8px; padding:16px; box-shadow:none; }
   .dash-card-title { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:700; letter-spacing:0; text-transform:uppercase; text-align:center; margin-bottom:14px; color:#0d0a07; }
-  .dash-news-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
-  .dash-news-item { display:flex; align-items:center; justify-content:center; text-align:left; gap:10px; cursor:pointer; min-width:0; }
+  .dash-news-list { display:flex; gap:10px; overflow-x:auto; padding:4px 2px 8px; scroll-snap-type:x proximity; }
+  .dash-news-item { flex:0 0 auto; min-width:172px; display:flex; align-items:center; justify-content:flex-start; text-align:left; gap:9px; cursor:pointer; background:#fff; border-radius:999px; padding:8px 13px; scroll-snap-align:start; }
   .dash-hash { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; font-family:'DM Sans',sans-serif; font-weight:700; flex-shrink:0; }
-  .dash-news-text { font-size:12px; line-height:1.15; font-weight:700; color:var(--text); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .dash-news-text { font-size:11.5px; line-height:1.15; font-weight:700; color:var(--text); min-width:0; white-space:nowrap; }
   .dash-ideas { background:#d8ccc7; border-radius:24px; padding:0 0 14px; overflow:hidden; min-height:150px; }
   .dash-ideas-help { padding:10px 24px 0; font-size:11.5px; color:rgba(26,16,9,0.58); line-height:1.35; }
   .dash-search { height:46px; background:#fff; border-radius:28px; display:flex; align-items:center; gap:12px; padding:0 18px 0 28px; }
@@ -119,21 +119,22 @@
   .dash-idea-results { padding:0 28px; display:flex; flex-direction:row; gap:10px; overflow-x:auto; }
   .dash-idea-row { font-family:'DM Mono',monospace; font-size:13px; letter-spacing:1px; cursor:pointer; background:rgba(255,255,255,0.55); border-radius:999px; padding:8px 12px; white-space:nowrap; }
   .dash-trends-card { padding:16px; border-radius:12px; }
-  .dash-trend-row { display:flex; gap:12px; overflow-x:auto; padding:22px 2px 6px; }
+  .dash-trend-row { display:flex; gap:12px; overflow-x:auto; padding:24px 2px 6px; }
   .dash-trend-card { flex:0 0 210px; background:#fff; border-radius:16px; overflow:visible; cursor:pointer; scroll-snap-align:start; position:relative; padding-top:16px; }
   .dash-trend-row { scroll-snap-type:x proximity; }
   .dash-trend-img-wrap { position:relative; height:112px; background:var(--surface2); border-radius:14px 14px 0 0; overflow:hidden; }
   .dash-trend-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
-  .dash-trend-num { position:absolute; top:-2px; left:12px; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:800; font-family:'DM Sans',sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.18); z-index:2; }
+  .dash-trend-num { position:absolute; top:-6px; left:6px; width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:15px; font-weight:800; font-family:'DM Sans',sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.18); z-index:2; }
   .dash-trend-body { padding:12px; }
   .dash-trend-title { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:700; line-height:1.05; margin-bottom:5px; text-transform:uppercase; }
   .dash-trend-desc { font-size:11px; color:var(--text-dim); line-height:1.25; margin-bottom:8px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
   .dash-trend-tags { display:flex; flex-wrap:wrap; gap:6px; }
   .dash-trend-tag { font-size:10.5px; font-weight:700; color:var(--text-dim); background:var(--surface2); border-radius:999px; padding:3px 9px; }
   .dash-trend-card.selected { box-shadow:0 0 0 2px var(--papaya); }
+  .dash-trend-add { flex:0 0 54px; min-height:182px; align-self:stretch; border:none; border-radius:18px; background:var(--papaya); color:#fff; font-size:28px; font-weight:800; cursor:pointer; box-shadow:0 4px 12px rgba(189,104,9,0.22); }
   .dash-notes-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; padding-top:12px; }
   .dash-note-card { position:relative; border-radius:0; min-height:210px; padding:42px 16px 14px; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; }
-  .dash-note-card.note-green { background:url('assets/note-paper-green.jpg') center/cover no-repeat #E4EAE1; }
+  .dash-note-card.note-green, .dash-note-card.todo-card { background:url('assets/note-paper-green.jpg') center 48%/112% 112% no-repeat #E4EAE1; }
   .dash-note-remove { position:absolute; top:8px; right:10px; background:none; border:none; font-size:14px; color:rgba(0,0,0,0.4); cursor:pointer; }
   .dash-note-add { min-height:210px; border-radius:16px; border:1.5px dashed var(--border); background:transparent; color:var(--text-dim); font-size:32px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .dash-clip { position:absolute; top:-22px; left:50%; transform:translateX(-50%); width:45px; height:45px; background:url('assets/binder-clip.png') center/contain no-repeat; pointer-events:none; }
@@ -146,12 +147,18 @@
   .dash-photo { width:62px; height:78px; object-fit:cover; background:#fff; border:4px solid #fff; box-shadow:0 8px 18px rgba(0,0,0,0.12); transform:rotate(-5deg); }
   .dash-photo:nth-child(even) { transform:rotate(6deg); }
   .dash-photo-empty { font-size:12px; color:rgba(0,0,0,0.45); font-family:'DM Mono',monospace; }
+  .dash-todo-list { display:flex; flex-direction:column; gap:8px; }
+  .dash-todo-row { display:flex; align-items:center; gap:8px; }
+  .dash-todo-check { width:18px; height:18px; border:2px solid rgba(26,16,9,0.58); border-radius:50%; background:transparent; flex-shrink:0; cursor:pointer; }
+  .dash-todo-check.done { background:rgba(26,16,9,0.68); box-shadow:inset 0 0 0 4px #E4EAE1; }
+  .dash-todo-input { flex:1; min-width:0; border:none; border-bottom:1.5px dashed transparent; outline:none; background:transparent; font-family:'Nothing You Could Do',cursive; font-size:18px; color:#1c1714; }
+  .dash-todo-input:focus { border-color:rgba(26,16,9,0.32); }
+  .dash-todo-add { align-self:flex-start; border:none; background:rgba(255,255,255,0.72); color:#1a1009; border-radius:999px; padding:7px 11px; font-size:11px; font-weight:800; cursor:pointer; margin-top:4px; }
   @media (max-width:640px) {
     .dash-hero { padding:34px 0 24px; }
     .dash-ideas { border-radius:24px; }
     .dash-card { padding:20px; }
-    .dash-news-list { flex-wrap:wrap; }
-    .dash-news-item { flex:1 1 30%; }
+    .dash-news-item { min-width:150px; }
   }
   .feed-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
   .feed-title { font-size:20px; font-weight:700; }
@@ -279,7 +286,7 @@
   .vcard:active { transform:scale(0.98); }
 
   /* ===== PAGE ENTREPRISES ===== */
-  .companies-page { max-width:980px; margin:0 auto; }
+  .companies-page { max-width:980px; margin:0 auto; padding:0 16px 24px; box-sizing:border-box; }
   .companies-hero { padding:42px 0 24px; }
   .companies-title { font-family:'Cormorant Garamond',serif; font-size:clamp(40px,8vw,76px); line-height:0.9; text-transform:uppercase; color:#102f22; font-weight:700; }
   .companies-sub { font-size:24px; font-style:italic; color:#102f22; margin-top:6px; }
@@ -289,7 +296,7 @@
   .company-tile:active { transform:scale(0.98); }
   .company-tile-name { font-family:'Cormorant Garamond',serif; font-size:30px; text-transform:uppercase; font-weight:700; line-height:1; }
   .company-tile-sub { font-size:12px; color:var(--text-dim); margin-top:8px; }
-  .company-select { position:relative; margin-bottom:22px; max-width:320px; }
+  .company-select { display:none; }
   .company-select-btn { width:100%; display:flex; align-items:center; gap:12px; background:#fff; border:1.5px solid var(--border); border-radius:999px; padding:8px 16px 8px 8px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:#1a1009; }
   .company-select-btn::after { content:'▾'; margin-left:auto; color:var(--text-dim); font-size:12px; }
   .company-select-logo { width:38px; height:38px; border-radius:50%; background:#f2f2f2; overflow:hidden; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
@@ -298,14 +305,20 @@
   .company-select-list.open { display:block; }
   .company-select-item { width:100%; display:flex; align-items:center; gap:12px; background:none; border:none; padding:9px 10px; border-radius:12px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#1a1009; text-align:left; }
   .company-select-item:hover, .company-select-item.active { background:var(--surface); }
-  .company-moodboard { display:grid; grid-template-columns:minmax(250px,0.9fr) minmax(330px,1.2fr) 92px; gap:24px; align-items:start; }
+  .company-moodboard { display:grid; grid-template-columns:minmax(0,1fr) 92px; gap:24px; align-items:start; }
+  .company-identity { grid-column:1 / -1; display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
+  .company-board { display:grid; grid-template-columns:minmax(330px,1.08fr) minmax(260px,0.92fr); gap:18px; align-items:start; }
   .company-left, .company-mid { display:flex; flex-direction:column; gap:18px; }
-  .company-logo { height:118px; border-radius:0; background:transparent; display:flex; align-items:center; justify-content:center; font-size:18px; letter-spacing:0; text-transform:uppercase; color:var(--text-dim); overflow:hidden; position:relative; cursor:pointer; }
+  .company-logo { min-height:118px; border-radius:0; background:transparent; display:flex; align-items:center; justify-content:center; font-size:18px; letter-spacing:0; text-transform:uppercase; color:var(--text-dim); overflow:hidden; position:relative; cursor:pointer; }
   .company-logo img { width:100%; height:100%; object-fit:contain; background:transparent; }
+  .company-logo-main { width:min(320px,100%); min-height:96px; max-height:140px; }
   .company-upload { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:9px 14px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; width:max-content; }
   .company-photo-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .company-photo { min-height:170px; background:#fff; border-radius:20px; overflow:hidden; display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:12px; position:relative; border:none; }
+  .company-pinterest { grid-auto-flow:dense; }
+  .company-photo { min-height:170px; background:#fff; border-radius:18px; overflow:hidden; display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:12px; position:relative; border:none; cursor:pointer; }
   .company-photo.large { min-height:330px; grid-row:span 2; }
+  .company-photo.tall { min-height:260px; }
+  .company-photo.add-photo { border:1.5px dashed var(--border); background:rgba(255,255,255,0.58); }
   .company-photo img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
   .company-panel { border-radius:18px; padding:24px 20px; background:var(--fuschia); color:#fff; min-height:210px; }
   .company-panels-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch; }
@@ -316,9 +329,8 @@
   .company-keywords { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
   .company-keyword-tag { font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:rgba(255,255,255,0.18); border-radius:999px; padding:6px 12px; }
   .company-keyword-more { width:100%; text-align:center; margin-top:14px; background:none; border:none; color:#fff; opacity:0.8; font-size:20px; letter-spacing:3px; cursor:pointer; line-height:1; }
-  .company-note { position:relative; min-height:250px; padding:52px 20px 18px; background:url('assets/note-paper.png') center/cover no-repeat; }
-  .company-note .dash-clip { top:-75px; transform:translateX(-50%) scale(0.72); }
-  .company-note textarea { width:100%; min-height:150px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; border-radius:0; padding:12px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
+  .company-note { position:relative; min-height:230px; padding:18px; border-radius:22px; overflow:hidden; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; }
+  .company-note textarea { width:100%; min-height:180px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; border-radius:14px; padding:12px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
   .company-note textarea:focus { border-color:rgba(26,16,9,0.32); }
   .company-swatches { display:flex; flex-direction:column; gap:24px; align-items:center; }
   .company-swatch { width:72px; height:72px; border-radius:50%; border:0; padding:0; cursor:pointer; overflow:hidden; background:transparent; }
@@ -336,18 +348,21 @@
     .companies-hero { padding:18px 0 10px; }
     .companies-title { font-size:34px; }
     .companies-sub { font-size:16px; margin-top:2px; }
-    .company-select { margin-bottom:10px; max-width:100%; }
+    .company-select { display:none; }
     .company-list { grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:10px; }
     .company-tile { min-height:76px; padding:10px; border-radius:8px; }
     .company-tile-name { font-size:20px; }
     .company-tile-sub { font-size:10px; margin-top:4px; }
-    .company-moodboard { grid-template-columns:minmax(0,1fr) 64px; gap:10px; align-items:start; }
+    .company-moodboard { grid-template-columns:minmax(0,1fr) 58px; gap:10px; align-items:start; }
+    .company-identity { gap:6px; }
+    .company-board { grid-template-columns:1fr; gap:8px; }
     .company-left, .company-mid { gap:8px; }
-    .company-logo { height:56px; justify-content:flex-start; font-size:12px; }
+    .company-logo { min-height:56px; justify-content:center; font-size:12px; }
+    .company-logo-main { width:140px; min-height:58px; max-height:72px; }
     .company-upload { padding:6px 10px; font-size:10px; }
     .company-photo-grid { grid-template-columns:repeat(3,1fr); gap:7px; }
     .company-photo { min-height:76px; border-radius:10px; font-size:10px; }
-    .company-photo.large { min-height:120px; grid-row:auto; }
+    .company-photo.large, .company-photo.tall { min-height:120px; grid-row:auto; }
     .company-panel { min-height:92px; border-radius:12px; padding:12px 10px; }
     .company-panel-title { font-size:14px; margin-bottom:8px; }
     .company-font-preview { font-size:20px; letter-spacing:1px; line-height:0.9; }
@@ -357,8 +372,7 @@
     .company-mid { grid-column:1 / -1; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
     .company-mid > div:first-child { grid-column:1 / -1; }
     .company-mid .companies-title { font-size:30px !important; }
-    .company-note { min-height:126px; padding:24px 10px 8px; }
-    .company-note .dash-clip { top:-45px; transform:translateX(-50%) scale(0.44); }
+    .company-note { min-height:126px; padding:8px; border-radius:14px; }
     .company-note textarea { min-height:74px; font-size:16px; padding:6px; }
     .company-mid .company-photo { min-height:126px !important; width:100% !important; }
     .company-swatches { flex-direction:column; gap:10px; grid-column:2; grid-row:1; align-self:start; }
@@ -367,7 +381,9 @@
 
   /* ===== PAGE ANALYSE ===== */
   .analysis-page { max-width:1120px; margin:0 auto; }
-  .analysis-sheet { width:min(100%,920px); aspect-ratio:1.414/1; min-height:620px; margin:0 auto; background:#fff; border-radius:12px; padding:32px; box-shadow:0 18px 48px rgba(26,16,9,0.10); overflow:auto; }
+  .analysis-workspace { display:flex; flex-direction:column; gap:18px; }
+  .analysis-capture-panel { background:var(--surface); border:none; border-radius:8px; padding:16px; }
+  .analysis-sheet { width:min(100%,760px); aspect-ratio:1/1.414; min-height:0; margin:0 auto; background:#fff; border-radius:12px; padding:34px; box-shadow:0 18px 48px rgba(26,16,9,0.10); overflow:auto; }
   .analysis-hero { text-align:left; padding:0 0 20px; }
   .analysis-title { font-family:'Cormorant Garamond',serif; font-size:clamp(44px,7vw,72px); line-height:0.82; font-weight:700; text-transform:uppercase; color:#080604; }
   .analysis-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(24px,4vw,42px); color:#ff7b7d; line-height:0.8; font-weight:700; margin-left:90px; }
@@ -387,11 +403,13 @@
   .analysis-content-card { background:var(--surface); border-radius:12px; padding:12px; min-height:126px; display:flex; flex-direction:column; gap:7px; }
   .analysis-content-rank { width:32px; height:32px; border-radius:50%; background:var(--papaya); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:900; }
   .analysis-content-card input { border:none; border-bottom:1.5px dashed rgba(0,0,0,0.18); background:transparent; outline:none; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:700; padding:4px 0; }
-  .analysis-ai-box { background:#111; color:#fff; border-radius:12px; padding:14px; font-size:13px; line-height:1.45; }
-  .analysis-ai-box strong { color:#ffb86b; }
+  .analysis-ai-box { background:var(--surface); color:var(--text); border:1.5px solid var(--border); border-radius:12px; padding:14px; font-size:13px; line-height:1.45; outline:none; min-height:108px; }
+  .analysis-ai-box:focus { border-color:rgba(26,16,9,0.36); }
+  .analysis-ai-box strong { color:var(--papaya); }
   .analysis-export-btn { border:none; background:var(--papaya); color:#fff; border-radius:999px; padding:9px 16px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
-  .analysis-note { background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; padding:56px 22px 18px; min-height:190px; position:relative; margin-top:22px; }
-  .analysis-note .dash-clip { top:-22px; width:45px; height:45px; }
+  .analysis-note { width:min(100%,760px); margin:8px auto 0; background:#d8ccc7; border-radius:14px; padding:18px; }
+  .analysis-note-paper { background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; padding:48px 20px 18px; min-height:180px; position:relative; }
+  .analysis-note .dash-clip { top:-20px; width:42px; height:42px; }
   .analysis-note textarea { width:100%; min-height:100px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; font-family:'Nothing You Could Do',cursive; font-size:20px; line-height:1.25; color:#1c1714; }
   .analysis-note textarea:focus { border-color:rgba(26,16,9,0.32); }
   @media (max-width:720px) {
@@ -534,8 +552,8 @@
     </div>
     <div class="acc-switcher" id="acc-switcher">
       <button class="acc-btn acc-lf active" id="acc-lf" onclick="toggleAccount('lf')" title="Le Foyer">LF</button>
-      <button class="acc-btn acc-cpc active" id="acc-cpc" onclick="toggleAccount('cpc')" title="CPC">CPC</button>
-      <button class="acc-btn acc-cm active" id="acc-cm" onclick="toggleAccount('cm')" title="CM au Japon">CM</button>
+      <button class="acc-btn acc-cpc" id="acc-cpc" onclick="toggleAccount('cpc')" title="CPC">CPC</button>
+      <button class="acc-btn acc-cm" id="acc-cm" onclick="toggleAccount('cm')" title="CM au Japon">CM</button>
     </div>
   </div>
 
@@ -602,10 +620,6 @@
           <div class="companies-title">Mes entreprises</div>
           <div class="companies-sub">fiches moodboard</div>
         </div>
-        <div class="company-select" id="company-select">
-          <button class="company-select-btn" onclick="toggleCompanySelect()" id="company-select-btn"></button>
-          <div class="company-select-list" id="company-select-list"></div>
-        </div>
         <div id="company-detail"></div>
       </div>
       <input type="file" id="company-file-input" accept="image/*" style="display:none" onchange="handleCompanyFile(this.files);this.value=''">
@@ -659,30 +673,8 @@
     <!-- PAGE 5 : ANALYSE -->
     <div id="page-analyse" class="page">
       <div class="analysis-page">
-        <div class="analysis-sheet">
-          <div class="analysis-hero">
-            <div class="analysis-title">Analyse</div>
-            <div class="analysis-script">du mois</div>
-            <button class="analysis-export-btn" onclick="alert('Export analyse bientôt disponible')">Exporter</button>
-          </div>
-          <div class="analysis-grid">
-            <section class="analysis-card">
-              <div class="analysis-card-kicker">Vues</div>
-              <input class="analysis-input" id="ana-views" value="121 K" oninput="saveAnalysisData()">
-              <div class="analysis-card-sub">+28 % vs mois précédent</div>
-            </section>
-            <section class="analysis-card">
-              <div class="analysis-card-kicker">Non-followers</div>
-              <input class="analysis-input" id="ana-nonfollowers" value="36 %" oninput="saveAnalysisData()">
-              <div class="analysis-card-sub">Portée froide à convertir.</div>
-            </section>
-            <section class="analysis-card">
-              <div class="analysis-card-kicker">Followers</div>
-              <input class="analysis-input" id="ana-followers" value="+98" oninput="saveAnalysisData()">
-              <div class="analysis-card-sub">Croissance du mois.</div>
-            </section>
-          </div>
-          <section class="analysis-wide">
+        <div class="analysis-workspace">
+          <section class="analysis-wide analysis-capture-panel">
             <div class="analysis-wide-head">
               <div class="analysis-section-title">Captures Instagram</div>
               <button class="dash-photo-btn" onclick="document.getElementById('analysis-shot-upload').click()">Ajouter</button>
@@ -692,42 +684,70 @@
             </div>
             <input type="file" id="analysis-shot-upload" accept="image/*" multiple style="display:none" onchange="addAnalysisShots(event)">
           </section>
-          <section class="analysis-wide">
-            <div class="analysis-wide-head">
-              <div class="analysis-section-title">Top contenus</div>
-              <button class="dash-photo-btn" onclick="generateAnalysisSummary()">Générer pistes</button>
+
+          <div class="analysis-sheet">
+            <div class="analysis-hero">
+              <div class="analysis-title">Analyse</div>
+              <div class="analysis-script">du mois</div>
+              <button class="analysis-export-btn" onclick="alert('Export analyse bientôt disponible')">Exporter</button>
             </div>
-            <div class="analysis-content-list">
-              <div class="analysis-content-card">
-                <div class="analysis-content-rank">1</div>
-                <input id="ana-top1-title" value="Storm Emeralda" oninput="saveAnalysisData()">
-                <input id="ana-top1-stat" value="16,0 K vues" oninput="saveAnalysisData()">
-                <input id="ana-top1-why" value="visuel fort + annonce produit" oninput="saveAnalysisData()">
-              </div>
-              <div class="analysis-content-card">
-                <div class="analysis-content-rank">2</div>
-                <input id="ana-top2-title" value="Lequel tu préfères ?" oninput="saveAnalysisData()">
-                <input id="ana-top2-stat" value="10,8 K vues" oninput="saveAnalysisData()">
-                <input id="ana-top2-why" value="question simple + interaction" oninput="saveAnalysisData()">
-              </div>
-              <div class="analysis-content-card">
-                <div class="analysis-content-rank">3</div>
-                <input id="ana-top3-title" value="Précommandes M6a" oninput="saveAnalysisData()">
-                <input id="ana-top3-stat" value="5,5 K vues" oninput="saveAnalysisData()">
-                <input id="ana-top3-why" value="offre claire + urgence" oninput="saveAnalysisData()">
-              </div>
+            <div class="analysis-grid">
+              <section class="analysis-card">
+                <div class="analysis-card-kicker">Vues</div>
+                <input class="analysis-input" id="ana-views" value="121 K" oninput="saveAnalysisData()">
+                <div class="analysis-card-sub">+28 % vs mois précédent</div>
+              </section>
+              <section class="analysis-card">
+                <div class="analysis-card-kicker">Non-followers</div>
+                <input class="analysis-input" id="ana-nonfollowers" value="36 %" oninput="saveAnalysisData()">
+                <div class="analysis-card-sub">Portée froide à convertir.</div>
+              </section>
+              <section class="analysis-card">
+                <div class="analysis-card-kicker">Followers</div>
+                <input class="analysis-input" id="ana-followers" value="+98" oninput="saveAnalysisData()">
+                <div class="analysis-card-sub">Croissance du mois.</div>
+              </section>
             </div>
-          </section>
-          <section class="analysis-wide">
-            <div class="analysis-wide-head">
-              <div class="analysis-section-title">Analyse IA</div>
-            </div>
-            <div class="analysis-ai-box" id="analysis-ai-box"><strong>Démo :</strong> remplis les chiffres, ajoute tes captures, puis clique sur “Générer pistes”.</div>
-          </section>
+            <section class="analysis-wide">
+              <div class="analysis-wide-head">
+                <div class="analysis-section-title">Top contenus</div>
+                <button class="dash-photo-btn" onclick="generateAnalysisSummary()">Générer pistes</button>
+              </div>
+              <div class="analysis-content-list">
+                <div class="analysis-content-card">
+                  <div class="analysis-content-rank">1</div>
+                  <input id="ana-top1-title" value="Storm Emeralda" oninput="saveAnalysisData()">
+                  <input id="ana-top1-stat" value="16,0 K vues" oninput="saveAnalysisData()">
+                  <input id="ana-top1-why" value="visuel fort + annonce produit" oninput="saveAnalysisData()">
+                </div>
+                <div class="analysis-content-card">
+                  <div class="analysis-content-rank">2</div>
+                  <input id="ana-top2-title" value="Lequel tu préfères ?" oninput="saveAnalysisData()">
+                  <input id="ana-top2-stat" value="10,8 K vues" oninput="saveAnalysisData()">
+                  <input id="ana-top2-why" value="question simple + interaction" oninput="saveAnalysisData()">
+                </div>
+                <div class="analysis-content-card">
+                  <div class="analysis-content-rank">3</div>
+                  <input id="ana-top3-title" value="Précommandes M6a" oninput="saveAnalysisData()">
+                  <input id="ana-top3-stat" value="5,5 K vues" oninput="saveAnalysisData()">
+                  <input id="ana-top3-why" value="offre claire + urgence" oninput="saveAnalysisData()">
+                </div>
+              </div>
+            </section>
+            <section class="analysis-wide">
+              <div class="analysis-wide-head">
+                <div class="analysis-section-title">Analyse</div>
+              </div>
+              <div class="analysis-ai-box" id="analysis-ai-box" contenteditable="true" oninput="saveAnalysisText()"><strong>Démo :</strong> remplis les chiffres, ajoute tes captures, puis clique sur “Générer pistes”.</div>
+            </section>
+          </div>
+
           <section class="analysis-note">
-            <div class="dash-clip" aria-hidden="true"></div>
-            <div class="dash-note-title">Notes analyse</div>
-            <textarea id="analysis-notes" placeholder="Bilan, apprentissages, idées pour le mois prochain..." oninput="saveAnalysisNotes()"></textarea>
+            <div class="analysis-note-paper">
+              <div class="dash-clip" aria-hidden="true"></div>
+              <div class="dash-note-title">Mes notes personnelles</div>
+              <textarea id="analysis-notes" placeholder="Bilan, apprentissages, idées pour le mois prochain..." oninput="saveAnalysisNotes()"></textarea>
+            </div>
           </section>
         </div>
       </div>
@@ -833,7 +853,7 @@
       <!-- AI PANEL -->
       <div class="ai-panel" id="ai-panel">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-          <div class="text-panel-title" style="margin:0">✨ Analyse IA</div>
+          <div class="text-panel-title" style="margin:0">✨ Analyse</div>
           <button onclick="closeAIPanel()" style="background:none;border:none;font-size:18px;cursor:pointer;color:var(--text-dim)">✕</button>
         </div>
         <div id="ai-response" class="ai-response" style="display:none"></div>
@@ -998,7 +1018,7 @@ const ACCOUNTS={
   cpc:{name:'CPC',emoji:'🃏',niche:'TCG'},
   cm:{name:'CM au Japon',emoji:'🗾',niche:'CM'}
 };
-let activeAccounts=new Set(['lf','cpc','cm']);
+let activeAccounts=new Set(['lf']);
 let allTrends=[]; let trendsLoaded=false;
 let allSels=[]; let selsSaved=false;
 let allRdv=[];
@@ -1206,6 +1226,12 @@ function saveAnalysisData(){
   localStorage.setItem(LOCAL_PREFIX+'analysis_data',JSON.stringify(data));
 }
 
+function saveAnalysisText(){
+  const data=analysisData();
+  data.ai=document.getElementById('analysis-ai-box')?.innerHTML||'';
+  localStorage.setItem(LOCAL_PREFIX+'analysis_data',JSON.stringify(data));
+}
+
 function renderAnalysisShots(shots){
   const row=document.getElementById('analysis-shot-row');
   if(!row) return;
@@ -1254,16 +1280,20 @@ function generateAnalysisSummary(){
 
 // ===== ACCOUNT TOGGLE =====
 function toggleAccount(acc){
-  if(activeAccounts.has(acc)){
-    if(activeAccounts.size===1) return;
-    activeAccounts.delete(acc);
-  } else { activeAccounts.add(acc); }
-  document.getElementById('acc-'+acc).classList.toggle('active',activeAccounts.has(acc));
+  activeAccounts=new Set([acc]);
+  currentCompany=acc;
+  updateAccountButtons();
   updateSubtitle();
   if(currentPage==='trends') renderTrends();
   if(currentPage==='content') loadContent();
   if(currentPage==='planning') renderCal();
+  if(currentPage==='companies') renderCompanies();
   if(currentPage==='mini') updateCreationWorkshop();
+}
+function updateAccountButtons(){
+  Object.keys(ACCOUNTS).forEach(key=>{
+    document.getElementById('acc-'+key)?.classList.toggle('active',activeAccounts.has(key));
+  });
 }
 function updateSubtitle(){
   const names=[...activeAccounts].map(a=>ACCOUNTS[a].emoji+' '+ACCOUNTS[a].name).join(' · ');
@@ -1431,14 +1461,17 @@ function renderDashboardNews(records=dashboardFilteredTrends()){
   const el=document.getElementById('dashboard-news');
   if(!el) return;
   const fallback=[
-    {id:'fb-news-1',fields:{'Titre de la trend':'canicule'}},
-    {id:'fb-news-2',fields:{'Titre de la trend':'pokemon 30ans'}},
-    {id:'fb-news-3',fields:{'Titre de la trend':'idée chaude'}}
+    {id:'fb-news-1',fields:{'Titre de la trend':'éclipse solaire'}},
+    {id:'fb-news-2',fields:{'Titre de la trend':'canicule'}},
+    {id:'fb-news-3',fields:{'Titre de la trend':'rentrée'}},
+    {id:'fb-news-4',fields:{'Titre de la trend':'vacances au Japon'}},
+    {id:'fb-news-5',fields:{'Titre de la trend':'festival été'}},
+    {id:'fb-news-6',fields:{'Titre de la trend':'sortie Pokémon'}}
   ];
-  const items=(records.length?records:fallback).slice(0,3);
-  const cls=['dsi-2','dsi-1','dsi-lin'];
+  const items=(records.length?records:fallback).slice(0,8);
+  const cls=['dsi-2','dsi-1','dsi-lin','dsi-4','dsi-5'];
   el.innerHTML=items.map((r,i)=>`<div class="dash-news-item" onclick="${allTrends.some(t=>t.id===r.id)?`toggleTrend('${r.id}')`:''}">
-    <div class="dash-hash ${cls[i%3]}">#</div>
+    <div class="dash-hash ${cls[i%cls.length]}">#</div>
     <div class="dash-news-text">${htmlSafe(dashboardTitle(r))}</div>
   </div>`).join('');
 }
@@ -1497,9 +1530,10 @@ function renderDashboardNotes(){
   const el=document.getElementById('dash-notes-row');
   if(!el) return;
   const notes=dashboardNotesList();
-  el.innerHTML=notes.map((n,i)=>`<div class="dash-note-card ${n.color==='green'?'note-green':''}">
+  const n=notes[0]||{id:'n0',color:'beige',text:'',photos:[]};
+  const todos=dashboardTodoList();
+  el.innerHTML=`<div class="dash-note-card">
     <div class="dash-clip" aria-hidden="true"></div>
-    ${notes.length>1?`<button class="dash-note-remove" onclick="removeDashboardNote('${n.id}')">✕</button>`:''}
     <div class="dash-note-title">Notes</div>
     <textarea class="dash-note-area" placeholder="Notes, idées libres, rappels client..." oninput="updateDashboardNoteText('${n.id}',this.value)">${htmlSafe(n.text)}</textarea>
     <div class="dash-photo-row">
@@ -1508,8 +1542,18 @@ function renderDashboardNotes(){
       <input id="dnp-${n.id}" type="file" accept="image/*" multiple style="display:none" onchange="addDashboardNotePhotos('${n.id}',this.files);this.value=''">
     </div>
     <div class="dash-photos">${(n.photos||[]).length?(n.photos||[]).map(src=>`<img class="dash-photo" src="${src}" alt="">`).join(''):'<div class="dash-photo-empty">Ajoute des photos de refs ici.</div>'}</div>
-  </div>`).join('')
-  +(notes.length<3?`<button class="dash-note-add" onclick="addDashboardNote()">+</button>`:'');
+  </div>
+  <div class="dash-note-card todo-card">
+    <div class="dash-clip" aria-hidden="true"></div>
+    <div class="dash-note-title">To do</div>
+    <div class="dash-todo-list">
+      ${todos.map(t=>`<div class="dash-todo-row">
+        <button class="dash-todo-check ${t.done?'done':''}" onclick="toggleDashboardTodo('${t.id}')"></button>
+        <input class="dash-todo-input" value="${htmlSafe(t.text)}" placeholder="to do" oninput="updateDashboardTodoText('${t.id}',this.value)">
+      </div>`).join('')}
+    </div>
+    <button class="dash-todo-add" onclick="addDashboardTodo()">+ to do</button>
+  </div>`;
 }
 function updateDashboardNoteText(id,val){
   const notes=dashboardNotesList();
@@ -1529,6 +1573,35 @@ function removeDashboardNote(id){
   saveDashboardNotesList(notes);
   renderDashboardNotes();
 }
+
+function dashboardTodoList(){
+  const list=readStore('Dashboard','todoList',null);
+  return Array.isArray(list)&&list.length?list:[
+    {id:'t1',text:'préparer les posts de la semaine',done:false},
+    {id:'t2',text:'vérifier les dates de publication',done:false},
+    {id:'t3',text:'envoyer les fiches au client',done:false}
+  ];
+}
+function saveDashboardTodoList(list){
+  writeStore('Dashboard','todoList',list);
+}
+function updateDashboardTodoText(id,val){
+  const list=dashboardTodoList();
+  const item=list.find(t=>t.id===id);
+  if(item){item.text=val;saveDashboardTodoList(list);}
+}
+function toggleDashboardTodo(id){
+  const list=dashboardTodoList();
+  const item=list.find(t=>t.id===id);
+  if(item){item.done=!item.done;saveDashboardTodoList(list);renderDashboardNotes();}
+}
+function addDashboardTodo(){
+  const list=dashboardTodoList();
+  list.push({id:'t'+Date.now(),text:'',done:false});
+  saveDashboardTodoList(list);
+  renderDashboardNotes();
+}
+
 async function addDashboardNotePhotos(id,files){
   const incoming=await Promise.all([...files].slice(0,4).map(fileToDataUrl));
   const notes=dashboardNotesList();
@@ -1626,12 +1699,13 @@ function renderCompanies(){
   const profiles=companyProfiles();
   const btn=document.getElementById('company-select-btn');
   const list=document.getElementById('company-select-list');
-  if(!btn||!list) return;
   const c=profiles[currentCompany];
-  btn.innerHTML=`<span class="company-select-logo">${c.logo?`<img src="${c.logo}" alt="">`:'🏢'}</span><span>${htmlSafe(c.name)}</span>`;
-  list.innerHTML=Object.entries(profiles).map(([key,co])=>`<button class="company-select-item ${key===currentCompany?'active':''}" onclick="selectCompany('${key}')">
-    <span class="company-select-logo">${co.logo?`<img src="${co.logo}" alt="">`:'🏢'}</span><span>${htmlSafe(co.name)}</span>
-  </button>`).join('');
+  if(btn&&list){
+    btn.innerHTML=`<span class="company-select-logo">${c.logo?`<img src="${c.logo}" alt="">`:'🏢'}</span><span>${htmlSafe(c.name)}</span>`;
+    list.innerHTML=Object.entries(profiles).map(([key,co])=>`<button class="company-select-item ${key===currentCompany?'active':''}" onclick="selectCompany('${key}')">
+      <span class="company-select-logo">${co.logo?`<img src="${co.logo}" alt="">`:'🏢'}</span><span>${htmlSafe(co.name)}</span>
+    </button>`).join('');
+  }
   renderCompanyDetail();
 }
 function toggleCompanySelect(){
@@ -1643,6 +1717,8 @@ document.addEventListener('click',(e)=>{
 });
 function selectCompany(key){
   currentCompany=key;
+  activeAccounts=new Set([key]);
+  updateAccountButtons();
   document.getElementById('company-select-list')?.classList.remove('open');
   renderCompanies();
 }
@@ -1651,25 +1727,21 @@ function renderCompanyDetail(){
   if(!el) return;
   const c=companyProfile();
   const photos=[...(c.photos||[])];
-  while(photos.length<4) photos.push('');
+  while(photos.length<6) photos.push('');
   const keywordTags=(c.keywords||'').split('\n').filter(Boolean);
   el.innerHTML=`<div class="company-moodboard">
-    <div class="company-mid">
+    <div class="company-identity">
       <div>
         <input class="companies-title company-name-input" style="font-size:58px;color:${htmlSafe(c.colors[0])};font-family:${htmlSafe(c.font)},serif" value="${htmlSafe(c.name)}" oninput="saveCompanyField('name',this.value);renderCompanies()">
         <input class="companies-sub company-subtitle-input" value="${htmlSafe(c.subtitle)}" oninput="saveCompanyField('subtitle',this.value)">
       </div>
-      <div class="company-note">
-        <div class="dash-clip" aria-hidden="true"></div>
-        <textarea oninput="saveCompanyField('note',this.value)" placeholder="Notes de marque...">${htmlSafe(c.note)}</textarea>
-      </div>
-      <button class="company-photo company-wide-photo" style="min-height:220px;width:100%" onclick="uploadCompanyAsset('photo-3')">${photos[3]?`<img src="${photos[3]}" alt="">`:'Ajouter une grande photo'}</button>
+      <div class="company-logo company-logo-main" onclick="uploadCompanyAsset('logo')">${c.logo?`<img src="${c.logo}" alt="">`:'LOGO'}</div>
     </div>
-    <div class="company-left">
-      <div class="company-logo" onclick="uploadCompanyAsset('logo')">${c.logo?`<img src="${c.logo}" alt="">`:'LOGO'}</div>
-      <div class="company-photo-grid">
-        ${photos.slice(0,3).map((src,i)=>`<button class="company-photo ${i===0?'large':''}" onclick="uploadCompanyAsset('photo-${i}')">${src?`<img src="${src}" alt="">`:'Ajouter photo'}</button>`).join('')}
+    <div class="company-board">
+      <div class="company-photo-grid company-pinterest">
+        ${photos.map((src,i)=>`<button class="company-photo ${i===0?'large':i===3?'tall':''} ${src?'':'add-photo'}" onclick="uploadCompanyAsset('photo-${i}')">${src?`<img src="${src}" alt="">`:'Ajouter photo'}</button>`).join('')}
       </div>
+      <div class="company-left">
       <div class="company-panels-row">
         <div class="company-panel" style="background:${htmlSafe(c.colors[0])}">
           <div class="company-panel-title" onclick="editCompanyFont()">Mes polices</div>
@@ -1679,6 +1751,10 @@ function renderCompanyDetail(){
           <div class="company-panel-title">Mots clés</div>
           <div class="company-keywords">${keywordTags.map(k=>`<span class="company-keyword-tag">${htmlSafe(k)}</span>`).join('')}</div>
           <button class="company-keyword-more" onclick="addCompanyKeyword()">•••</button>
+        </div>
+      </div>
+        <div class="company-note">
+          <textarea oninput="saveCompanyField('note',this.value)" placeholder="Notes de marque...">${htmlSafe(c.note)}</textarea>
         </div>
       </div>
     </div>
@@ -1772,8 +1848,8 @@ function renderTrends(){
   renderIdeaResults(document.getElementById('dash-search-input')?.value||'');
   renderDashboardStats();
   if(!filtered.length){el.innerHTML='<div class="empty">Aucune trend — appuie sur + pour en créer une</div>';return;}
-  el.innerHTML='<div class="dash-trend-row">'+filtered.map((r,i)=>tFeedCard(r,i)).join('')+'</div>'
-    +'<div style="text-align:center;padding:20px 0"><button onclick="openModal(\'modal-trend\')" style="width:52px;height:52px;border-radius:50%;background:var(--papaya);color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 12px rgba(189,104,9,0.3)">+</button></div>';
+  el.innerHTML='<div class="dash-trend-row">'+filtered.map((r,i)=>tFeedCard(r,i)).join('')
+    +'<button class="dash-trend-add" onclick="openModal(\'modal-trend\')">+</button></div>';
 }
 
 function tFeedCard(r,i=0){
@@ -2721,8 +2797,7 @@ function loadCreationDemo(){
     addTextElement('NOUVELLE CARTE',{left:18,top:84,width:64,size:34});
   } else {
     addImageElement('assets/cpc-demo-card.png',{left:28,top:17,width:44,rotate:-3,card:true});
-    addTextElement('A VENIR',{left:22,top:4,width:56,size:42});
-    addTextElement('UNE CARTE PROMO LUFFY\\nARRIVE LE 13 JUILLET',{left:12,top:83,width:76,size:34});
+    addTextElement('NOUVELLE CARTE',{left:12,top:84,width:76,size:36});
   }
 }
 
@@ -3172,6 +3247,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 // Init - wait for DOM
 document.addEventListener('DOMContentLoaded', function() {
+  updateAccountButtons();
   initDashboard();
   loadClients();
   loadTrends();
