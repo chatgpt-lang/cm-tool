@@ -83,66 +83,67 @@
   .form-row { margin-bottom:14px; }
 
   /* ===== PAGE 1 — TABLEAU DE BORD ===== */
-  .dashboard-page { max-width:980px; margin:0 auto; }
-  .dash-hero { text-align:center; padding:48px 0 34px; }
-  .dash-stats-row { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:28px; }
-  .dash-stat-card { background:var(--surface); border:none; border-radius:16px; padding:16px 14px; }
-  .dash-stat-icon { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
-  .dash-stat-icon svg { width:18px; height:18px; }
+  .dashboard-page { max-width:1220px; margin:0 auto; }
+  .dash-hero { text-align:center; padding:22px 0 18px; }
+  .dash-stats-row { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin-bottom:14px; }
+  .dash-stat-card { background:var(--surface); border:none; border-radius:12px; padding:11px 12px; min-height:92px; }
+  .dash-stat-icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:7px; }
+  .dash-stat-icon svg { width:14px; height:14px; }
   .dsi-1 { background:#FBEADD; color:#C9762E; }
-  .dsi-2 { background:#E4EAE1; color:var(--fuschia); }
+  .dsi-2 { background:#EEF4EA; color:#4e7657; }
   .dsi-3 { background:#F6E3D9; color:#B85C3E; }
   .dsi-4 { background:#F5EAC8; color:#A8821E; }
-  .dsi-5 { background:#EDEFE5; color:#6B7A5E; }
+  .dsi-5 { background:#F2F6ED; color:#6B7A5E; }
   .dsi-lin { background:var(--surface2); color:#8a7355; }
-  .dash-stat-num { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:700; line-height:1; color:#0d0a07; }
-  .dash-stat-label { font-size:12.5px; color:var(--text-dim); margin-top:4px; line-height:1.3; }
-  .dash-stat-link { display:block; margin-top:10px; font-size:11.5px; font-weight:700; color:var(--fuschia); text-decoration:none; cursor:pointer; }
+  .dash-stat-num { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:700; line-height:1; color:#0d0a07; }
+  .dash-stat-label { font-size:11.5px; color:var(--text-dim); margin-top:3px; line-height:1.2; }
+  .dash-stat-link { display:block; margin-top:6px; font-size:10.5px; font-weight:700; color:var(--fuschia); text-decoration:none; cursor:pointer; }
   @media (max-width:820px) {
-    .dash-stats-row { grid-template-columns:repeat(2,1fr); }
+    .dash-stats-row { grid-template-columns:repeat(3,1fr); }
   }
-  .dash-title { font-family:'Cormorant Garamond',serif; font-size:clamp(46px,10vw,96px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
-  .dash-script { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(28px,5.5vw,44px); color:var(--fuschia); line-height:1; font-weight:600; text-transform:uppercase; }
-  .dashboard-grid { display:flex; flex-direction:column; gap:26px; }
-  .dash-card { background:var(--surface); border:none; border-radius:8px; padding:22px; box-shadow:none; }
-  .dash-card-title { font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:700; letter-spacing:0; text-transform:uppercase; text-align:center; margin-bottom:24px; color:#0d0a07; }
-  .dash-news-list { display:flex; gap:16px; }
-  .dash-news-item { flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px; cursor:pointer; }
-  .dash-hash { width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; font-family:'DM Sans',sans-serif; font-weight:700; }
-  .dash-news-text { font-size:15px; line-height:1.25; font-weight:700; color:var(--text); }
-  .dash-ideas { background:#d8ccc7; border-radius:34px; padding:0 0 22px; overflow:hidden; min-height:230px; }
-  .dash-search { height:52px; background:#fff; border-radius:28px; display:flex; align-items:center; gap:12px; padding:0 18px 0 32px; }
+  .dash-title { font-family:'Cormorant Garamond',serif; font-size:clamp(40px,7vw,76px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
+  .dash-script { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(24px,4vw,36px); color:#5f8466; line-height:1; font-weight:600; text-transform:uppercase; }
+  .dashboard-grid { display:flex; flex-direction:column; gap:14px; }
+  .dash-card { background:var(--surface); border:none; border-radius:8px; padding:16px; box-shadow:none; }
+  .dash-card-title { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:700; letter-spacing:0; text-transform:uppercase; text-align:center; margin-bottom:14px; color:#0d0a07; }
+  .dash-news-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+  .dash-news-item { display:flex; align-items:center; justify-content:center; text-align:left; gap:10px; cursor:pointer; min-width:0; }
+  .dash-hash { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; font-family:'DM Sans',sans-serif; font-weight:700; flex-shrink:0; }
+  .dash-news-text { font-size:14px; line-height:1.2; font-weight:700; color:var(--text); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .dash-ideas { background:#d8ccc7; border-radius:24px; padding:0 0 14px; overflow:hidden; min-height:150px; }
+  .dash-ideas-help { padding:10px 24px 0; font-size:11.5px; color:rgba(26,16,9,0.58); line-height:1.35; }
+  .dash-search { height:46px; background:#fff; border-radius:28px; display:flex; align-items:center; gap:12px; padding:0 18px 0 28px; }
   .dash-search input { flex:1; min-width:0; border:none; outline:none; font-family:'DM Mono',monospace; font-size:13px; letter-spacing:3px; text-transform:uppercase; background:transparent; color:#15100e; }
   .dash-search-icon { width:24px; height:24px; border:3px solid #171413; border-radius:50%; position:relative; flex-shrink:0; }
   .dash-search-icon::after { content:''; position:absolute; width:10px; height:3px; background:#171413; right:-8px; bottom:-5px; transform:rotate(45deg); border-radius:2px; }
-  .dash-idea-results { padding:14px 40px; display:flex; flex-direction:column; gap:14px; }
-  .dash-idea-row { font-family:'DM Mono',monospace; font-size:18px; letter-spacing:1px; cursor:pointer; }
-  .dash-trends-card { padding:26px; border-radius:12px; }
-  .dash-trend-row { display:flex; gap:16px; overflow-x:auto; padding-bottom:6px; }
-  .dash-trend-card { flex:0 0 240px; background:var(--surface); border-radius:18px; overflow:visible; cursor:pointer; scroll-snap-align:start; position:relative; }
+  .dash-idea-results { padding:12px 28px 0; display:flex; flex-direction:row; gap:10px; overflow-x:auto; }
+  .dash-idea-row { font-family:'DM Mono',monospace; font-size:13px; letter-spacing:1px; cursor:pointer; background:rgba(255,255,255,0.55); border-radius:999px; padding:8px 12px; white-space:nowrap; }
+  .dash-trends-card { padding:16px; border-radius:12px; }
+  .dash-trend-row { display:flex; gap:12px; overflow-x:auto; padding:8px 2px 6px; }
+  .dash-trend-card { flex:0 0 210px; background:#fff; border-radius:16px; overflow:visible; cursor:pointer; scroll-snap-align:start; position:relative; }
   .dash-trend-row { scroll-snap-type:x proximity; }
-  .dash-trend-img-wrap { position:relative; height:150px; background:var(--surface2); border-radius:18px 18px 0 0; overflow:hidden; }
+  .dash-trend-img-wrap { position:relative; height:112px; background:var(--surface2); border-radius:16px 16px 0 0; overflow:hidden; }
   .dash-trend-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
   .dash-trend-num { position:absolute; top:-10px; left:-10px; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:800; font-family:'DM Sans',sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.18); z-index:2; }
-  .dash-trend-body { padding:14px 14px 16px; }
-  .dash-trend-title { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; line-height:1.15; margin-bottom:6px; text-transform:uppercase; }
-  .dash-trend-desc { font-size:12px; color:var(--text-dim); line-height:1.35; margin-bottom:10px; }
+  .dash-trend-body { padding:12px; }
+  .dash-trend-title { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:700; line-height:1.05; margin-bottom:5px; text-transform:uppercase; }
+  .dash-trend-desc { font-size:11px; color:var(--text-dim); line-height:1.25; margin-bottom:8px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
   .dash-trend-tags { display:flex; flex-wrap:wrap; gap:6px; }
   .dash-trend-tag { font-size:10.5px; font-weight:700; color:var(--text-dim); background:var(--surface2); border-radius:999px; padding:3px 9px; }
   .dash-trend-card.selected { box-shadow:0 0 0 2px var(--papaya); }
-  .dash-notes-row { display:flex; gap:18px; flex-wrap:wrap; }
-  .dash-note-card { position:relative; flex:1 1 260px; min-width:220px; border-radius:0; min-height:330px; padding:66px 24px 22px; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; }
+  .dash-notes-row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding-top:20px; }
+  .dash-note-card { position:relative; border-radius:0; min-height:210px; padding:42px 16px 14px; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; }
   .dash-note-card.note-green { background:url('assets/note-paper-green.jpg') center/cover no-repeat #E4EAE1; }
   .dash-note-remove { position:absolute; top:8px; right:10px; background:none; border:none; font-size:14px; color:rgba(0,0,0,0.4); cursor:pointer; }
-  .dash-note-add { flex:0 0 90px; min-height:330px; border-radius:16px; border:1.5px dashed var(--border); background:transparent; color:var(--text-dim); font-size:32px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
-  .dash-clip { position:absolute; top:-62px; left:50%; transform:translateX(-50%); width:132px; height:132px; background:url('assets/binder-clip.png') center/contain no-repeat; pointer-events:none; }
-  .dash-note-title { font-family:'Cormorant Garamond',serif; font-size:29px; text-align:center; text-transform:uppercase; margin-bottom:14px; color:#0a0807; }
-  .dash-note-area { width:100%; min-height:170px; resize:vertical; border:1.5px dashed transparent; background:transparent; border-radius:0; padding:14px; outline:none; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
+  .dash-note-add { min-height:210px; border-radius:16px; border:1.5px dashed var(--border); background:transparent; color:var(--text-dim); font-size:32px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .dash-clip { position:absolute; top:-42px; left:50%; transform:translateX(-50%); width:90px; height:90px; background:url('assets/binder-clip.png') center/contain no-repeat; pointer-events:none; }
+  .dash-note-title { font-family:'Cormorant Garamond',serif; font-size:22px; text-align:center; text-transform:uppercase; margin-bottom:8px; color:#0a0807; }
+  .dash-note-area { width:100%; min-height:90px; resize:vertical; border:1.5px dashed transparent; background:transparent; border-radius:0; padding:10px; outline:none; font-family:'Nothing You Could Do',cursive; font-size:19px; line-height:1.25; color:#1c1714; }
   .dash-note-area:focus { border-color:rgba(26,16,9,0.32); }
   .dash-photo-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; align-items:center; }
   .dash-photo-btn { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:8px 13px; font-size:11px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
   .dash-photos { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
-  .dash-photo { width:88px; height:110px; object-fit:cover; background:#fff; border:6px solid #fff; box-shadow:0 8px 18px rgba(0,0,0,0.12); transform:rotate(-5deg); }
+  .dash-photo { width:62px; height:78px; object-fit:cover; background:#fff; border:4px solid #fff; box-shadow:0 8px 18px rgba(0,0,0,0.12); transform:rotate(-5deg); }
   .dash-photo:nth-child(even) { transform:rotate(6deg); }
   .dash-photo-empty { font-size:12px; color:rgba(0,0,0,0.45); font-family:'DM Mono',monospace; }
   @media (max-width:640px) {
@@ -219,10 +220,10 @@
   .delete-bar-txt { color:#fff; font-size:13px; font-weight:700; }
 
   /* ===== PAGE 3 PLANNING ===== */
-  .planning-page { max-width:980px; margin:0 auto; }
-  .planning-hero { text-align:center; padding:40px 0 28px; }
-  .planning-title { font-family:'Cormorant Garamond',serif; font-size:clamp(52px,10vw,96px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
-  .planning-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(34px,7vw,62px); color:#ff7b7d; line-height:0.72; font-weight:700; }
+  .planning-page { max-width:1120px; margin:0 auto; }
+  .planning-hero { text-align:center; padding:26px 0 18px; }
+  .planning-title { font-family:'Cormorant Garamond',serif; font-size:clamp(46px,8vw,82px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
+  .planning-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(28px,5vw,50px); color:#ff7b7d; line-height:0.72; font-weight:700; }
   .plan-month-nav { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:16px; }
   .plan-month-label { min-width:170px; text-align:center; font-family:'Cormorant Garamond',serif; font-size:26px; text-transform:uppercase; color:#0f0b08; }
   .mnav-btn { width:42px; height:42px; border-radius:50%; border:1.5px solid rgba(26,16,9,0.12); background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:22px; color:var(--text); box-shadow:0 2px 8px rgba(0,0,0,0.04); }
@@ -233,30 +234,33 @@
   .planning-reset { font-size:11px; font-weight:800; padding:9px 16px; border-radius:999px; border:1.5px solid var(--border); background:#fff; color:var(--text-dim); cursor:pointer; font-family:'DM Sans',sans-serif; }
   .cal-days-header { display:grid; grid-template-columns:repeat(7,1fr); gap:10px; margin-bottom:8px; padding:0 2px; }
   .cal-dh { font-size:20px; font-weight:700; color:#0f0b08; text-align:center; padding:4px 0; font-family:'Cormorant Garamond',serif; text-transform:uppercase; }
-  .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:10px; margin-bottom:14px; }
-  .cal-cell { min-height:132px; border-radius:8px; background:#fff; border:none; padding:10px; transition:all 0.15s; box-shadow:0 1px 0 rgba(0,0,0,0.02); }
+  .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); grid-auto-rows:128px; gap:8px; margin-bottom:14px; }
+  .cal-cell { min-height:0; height:128px; border-radius:8px; background:#fff; border:none; padding:8px; transition:all 0.15s; box-shadow:0 1px 0 rgba(0,0,0,0.02); overflow-y:auto; }
   .cal-cell.empty { background:rgba(255,255,255,0.38); border-color:transparent; }
   .cal-cell.today { outline:2px solid var(--papaya); outline-offset:0; }
   .cal-cell.drag-over { background:#fff8f0; outline:2px dashed var(--papaya); }
   .cal-dnum { font-size:12px; font-weight:800; color:var(--text-dim); margin-bottom:8px; font-family:'DM Mono',monospace; }
   .cal-dnum.today-n { color:var(--papaya); font-weight:900; }
-  .cal-cell.week-cell { min-height:260px; }
-  .plan-day-layout { display:grid; grid-template-columns:1fr; gap:18px; max-width:760px; margin:0 auto 16px; }
+  .cal-cell.week-cell { height:auto; min-height:88px; display:grid; grid-template-columns:92px 1fr; gap:12px; align-items:start; }
+  .week-day-head { font-family:'Cormorant Garamond',serif; font-size:24px; line-height:1; text-transform:uppercase; color:#0f0b08; }
+  .week-day-date { font-family:'DM Mono',monospace; font-size:11px; color:var(--text-dim); margin-top:4px; }
+  .week-day-items { display:flex; flex-wrap:wrap; gap:6px; align-items:flex-start; }
+  .plan-day-layout { display:grid; grid-template-columns:1fr; gap:14px; max-width:760px; margin:0 auto 16px; }
   .plan-day-card { background:#fff; border-radius:8px; padding:22px; min-height:190px; }
   .plan-day-card.large { min-height:250px; }
   .plan-day-title { font-family:'Cormorant Garamond',serif; font-size:28px; line-height:1; text-transform:uppercase; text-align:center; margin-bottom:18px; }
   .plan-day-items { display:flex; flex-direction:column; gap:10px; }
-  .plan-day-empty { font-family:'Caveat',cursive; font-size:24px; color:rgba(26,16,9,0.35); text-align:center; padding:28px 0; }
+  .plan-day-empty { font-family:'DM Sans',sans-serif; font-size:13px; color:rgba(26,16,9,0.45); text-align:center; padding:24px 0; }
   .plan-day-pill { border:none; border-radius:999px; padding:10px 14px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:800; color:#fff; text-align:left; cursor:pointer; }
   .planning-notes { margin-top:18px; position:relative; border-radius:0; padding:34px 28px 24px; min-height:220px; background:url('assets/note-paper.png') center/cover no-repeat; }
   .planning-notes-title { font-family:'Cormorant Garamond',serif; font-size:26px; text-transform:uppercase; text-align:center; margin-bottom:10px; }
   .planning-notes textarea { width:100%; min-height:125px; border:1.5px dashed transparent; outline:none; resize:vertical; background:transparent; border-radius:0; padding:14px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
   .planning-notes textarea:focus { border-color:rgba(26,16,9,0.32); }
   .vpill { display:block; padding:4px 6px; border-radius:6px; margin-bottom:2px; font-size:10px; font-weight:600; line-height:1.2; cursor:grab; border:none; width:100%; text-align:left; font-family:'DM Sans',sans-serif; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:opacity 0.15s; touch-action:none; }
-  .rdv-postit { display:block; padding:6px 7px 5px; margin:3px 0 4px; border-radius:2px; width:100%; text-align:left; cursor:pointer; font-family:'DM Sans',sans-serif; background:#FFE580; border:1px solid #E8C94A; box-shadow:1px 2px 3px rgba(0,0,0,0.12); transform:rotate(-1.2deg); transition:transform 0.15s; }
+  .rdv-postit { display:block; padding:9px 9px 7px; margin:3px 0 4px; border-radius:0; width:100%; text-align:left; cursor:pointer; font-family:'Nothing You Could Do',cursive; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; border:none; box-shadow:1px 2px 5px rgba(0,0,0,0.13); transform:rotate(-1.2deg); transition:transform 0.15s; }
   .rdv-postit:hover { transform:rotate(0deg) scale(1.02); }
-  .rdv-postit-title { font-size:10px; font-weight:700; line-height:1.25; color:#4a3b06; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .rdv-postit-client { font-size:9px; font-weight:600; color:#8a742a; margin-top:1px; }
+  .rdv-postit-title { font-size:14px; font-weight:700; line-height:1.1; color:#36261c; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .rdv-postit-client { font-size:12px; font-weight:600; color:#6f5b4b; margin-top:1px; }
   .plan-day-pill.rdv-postit, .plan-day-items .rdv-postit { transform:rotate(-0.6deg); width:auto; display:inline-block; margin-right:6px; }
   .vpill:active { cursor:grabbing; }
   .vpill.dragging { opacity:0.35; }
@@ -322,36 +326,65 @@
     .cal-cell { min-height:94px; padding:7px; }
     .cal-dh { font-size:15px; }
     .planning-view-tab { padding:9px 13px; }
-    .company-list { grid-template-columns:1fr; }
-    .company-moodboard { grid-template-columns:1fr; }
-    .company-swatches { flex-direction:row; justify-content:center; }
+    .companies-page { max-width:100%; }
+    .companies-hero { padding:18px 0 10px; }
+    .companies-title { font-size:34px; }
+    .companies-sub { font-size:16px; margin-top:2px; }
+    .company-select { margin-bottom:10px; max-width:100%; }
+    .company-list { grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:10px; }
+    .company-tile { min-height:76px; padding:10px; border-radius:8px; }
+    .company-tile-name { font-size:20px; }
+    .company-tile-sub { font-size:10px; margin-top:4px; }
+    .company-moodboard { grid-template-columns:minmax(0,1fr) 64px; gap:10px; align-items:start; }
+    .company-left, .company-mid { gap:8px; }
+    .company-logo { height:56px; justify-content:flex-start; font-size:12px; }
+    .company-upload { padding:6px 10px; font-size:10px; }
+    .company-photo-grid { grid-template-columns:repeat(3,1fr); gap:7px; }
+    .company-photo { min-height:76px; border-radius:10px; font-size:10px; }
+    .company-photo.large { min-height:120px; grid-row:auto; }
+    .company-panel { min-height:92px; border-radius:12px; padding:12px 10px; }
+    .company-panel-title { font-size:14px; margin-bottom:8px; }
+    .company-font-preview { font-size:20px; letter-spacing:1px; line-height:0.9; }
+    .company-keywords { gap:5px; }
+    .company-keyword-tag { font-size:10px; padding:4px 7px; }
+    .company-keyword-more { margin-top:6px; font-size:14px; }
+    .company-mid { grid-column:1 / -1; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .company-mid > div:first-child { grid-column:1 / -1; }
+    .company-mid .companies-title { font-size:30px !important; }
+    .company-note { min-height:126px; padding:24px 10px 8px; }
+    .company-note .dash-clip { top:-45px; transform:translateX(-50%) scale(0.44); }
+    .company-note textarea { min-height:74px; font-size:16px; padding:6px; }
+    .company-mid .company-photo { min-height:126px !important; width:100% !important; }
+    .company-swatches { flex-direction:column; gap:10px; grid-column:2; grid-row:1; align-self:start; }
+    .company-swatch, .company-swatch-add { width:44px; height:44px; font-size:18px; }
   }
 
   /* ===== PAGE ANALYSE ===== */
-  .analysis-page { max-width:980px; margin:0 auto; }
-  .analysis-hero { text-align:center; padding:42px 0 26px; }
-  .analysis-title { font-family:'Cormorant Garamond',serif; font-size:clamp(48px,9vw,88px); line-height:0.78; font-weight:700; text-transform:uppercase; color:#080604; }
-  .analysis-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(32px,6vw,58px); color:#ff7b7d; line-height:0.72; font-weight:700; }
-  .analysis-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:22px; }
-  .analysis-card { background:#fff; border:1.5px solid var(--border); border-radius:8px; padding:18px; min-height:130px; }
+  .analysis-page { max-width:1120px; margin:0 auto; }
+  .analysis-sheet { width:min(100%,920px); aspect-ratio:1.414/1; min-height:620px; margin:0 auto; background:#fff; border-radius:12px; padding:32px; box-shadow:0 18px 48px rgba(26,16,9,0.10); overflow:auto; }
+  .analysis-hero { text-align:left; padding:0 0 20px; }
+  .analysis-title { font-family:'Cormorant Garamond',serif; font-size:clamp(44px,7vw,72px); line-height:0.82; font-weight:700; text-transform:uppercase; color:#080604; }
+  .analysis-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(24px,4vw,42px); color:#ff7b7d; line-height:0.8; font-weight:700; margin-left:90px; }
+  .analysis-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:14px; }
+  .analysis-card { background:var(--surface); border:none; border-radius:8px; padding:14px; min-height:112px; }
   .analysis-card-kicker { font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; }
   .analysis-card-value { font-family:'Cormorant Garamond',serif; font-size:42px; line-height:1; color:var(--text); }
   .analysis-card-sub { font-size:12px; color:var(--text-dim); margin-top:8px; line-height:1.35; }
-  .analysis-input { width:100%; border:none; border-bottom:1.5px dashed var(--border); outline:none; background:transparent; font-family:'Cormorant Garamond',serif; font-size:42px; font-weight:700; line-height:1; color:var(--text); padding:0 0 4px; }
-  .analysis-wide { background:#fff; border-radius:12px; border:1.5px solid var(--border); padding:20px; margin-bottom:22px; }
-  .analysis-wide-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
-  .analysis-section-title { font-family:'Cormorant Garamond',serif; font-size:28px; text-transform:uppercase; color:#0d0a07; }
+  .analysis-input { width:100%; border:none; border-bottom:1.5px dashed var(--border); outline:none; background:transparent; font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:700; line-height:1; color:var(--text); padding:0 0 4px; }
+  .analysis-wide { background:#fff; border-radius:10px; border:1.5px solid var(--border); padding:14px; margin-bottom:14px; }
+  .analysis-wide-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+  .analysis-section-title { font-family:'Cormorant Garamond',serif; font-size:24px; text-transform:uppercase; color:#0d0a07; }
   .analysis-shot-row { display:flex; gap:12px; overflow-x:auto; padding-bottom:4px; }
-  .analysis-shot { width:112px; height:190px; object-fit:cover; border-radius:12px; border:1px solid var(--border); background:#fff; flex-shrink:0; }
-  .analysis-upload { border:1.5px dashed var(--border); background:var(--surface); border-radius:12px; color:var(--text-dim); width:112px; height:190px; flex:0 0 112px; font-family:'DM Sans',sans-serif; font-weight:800; cursor:pointer; }
+  .analysis-shot { width:82px; height:138px; object-fit:cover; border-radius:10px; border:1px solid var(--border); background:#fff; flex-shrink:0; }
+  .analysis-upload { border:1.5px dashed var(--border); background:var(--surface); border-radius:10px; color:var(--text-dim); width:82px; height:138px; flex:0 0 82px; font-family:'DM Sans',sans-serif; font-weight:800; cursor:pointer; }
   .analysis-content-list { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-  .analysis-content-card { background:var(--surface); border-radius:12px; padding:14px; min-height:150px; display:flex; flex-direction:column; gap:8px; }
+  .analysis-content-card { background:var(--surface); border-radius:12px; padding:12px; min-height:126px; display:flex; flex-direction:column; gap:7px; }
   .analysis-content-rank { width:32px; height:32px; border-radius:50%; background:var(--papaya); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:900; }
   .analysis-content-card input { border:none; border-bottom:1.5px dashed rgba(0,0,0,0.18); background:transparent; outline:none; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:700; padding:4px 0; }
-  .analysis-ai-box { background:#111; color:#fff; border-radius:14px; padding:18px; font-size:14px; line-height:1.55; }
+  .analysis-ai-box { background:#111; color:#fff; border-radius:12px; padding:14px; font-size:13px; line-height:1.45; }
   .analysis-ai-box strong { color:#ffb86b; }
-  .analysis-note { background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; padding:54px 28px 26px; min-height:250px; position:relative; }
-  .analysis-note textarea { width:100%; min-height:150px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
+  .analysis-note { background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; padding:40px 22px 18px; min-height:190px; position:relative; }
+  .analysis-note textarea { width:100%; min-height:100px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; font-family:'Nothing You Could Do',cursive; font-size:20px; line-height:1.25; color:#1c1714; }
   .analysis-note textarea:focus { border-color:rgba(26,16,9,0.32); }
   @media (max-width:720px) {
     .analysis-grid { grid-template-columns:1fr; }
@@ -512,16 +545,17 @@
             <div class="dash-card-title">Actualités</div>
             <div class="dash-news-list" id="dashboard-news"></div>
           </section>
+          <section class="dash-card dash-trends-card">
+            <div class="dash-card-title">Trends</div>
+            <div id="trends-content"><div class="loading"><div class="spinner"></div>Chargement...</div></div>
+          </section>
           <section class="dash-ideas">
             <div class="dash-search">
               <input id="dash-search-input" placeholder="Idées créatives" oninput="renderIdeaResults(this.value)">
               <span class="dash-search-icon"></span>
             </div>
+            <div class="dash-ideas-help">Entrez un mot-clé ou une question et on vous proposera des idées de vidéos ou de contenus.</div>
             <div class="dash-idea-results" id="dash-idea-results"></div>
-          </section>
-          <section class="dash-card dash-trends-card">
-            <div class="dash-card-title">Trends</div>
-            <div id="trends-content"><div class="loading"><div class="spinner"></div>Chargement...</div></div>
           </section>
           <section>
             <div class="dash-notes-row" id="dash-notes-row"></div>
@@ -617,74 +651,76 @@
     <!-- PAGE 5 : ANALYSE -->
     <div id="page-analyse" class="page">
       <div class="analysis-page">
-        <div class="analysis-hero">
-          <div class="analysis-title">Analyse</div>
-          <div class="analysis-script">du mois</div>
+        <div class="analysis-sheet">
+          <div class="analysis-hero">
+            <div class="analysis-title">Analyse</div>
+            <div class="analysis-script">du mois</div>
+          </div>
+          <div class="analysis-grid">
+            <section class="analysis-card">
+              <div class="analysis-card-kicker">Vues</div>
+              <input class="analysis-input" id="ana-views" value="121 K" oninput="saveAnalysisData()">
+              <div class="analysis-card-sub">+28 % vs mois précédent</div>
+            </section>
+            <section class="analysis-card">
+              <div class="analysis-card-kicker">Non-followers</div>
+              <input class="analysis-input" id="ana-nonfollowers" value="36 %" oninput="saveAnalysisData()">
+              <div class="analysis-card-sub">Portée froide à convertir.</div>
+            </section>
+            <section class="analysis-card">
+              <div class="analysis-card-kicker">Followers</div>
+              <input class="analysis-input" id="ana-followers" value="+98" oninput="saveAnalysisData()">
+              <div class="analysis-card-sub">Croissance du mois.</div>
+            </section>
+          </div>
+          <section class="analysis-wide">
+            <div class="analysis-wide-head">
+              <div class="analysis-section-title">Captures Instagram</div>
+              <button class="dash-photo-btn" onclick="document.getElementById('analysis-shot-upload').click()">Ajouter</button>
+            </div>
+            <div class="analysis-shot-row" id="analysis-shot-row">
+              <button class="analysis-upload" onclick="document.getElementById('analysis-shot-upload').click()">+ capture</button>
+            </div>
+            <input type="file" id="analysis-shot-upload" accept="image/*" multiple style="display:none" onchange="addAnalysisShots(event)">
+          </section>
+          <section class="analysis-wide">
+            <div class="analysis-wide-head">
+              <div class="analysis-section-title">Top contenus</div>
+              <button class="dash-photo-btn" onclick="generateAnalysisSummary()">Générer pistes</button>
+            </div>
+            <div class="analysis-content-list">
+              <div class="analysis-content-card">
+                <div class="analysis-content-rank">1</div>
+                <input id="ana-top1-title" value="Storm Emeralda" oninput="saveAnalysisData()">
+                <input id="ana-top1-stat" value="16,0 K vues" oninput="saveAnalysisData()">
+                <input id="ana-top1-why" value="visuel fort + annonce produit" oninput="saveAnalysisData()">
+              </div>
+              <div class="analysis-content-card">
+                <div class="analysis-content-rank">2</div>
+                <input id="ana-top2-title" value="Lequel tu préfères ?" oninput="saveAnalysisData()">
+                <input id="ana-top2-stat" value="10,8 K vues" oninput="saveAnalysisData()">
+                <input id="ana-top2-why" value="question simple + interaction" oninput="saveAnalysisData()">
+              </div>
+              <div class="analysis-content-card">
+                <div class="analysis-content-rank">3</div>
+                <input id="ana-top3-title" value="Précommandes M6a" oninput="saveAnalysisData()">
+                <input id="ana-top3-stat" value="5,5 K vues" oninput="saveAnalysisData()">
+                <input id="ana-top3-why" value="offre claire + urgence" oninput="saveAnalysisData()">
+              </div>
+            </div>
+          </section>
+          <section class="analysis-wide">
+            <div class="analysis-wide-head">
+              <div class="analysis-section-title">Analyse IA</div>
+            </div>
+            <div class="analysis-ai-box" id="analysis-ai-box"><strong>Démo :</strong> remplis les chiffres, ajoute tes captures, puis clique sur “Générer pistes”.</div>
+          </section>
+          <section class="analysis-note">
+            <div class="dash-clip" aria-hidden="true"></div>
+            <div class="dash-note-title">Notes analyse</div>
+            <textarea id="analysis-notes" placeholder="Bilan, apprentissages, idées pour le mois prochain..." oninput="saveAnalysisNotes()"></textarea>
+          </section>
         </div>
-        <div class="analysis-grid">
-          <section class="analysis-card">
-            <div class="analysis-card-kicker">Vues</div>
-            <input class="analysis-input" id="ana-views" value="121 K" oninput="saveAnalysisData()">
-            <div class="analysis-card-sub">+28 % vs mois précédent</div>
-          </section>
-          <section class="analysis-card">
-            <div class="analysis-card-kicker">Non-followers</div>
-            <input class="analysis-input" id="ana-nonfollowers" value="36 %" oninput="saveAnalysisData()">
-            <div class="analysis-card-sub">Portée froide à convertir.</div>
-          </section>
-          <section class="analysis-card">
-            <div class="analysis-card-kicker">Followers</div>
-            <input class="analysis-input" id="ana-followers" value="+98" oninput="saveAnalysisData()">
-            <div class="analysis-card-sub">Croissance du mois.</div>
-          </section>
-        </div>
-        <section class="analysis-wide">
-          <div class="analysis-wide-head">
-            <div class="analysis-section-title">Captures Instagram</div>
-            <button class="dash-photo-btn" onclick="document.getElementById('analysis-shot-upload').click()">Ajouter</button>
-          </div>
-          <div class="analysis-shot-row" id="analysis-shot-row">
-            <button class="analysis-upload" onclick="document.getElementById('analysis-shot-upload').click()">+ capture</button>
-          </div>
-          <input type="file" id="analysis-shot-upload" accept="image/*" multiple style="display:none" onchange="addAnalysisShots(event)">
-        </section>
-        <section class="analysis-wide">
-          <div class="analysis-wide-head">
-            <div class="analysis-section-title">Top contenus</div>
-            <button class="dash-photo-btn" onclick="generateAnalysisSummary()">Générer pistes</button>
-          </div>
-          <div class="analysis-content-list">
-            <div class="analysis-content-card">
-              <div class="analysis-content-rank">1</div>
-              <input id="ana-top1-title" value="Storm Emeralda" oninput="saveAnalysisData()">
-              <input id="ana-top1-stat" value="16,0 K vues" oninput="saveAnalysisData()">
-              <input id="ana-top1-why" value="visuel fort + annonce produit" oninput="saveAnalysisData()">
-            </div>
-            <div class="analysis-content-card">
-              <div class="analysis-content-rank">2</div>
-              <input id="ana-top2-title" value="Lequel tu préfères ?" oninput="saveAnalysisData()">
-              <input id="ana-top2-stat" value="10,8 K vues" oninput="saveAnalysisData()">
-              <input id="ana-top2-why" value="question simple + interaction" oninput="saveAnalysisData()">
-            </div>
-            <div class="analysis-content-card">
-              <div class="analysis-content-rank">3</div>
-              <input id="ana-top3-title" value="Précommandes M6a" oninput="saveAnalysisData()">
-              <input id="ana-top3-stat" value="5,5 K vues" oninput="saveAnalysisData()">
-              <input id="ana-top3-why" value="offre claire + urgence" oninput="saveAnalysisData()">
-            </div>
-          </div>
-        </section>
-        <section class="analysis-wide">
-          <div class="analysis-wide-head">
-            <div class="analysis-section-title">Analyse IA</div>
-          </div>
-          <div class="analysis-ai-box" id="analysis-ai-box"><strong>Démo :</strong> remplis les chiffres, ajoute tes captures, puis clique sur “Générer pistes”.</div>
-        </section>
-        <section class="analysis-note">
-          <div class="dash-clip" aria-hidden="true"></div>
-          <div class="dash-note-title">Notes analyse</div>
-          <textarea id="analysis-notes" placeholder="Bilan, apprentissages, idées pour le mois prochain..." oninput="saveAnalysisNotes()"></textarea>
-        </section>
       </div>
     </div>
   </div>
@@ -737,10 +773,10 @@
         </div>
 
         <div class="mini-bottom" id="mini-bottom-controls" style="display:none">
-          <button class="mini-bottom-btn" onclick="scaleSelected(0.9)" style="background:var(--surface);color:var(--text)">－</button>
-          <button class="mini-bottom-btn" onclick="scaleSelected(1.1)" style="background:var(--surface);color:var(--text)">＋</button>
-          <button class="mini-bottom-btn" onclick="rotateSelected(-15)" style="background:var(--surface);color:var(--text)">↺</button>
-          <button class="mini-bottom-btn" onclick="rotateSelected(15)" style="background:var(--surface);color:var(--text)">↻</button>
+          <button class="mini-bottom-btn" onclick="scaleSelected(0.96)" style="background:var(--surface);color:var(--text)">－</button>
+          <button class="mini-bottom-btn" onclick="scaleSelected(1.04)" style="background:var(--surface);color:var(--text)">＋</button>
+          <button class="mini-bottom-btn" onclick="rotateSelected(-4)" style="background:var(--surface);color:var(--text)">↺</button>
+          <button class="mini-bottom-btn" onclick="rotateSelected(4)" style="background:var(--surface);color:var(--text)">↻</button>
           <button class="mini-bottom-btn" onclick="deleteSelectedEl()" style="background:var(--paradise);color:#fff">🗑</button>
         </div>
       </div>
@@ -918,7 +954,7 @@
             <option value="cm">🗾 CM au Japon</option>
           </select>
         </div>
-        <div class="form-row"><label class="input-label">Date de tournage</label><input class="input" id="cv-date" type="date"></div>
+        <div class="form-row"><label class="input-label">Date de publication</label><input class="input" id="cv-date" type="date"></div>
         <div class="form-row"><label class="input-label">Produit / Sujet *</label><input class="input" id="cv-produit" placeholder="Ex: Booster Pokémon SV"></div>
         <div class="form-row"><label class="input-label">Brief</label><textarea class="input" id="cv-note" rows="3" placeholder="Ambiance, plans imaginés, message..."></textarea></div>
         <div class="form-row"><label class="input-label">Style</label>
@@ -1331,6 +1367,12 @@ function startOfWeek(date){
 function dateISO(date){
   return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
 }
+function publishDateField(fields){
+  return fields?.['Date de publication']||fields?.['Date de tournage prévue']||'';
+}
+function publishDatePayload(date){
+  return {'Date de publication':date,'Date de tournage prévue':date};
+}
 function planningPeriodText(){
   if(planningView==='day') return `Du ${selectedPlanDate.getDate()} ${frenchMonth(selectedPlanDate)}`;
   if(planningView==='week'){
@@ -1395,10 +1437,10 @@ function renderDashboardStats(){
   if(!el) return;
   const videos=allSels.filter(r=>!isStory(r));
   const stories=allSels.filter(r=>isStory(r));
-  const videosPrevues=videos.filter(r=>r.fields['Date de tournage prévue']).length;
+  const videosPrevues=videos.filter(r=>publishDateField(r.fields)).length;
   const videosATourner=videos.filter(r=>(r.fields['Statut']||'A filmer')!=='Filmé').length;
-  const postsPrevus=stories.filter(r=>r.fields['Date de tournage prévue']).length;
-  const postsAProgrammer=stories.filter(r=>!r.fields['Date de tournage prévue']).length;
+  const postsPrevus=stories.filter(r=>publishDateField(r.fields)).length;
+  const postsAProgrammer=stories.filter(r=>!publishDateField(r.fields)).length;
   const tendances=dashboardFilteredTrends().length;
   const stats=[
     {n:tendances,label:'tendances à tester',icon:'ic-trend',cls:'dsi-1',link:'Voir les trends',go:"showPage('trends')"},
@@ -1785,7 +1827,7 @@ async function addOneTrend(trendId){
     const accData=ACCOUNTS[acc];
     const clientId=clientsCache[accData.name]||null;
     const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
-    fields['Date de tournage prévue']=date;
+    Object.assign(fields,publishDatePayload(date));
     if(clientId) fields['Client']=[clientId];
     const result=await atCreate('Sélections',fields);
     if(result.error) console.error('Create sel error:', result.error);
@@ -1820,7 +1862,7 @@ async function addSelectionsAndGo(){
       const accData=ACCOUNTS[acc];
       const clientId=clientsCache[accData.name]||null;
       const fields={'Titre':`${trendTitle} — ${accData.name}`,'Statut':'A filmer','Trend':[trendId]};
-      fields['Date de tournage prévue']=data.date||new Date().toISOString().slice(0,10);
+      Object.assign(fields,publishDatePayload(data.date||new Date().toISOString().slice(0,10)));
       if(clientId) fields['Client']=[clientId];
       const result=await atCreate('Sélections',fields);
       if(result&&result.id&&!allSels.some(s=>s.id===result.id)) allSels.push(result);
@@ -1916,7 +1958,8 @@ async function deleteSelected(){
   if(!confirm(`Supprimer ${selectedItems.size} élément(s) ?`)) return;
   const toDelete=[...selectedItems];
   for(const id of toDelete){
-    await atDelete('Sélections',id);
+    try{ await atDelete('Sélections',id); }
+    catch(e){ localDelete('Sélections',id); }
   }
   allSels=allSels.filter(r=>!toDelete.includes(r.id));
   selsSaved=false;
@@ -1961,7 +2004,7 @@ function renderContentCard(r){
   const f=r.fields;
   const title=f['Titre']||'Sans titre';
   const statut=f['Statut']||'A filmer';
-  const date=fmtDate(f['Date de tournage prévue']);
+  const date=fmtDate(publishDateField(f));
   const dotColor=statut==='Filmé'?'#2F4731':statut==='En montage'?'#9A3F4A':statut==='Publié'?'#3D1419':'#BD6809';
   const isChecked=selectedItems.has(r.id);
   if(selectMode){
@@ -2003,7 +2046,7 @@ async function createVideo(){
   if(ambiance)brief+=`Ambiance : ${ambiance}\n`;
   if(note)brief+=`Brief : ${note}`;
   const fields={'Titre':`${titre} — ${acc.name}`,'Statut':'A filmer','Note de tournage':brief.trim()};
-  const date=document.getElementById('cv-date').value;if(date)fields['Date de tournage prévue']=date;
+  const date=document.getElementById('cv-date').value;if(date)Object.assign(fields,publishDatePayload(date));
   if(clientId)fields['Client']=[clientId];
   try{
     const r=await atCreate('Sélections',fields);
@@ -2028,7 +2071,7 @@ async function createStory(){
   const clientId=clientsCache[acc.name]||null;
   const note=document.getElementById('cs-note').value.trim();
   const fields={'Titre':`${titre} — ${acc.name}`,'Statut':'A filmer','Note de tournage':note+'\n[STORY]'};
-  const date=document.getElementById('cs-date').value;if(date)fields['Date de tournage prévue']=date;
+  const date=document.getElementById('cs-date').value;if(date)Object.assign(fields,publishDatePayload(date));
   if(clientId)fields['Client']=[clientId];
   try{
     const r=await atCreate('Sélections',fields);
@@ -2090,7 +2133,7 @@ function activePlanningRecords(){
 }
 function recordsForDate(date){
   const iso=dateISO(date);
-  return activePlanningRecords().filter(r=>r.fields['Date de tournage prévue']===iso);
+  return activePlanningRecords().filter(r=>publishDateField(r.fields)===iso);
 }
 // ===== RDV (post-it) =====
 function loadRdv(){ allRdv=readStore('Planning','rdv',[]); }
@@ -2146,6 +2189,8 @@ function renderPlanningDay(){
   const posts=records.filter(r=>!isStory(r));
   const stories=records.filter(r=>isStory(r));
   document.querySelector('.cal-days-header').style.display='none';
+  document.getElementById('cal-grid').style.gridTemplateColumns='1fr';
+  document.getElementById('cal-grid').style.gridAutoRows='auto';
   document.getElementById('cal-label').textContent=selectedPlanDate.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
   document.getElementById('cal-grid').innerHTML=`<div class="plan-day-layout" style="grid-column:1/-1">
     <section class="plan-day-card large">
@@ -2167,15 +2212,26 @@ function renderPlanningWeek(){
   const start=startOfWeek(selectedPlanDate);
   const today=new Date();
   const days=[...Array(7)].map((_,i)=>{const d=new Date(start);d.setDate(start.getDate()+i);return d;});
-  document.querySelector('.cal-days-header').style.display='grid';
+  document.querySelector('.cal-days-header').style.display='none';
   document.getElementById('cal-label').textContent=`Semaine ${start.getDate()}-${days[6].getDate()}`;
+  document.getElementById('cal-grid').style.gridTemplateColumns='1fr';
+  document.getElementById('cal-grid').style.gridAutoRows='auto';
   document.getElementById('cal-grid').innerHTML=days.map(date=>{
     const isToday=today.toDateString()===date.toDateString();
     const sels=recordsForDate(date);
+    const rdvs=rdvForDate(date);
+    const empty=!sels.length&&!rdvs.length;
+    const weekday=date.toLocaleDateString('fr-FR',{weekday:'long'});
     return `<div class="cal-cell week-cell ${isToday?'today':''}" data-date="${dateISO(date)}" ondragover="dragOver(event)" ondrop="dropOnDate(event,'${dateISO(date)}')" ondragleave="this.classList.remove('drag-over')">
-      <div class="cal-dnum ${isToday?'today-n':''}">${date.getDate()}</div>
-      ${sels.map(r=>planPillHtml(r)).join('')}
-      ${rdvForDate(date).map(rdvPostitHtml).join('')}
+      <div>
+        <div class="week-day-head">${weekday}</div>
+        <div class="week-day-date ${isToday?'today-n':''}">${date.toLocaleDateString('fr-FR',{day:'2-digit',month:'short'})}</div>
+      </div>
+      <div class="week-day-items">
+        ${sels.map(r=>planPillHtml(r)).join('')}
+        ${rdvs.map(rdvPostitHtml).join('')}
+        ${empty?'<div class="plan-day-empty" style="padding:8px 0;text-align:left">Aucun contenu prévu.</div>':''}
+      </div>
     </div>`;
   }).join('');
   setupTouchDrag();
@@ -2188,7 +2244,7 @@ function renderPlanningMonth(){
   const filtered=activePlanningRecords();
   const byDay={};
   filtered.forEach(r=>{
-    const d=r.fields['Date de tournage prévue'];if(!d)return;
+    const d=publishDateField(r.fields);if(!d)return;
     const dt=new Date(d);
     if(dt.getMonth()===curMonth&&dt.getFullYear()===curYear){
       const day=dt.getDate();if(!byDay[day])byDay[day]=[];byDay[day].push(r);
@@ -2203,6 +2259,8 @@ function renderPlanningMonth(){
     }
   });
   document.querySelector('.cal-days-header').style.display='grid';
+  document.getElementById('cal-grid').style.gridTemplateColumns='repeat(7,1fr)';
+  document.getElementById('cal-grid').style.gridAutoRows='128px';
   document.getElementById('cal-label').textContent=`${MONTHS[curMonth]} ${curYear}`;
   let html='';
   for(let i=0;i<startDow;i++)html+=`<div class="cal-cell empty"></div>`;
@@ -2258,7 +2316,7 @@ async function dropOnDate(e,newDate){
 }
 async function moveSelectionToDate(id,newDate){
   const r=allSels.find(r=>r.id===id);
-  if(r){r.fields['Date de tournage prévue']=newDate;await atUpdate('Sélections',id,{'Date de tournage prévue':newDate});renderCal();}
+  if(r){Object.assign(r.fields,publishDatePayload(newDate));await atUpdate('Sélections',id,publishDatePayload(newDate));renderCal();}
   dragId=null;
 }
 
@@ -2340,8 +2398,8 @@ function renderFicheList(){
     const clientIds=[].concat(r.fields['Client']||[]);
     return activeNames.some(n=>title.includes(n))||clientIds.some(id=>activeIds.includes(id));
   }).sort((a,b)=>{
-    const da=a.fields['Date de tournage prévue']||'9999';
-    const db=b.fields['Date de tournage prévue']||'9999';
+    const da=publishDateField(a.fields)||'9999';
+    const db=publishDateField(b.fields)||'9999';
     return da.localeCompare(db);
   });
   if(!filtered.length){el.innerHTML='<div class="empty">Aucune vidéo pour ce compte</div>';return;}
@@ -2349,7 +2407,7 @@ function renderFicheList(){
   // Group by week
   const weeks={};
   filtered.forEach(r=>{
-    const d=r.fields['Date de tournage prévue'];
+    const d=publishDateField(r.fields);
     let weekKey='Sans date';
     let weekLabel='Sans date';
     if(d){
@@ -2411,7 +2469,7 @@ function renderFicheTournage(){
   const activeNames=[...activeAccounts].map(a=>ACCOUNTS[a].name);
   const activeIds=[...activeAccounts].map(a=>clientsCache[ACCOUNTS[a].name]).filter(Boolean);
   const week=allSels.filter(r=>{
-    const d=r.fields['Date de tournage prévue'];if(!d)return false;
+    const d=publishDateField(r.fields);if(!d)return false;
     const dt=new Date(d);
     const title=r.fields['Titre']||'';
     const clientIds=[].concat(r.fields['Client']||[]);
@@ -2427,7 +2485,8 @@ function renderFicheTournage(){
   week.forEach(r=>{
     const f=r.fields;
     const title=f['Titre']||'Sans titre';
-    const date=f['Date de tournage prévue']?new Date(f['Date de tournage prévue']).toLocaleDateString('fr-FR',{weekday:'long',day:'2-digit',month:'short'}):'—';
+    const pubDate=publishDateField(f);
+    const date=pubDate?new Date(pubDate).toLocaleDateString('fr-FR',{weekday:'long',day:'2-digit',month:'short'}):'—';
     const plans=getPlans(f['Fiche de tournage']||'');
     html+=`<div class="recap-vid-card">
       <div class="recap-vid-header">
@@ -2540,6 +2599,7 @@ const PHOTOROOM_KEY = '';
 const OPENAI_KEY = APP_CONFIG.OPENAI_API_KEY||'';
 
 let selectedEl = null;
+let miniZ = 10;
 let currentFont = 'bebas';
 let creationFormat = 'post';
 let miniCanvasW = 0, miniCanvasH = 0;
@@ -2804,8 +2864,8 @@ function makeDraggable(el){
       const t=e.touches[0];
       const canvas=document.getElementById('mini-canvas');
       const rect=canvas.getBoundingClientRect();
-      const dx=(t.clientX-startX)/rect.width*65;
-      const dy=(t.clientY-startY)/rect.height*65;
+      const dx=(t.clientX-startX)/rect.width*45;
+      const dy=(t.clientY-startY)/rect.height*45;
       el.style.left=(startLeft+dx)+'%';
       el.style.top=(startTop+dy)+'%';
     } else if(e.touches.length===2){
@@ -2813,8 +2873,8 @@ function makeDraggable(el){
       const dy=e.touches[0].clientY-e.touches[1].clientY;
       const dist=Math.hypot(dx,dy);
       const angle=Math.atan2(dy,dx)*180/Math.PI;
-      const scaleDelta=dist/lastDist;
-      const angleDelta=angle-lastAngle;
+      const scaleDelta=1+((dist/lastDist)-1)*0.35;
+      const angleDelta=(angle-lastAngle)*0.25;
       el.dataset.scale=Math.max(0.2,Math.min(5,parseFloat(el.dataset.scale||1)*scaleDelta));
       el.dataset.rotate=parseFloat(el.dataset.rotate||0)+angleDelta;
       applyTransform();
@@ -2837,8 +2897,8 @@ function makeDraggable(el){
     startLeft=parseFloat(el.style.left)||0;
     startTop=parseFloat(el.style.top)||0;
     const onMove=e=>{
-      const dx=(e.clientX-startX)/rect.width*65;
-      const dy=(e.clientY-startY)/rect.height*65;
+      const dx=(e.clientX-startX)/rect.width*45;
+      const dy=(e.clientY-startY)/rect.height*45;
       el.style.left=(startLeft+dx)+'%';
       el.style.top=(startTop+dy)+'%';
     };
@@ -2879,6 +2939,7 @@ function selectEl(el){
   deselectAll();
   selectedEl=el;
   el.classList.add('selected');
+  el.style.zIndex=String(++miniZ);
   document.getElementById('mini-bottom-controls').style.display='flex';
 }
 
@@ -2899,7 +2960,7 @@ async function openAssociatePanel(){
   list.innerHTML=filtered.map(r=>`
     <div onclick="associateMiniature('${r.id}')" style="padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer;font-size:14px;font-weight:600;color:var(--text)">
       ${r.fields['Titre']||'Sans titre'}
-      <div style="font-size:11px;color:var(--text-dim);margin-top:2px">${fmtDate(r.fields['Date de tournage prévue'])}</div>
+      <div style="font-size:11px;color:var(--text-dim);margin-top:2px">${fmtDate(publishDateField(r.fields))}</div>
     </div>`).join('');
 }
 
