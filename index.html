@@ -85,11 +85,14 @@
   .dashboard-page { max-width:980px; margin:0 auto; }
   .dash-hero { text-align:center; padding:48px 0 34px; }
   .dash-stats-row { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:28px; }
-  .dash-stat-card { background:var(--surface); border:none; border-radius:16px; padding:16px 14px; }
+  .dash-stat-card { background:#fff; border:none; border-radius:16px; padding:16px 14px; }
   .dash-stat-icon { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
   .dash-stat-icon svg { width:18px; height:18px; }
-  .dsi-green { background:#E4EAE1; color:var(--fuschia); }
-  .dsi-orange { background:#FBEADD; color:var(--papaya); }
+  .dsi-1 { background:#FBEADD; color:#C9762E; }
+  .dsi-2 { background:#E4EAE1; color:var(--fuschia); }
+  .dsi-3 { background:#F6E3D9; color:#B85C3E; }
+  .dsi-4 { background:#F5EAC8; color:#A8821E; }
+  .dsi-5 { background:#EDEFE5; color:#6B7A5E; }
   .dsi-lin { background:var(--surface2); color:#8a7355; }
   .dash-stat-num { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:700; line-height:1; color:#0d0a07; }
   .dash-stat-label { font-size:12.5px; color:var(--text-dim); margin-top:4px; line-height:1.3; }
@@ -98,7 +101,7 @@
     .dash-stats-row { grid-template-columns:repeat(2,1fr); }
   }
   .dash-title { font-family:'Cormorant Garamond',serif; font-size:clamp(46px,10vw,96px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
-  .dash-script { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(28px,5.5vw,44px); color:var(--fuschia); line-height:1; font-weight:600; }
+  .dash-script { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(28px,5.5vw,44px); color:var(--fuschia); line-height:1; font-weight:600; text-transform:uppercase; }
   .dashboard-grid { display:flex; flex-direction:column; gap:26px; }
   .dash-card { background:#fff; border:none; border-radius:8px; padding:22px; box-shadow:none; }
   .dash-card-title { font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:700; letter-spacing:0; text-transform:uppercase; text-align:center; margin-bottom:24px; color:#0d0a07; }
@@ -115,21 +118,20 @@
   .dash-idea-row { font-family:'DM Mono',monospace; font-size:18px; letter-spacing:1px; cursor:pointer; }
   .dash-trends-card { padding:26px; border-radius:12px; }
   .dash-trend-row { display:flex; gap:16px; overflow-x:auto; padding-bottom:6px; }
-  .dash-trend-card { flex:0 0 240px; background:var(--surface); border-radius:18px; overflow:hidden; cursor:pointer; scroll-snap-align:start; }
+  .dash-trend-card { flex:0 0 240px; background:var(--surface); border-radius:18px; overflow:visible; cursor:pointer; scroll-snap-align:start; position:relative; }
   .dash-trend-row { scroll-snap-type:x proximity; }
-  .dash-trend-img-wrap { position:relative; height:150px; background:var(--surface2); }
+  .dash-trend-img-wrap { position:relative; height:150px; background:var(--surface2); border-radius:18px 18px 0 0; overflow:hidden; }
   .dash-trend-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
-  .dash-trend-num { position:absolute; top:10px; left:10px; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:800; font-family:'DM Sans',sans-serif; }
-  .dash-trend-card.no-img .dash-trend-num { position:static; margin:14px 0 0 14px; }
+  .dash-trend-num { position:absolute; top:-10px; left:-10px; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:800; font-family:'DM Sans',sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.18); z-index:2; }
   .dash-trend-body { padding:14px 14px 16px; }
-  .dash-trend-title { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; line-height:1.15; margin-bottom:6px; }
+  .dash-trend-title { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; line-height:1.15; margin-bottom:6px; text-transform:uppercase; }
   .dash-trend-desc { font-size:12px; color:var(--text-dim); line-height:1.35; margin-bottom:10px; }
   .dash-trend-tags { display:flex; flex-wrap:wrap; gap:6px; }
   .dash-trend-tag { font-size:10.5px; font-weight:700; color:var(--text-dim); background:var(--surface2); border-radius:999px; padding:3px 9px; }
   .dash-trend-card.selected { box-shadow:0 0 0 2px var(--papaya); }
   .dash-notes-row { display:flex; gap:18px; flex-wrap:wrap; }
-  .dash-note-card { position:relative; flex:1 1 260px; min-width:220px; border-radius:0; min-height:330px; padding:66px 24px 22px; background:url('assets/note-paper.png') center/cover no-repeat; }
-  .dash-note-card.note-green { background-image:url('assets/note-paper-green.png'); }
+  .dash-note-card { position:relative; flex:1 1 260px; min-width:220px; border-radius:0; min-height:330px; padding:66px 24px 22px; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; }
+  .dash-note-card.note-green { background:url('assets/note-paper-green.jpg') center/cover no-repeat #E4EAE1; }
   .dash-note-remove { position:absolute; top:8px; right:10px; background:none; border:none; font-size:14px; color:rgba(0,0,0,0.4); cursor:pointer; }
   .dash-note-add { flex:0 0 90px; min-height:330px; border-radius:16px; border:1.5px dashed var(--border); background:transparent; color:var(--text-dim); font-size:32px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .dash-clip { position:absolute; top:-62px; left:50%; transform:translateX(-50%); width:132px; height:132px; background:url('assets/binder-clip.png') center/contain no-repeat; pointer-events:none; }
@@ -1159,7 +1161,7 @@ function renderDashboardNews(records=dashboardFilteredTrends()){
     {id:'fb-news-3',fields:{'Titre de la trend':'idée chaude'}}
   ];
   const items=(records.length?records:fallback).slice(0,3);
-  const cls=['dsi-green','dsi-orange','dsi-lin'];
+  const cls=['dsi-2','dsi-1','dsi-lin'];
   el.innerHTML=items.map((r,i)=>`<div class="dash-news-item" onclick="${allTrends.some(t=>t.id===r.id)?`toggleTrend('${r.id}')`:''}">
     <div class="dash-hash ${cls[i%3]}">#</div>
     <div class="dash-news-text">${htmlSafe(toHashtag(dashboardTitle(r)))}</div>
