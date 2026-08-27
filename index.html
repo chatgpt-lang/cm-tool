@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>CM Tool — Kairos</title>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Barlow+Condensed:wght@700;900&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
 <style>
   :root {
     --papaya:#BD6809; --paradise:#9A3F4A; --fuschia:#2F4731; --palm:#3D1419;
@@ -85,7 +85,7 @@
   .dashboard-page { max-width:980px; margin:0 auto; }
   .dash-hero { text-align:center; padding:48px 0 34px; }
   .dash-title { font-family:'Cormorant Garamond',serif; font-size:clamp(46px,10vw,96px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
-  .dash-script { font-family:'Caveat',cursive; font-size:clamp(34px,7vw,62px); color:#ff7b7d; line-height:0.72; font-weight:700; transform:translateY(-2px); }
+  .dash-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(34px,7vw,62px); color:#ff7b7d; line-height:0.72; font-weight:700; transform:translateY(-2px); }
   .dashboard-grid { display:grid; grid-template-columns:minmax(220px,0.75fr) minmax(320px,1.45fr); gap:24px; align-items:start; }
   .dash-card { background:#fff; border:none; border-radius:8px; padding:22px; box-shadow:none; }
   .dash-card-title { font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:700; letter-spacing:0; text-transform:uppercase; text-align:center; margin-bottom:24px; color:#0d0a07; }
@@ -105,12 +105,11 @@
   .dash-idea-row { font-family:'DM Mono',monospace; font-size:18px; letter-spacing:1px; cursor:pointer; }
   .dash-trends-card { margin-top:28px; padding:32px 26px; border-radius:12px; }
   .dash-main-col { display:flex; flex-direction:column; gap:26px; }
-  .dash-note-card { position:relative; background:#e7ece6; border-radius:0; min-height:330px; padding:66px 28px 24px; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.02); background-image:linear-gradient(rgba(60,80,60,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(60,80,60,0.08) 1px,transparent 1px); background-size:24px 24px; margin-top:22px; }
-  .dash-clip { position:absolute; top:-26px; left:50%; transform:translateX(-50%); width:82px; height:48px; background:#050505; border-radius:4px 4px 8px 8px; }
-  .dash-clip::before { content:''; position:absolute; left:23px; top:-43px; width:36px; height:55px; border:4px solid #050505; border-bottom:none; border-radius:24px 24px 0 0; }
-  .dash-clip::after { content:''; position:absolute; left:13px; right:13px; bottom:7px; height:18px; border:3px solid #fff; border-top:none; border-radius:0 0 18px 18px; }
+  .dash-note-card { position:relative; border-radius:0; min-height:330px; padding:66px 28px 24px; background:url('assets/note-paper.png') center/cover no-repeat; margin-top:22px; }
+  .dash-clip { position:absolute; top:-62px; left:50%; transform:translateX(-50%); width:132px; height:132px; background:url('assets/binder-clip.png') center/contain no-repeat; pointer-events:none; }
   .dash-note-title { font-family:'Cormorant Garamond',serif; font-size:29px; text-align:center; text-transform:uppercase; margin-bottom:14px; color:#0a0807; }
-  .dash-note-area { width:100%; min-height:170px; resize:vertical; border:none; background:rgba(255,255,255,0.52); border-radius:6px; padding:14px; outline:none; font-family:'Caveat',cursive; font-size:25px; line-height:1.15; color:#1c1714; }
+  .dash-note-area { width:100%; min-height:170px; resize:vertical; border:1.5px dashed transparent; background:transparent; border-radius:0; padding:14px; outline:none; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
+  .dash-note-area:focus { border-color:rgba(26,16,9,0.32); }
   .dash-photo-row { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; align-items:center; }
   .dash-photo-btn { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:9px 15px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
   .dash-photos { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
@@ -187,11 +186,14 @@
   .planning-page { max-width:980px; margin:0 auto; }
   .planning-hero { text-align:center; padding:40px 0 28px; }
   .planning-title { font-family:'Cormorant Garamond',serif; font-size:clamp(52px,10vw,96px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
-  .planning-script { font-family:'Caveat',cursive; font-size:clamp(34px,7vw,62px); color:#ff7b7d; line-height:0.72; font-weight:700; }
+  .planning-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(34px,7vw,62px); color:#ff7b7d; line-height:0.72; font-weight:700; }
   .plan-month-nav { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:16px; }
   .plan-month-label { min-width:170px; text-align:center; font-family:'Cormorant Garamond',serif; font-size:26px; text-transform:uppercase; color:#0f0b08; }
   .mnav-btn { width:42px; height:42px; border-radius:50%; border:1.5px solid rgba(26,16,9,0.12); background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:22px; color:var(--text); box-shadow:0 2px 8px rgba(0,0,0,0.04); }
-  .planning-actions { display:flex; justify-content:flex-end; margin:-2px 0 18px; }
+  .planning-view-tabs { display:flex; justify-content:center; gap:8px; margin:0 auto 18px; }
+  .planning-view-tab { border:none; background:#fff; color:var(--text-dim); border-radius:999px; padding:10px 18px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:800; cursor:pointer; }
+  .planning-view-tab.active { background:var(--papaya); color:#fff; }
+  .planning-actions { display:flex; justify-content:flex-end; gap:8px; margin:-2px 0 18px; }
   .planning-reset { font-size:11px; font-weight:800; padding:9px 16px; border-radius:999px; border:1.5px solid var(--border); background:#fff; color:var(--text-dim); cursor:pointer; font-family:'DM Sans',sans-serif; }
   .cal-days-header { display:grid; grid-template-columns:repeat(7,1fr); gap:10px; margin-bottom:8px; padding:0 2px; }
   .cal-dh { font-size:20px; font-weight:700; color:#0f0b08; text-align:center; padding:4px 0; font-family:'Cormorant Garamond',serif; text-transform:uppercase; }
@@ -202,10 +204,24 @@
   .cal-cell.drag-over { background:#fff8f0; outline:2px dashed var(--papaya); }
   .cal-dnum { font-size:12px; font-weight:800; color:var(--text-dim); margin-bottom:8px; font-family:'DM Mono',monospace; }
   .cal-dnum.today-n { color:var(--papaya); font-weight:900; }
-  .planning-notes { margin-top:18px; background:#fff; border-radius:8px; padding:18px; min-height:160px; }
+  .cal-cell.week-cell { min-height:260px; }
+  .plan-day-layout { display:grid; grid-template-columns:1fr; gap:18px; max-width:760px; margin:0 auto 16px; }
+  .plan-day-card { background:#fff; border-radius:8px; padding:22px; min-height:190px; }
+  .plan-day-card.large { min-height:250px; }
+  .plan-day-title { font-family:'Cormorant Garamond',serif; font-size:28px; line-height:1; text-transform:uppercase; text-align:center; margin-bottom:18px; }
+  .plan-day-items { display:flex; flex-direction:column; gap:10px; }
+  .plan-day-empty { font-family:'Caveat',cursive; font-size:24px; color:rgba(26,16,9,0.35); text-align:center; padding:28px 0; }
+  .plan-day-pill { border:none; border-radius:999px; padding:10px 14px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:800; color:#fff; text-align:left; cursor:pointer; }
+  .planning-notes { margin-top:18px; position:relative; border-radius:0; padding:34px 28px 24px; min-height:220px; background:url('assets/note-paper.png') center/cover no-repeat; }
   .planning-notes-title { font-family:'Cormorant Garamond',serif; font-size:26px; text-transform:uppercase; text-align:center; margin-bottom:10px; }
-  .planning-notes textarea { width:100%; min-height:100px; border:none; outline:none; resize:vertical; background:var(--surface); border-radius:8px; padding:14px; font-family:'Caveat',cursive; font-size:24px; }
+  .planning-notes textarea { width:100%; min-height:125px; border:1.5px dashed transparent; outline:none; resize:vertical; background:transparent; border-radius:0; padding:14px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
+  .planning-notes textarea:focus { border-color:rgba(26,16,9,0.32); }
   .vpill { display:block; padding:4px 6px; border-radius:6px; margin-bottom:2px; font-size:10px; font-weight:600; line-height:1.2; cursor:grab; border:none; width:100%; text-align:left; font-family:'DM Sans',sans-serif; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:opacity 0.15s; touch-action:none; }
+  .rdv-postit { display:block; padding:6px 7px 5px; margin:3px 0 4px; border-radius:2px; width:100%; text-align:left; cursor:pointer; font-family:'DM Sans',sans-serif; background:#FFE580; border:1px solid #E8C94A; box-shadow:1px 2px 3px rgba(0,0,0,0.12); transform:rotate(-1.2deg); transition:transform 0.15s; }
+  .rdv-postit:hover { transform:rotate(0deg) scale(1.02); }
+  .rdv-postit-title { font-size:10px; font-weight:700; line-height:1.25; color:#4a3b06; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .rdv-postit-client { font-size:9px; font-weight:600; color:#8a742a; margin-top:1px; }
+  .plan-day-pill.rdv-postit, .plan-day-items .rdv-postit { transform:rotate(-0.6deg); width:auto; display:inline-block; margin-right:6px; }
   .vpill:active { cursor:grabbing; }
   .vpill.dragging { opacity:0.35; }
   .vp-filmer { background:var(--papaya); color:#fff; }
@@ -230,31 +246,46 @@
   .company-tile:active { transform:scale(0.98); }
   .company-tile-name { font-family:'Cormorant Garamond',serif; font-size:30px; text-transform:uppercase; font-weight:700; line-height:1; }
   .company-tile-sub { font-size:12px; color:var(--text-dim); margin-top:8px; }
+  .company-select { position:relative; margin-bottom:22px; max-width:320px; }
+  .company-select-btn { width:100%; display:flex; align-items:center; gap:12px; background:#fff; border:1.5px solid var(--border); border-radius:999px; padding:8px 16px 8px 8px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:#1a1009; }
+  .company-select-btn::after { content:'▾'; margin-left:auto; color:var(--text-dim); font-size:12px; }
+  .company-select-logo { width:38px; height:38px; border-radius:50%; background:#f2f2f2; overflow:hidden; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .company-select-logo img { width:100%; height:100%; object-fit:contain; }
+  .company-select-list { position:absolute; top:calc(100% + 6px); left:0; right:0; background:#fff; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.14); padding:6px; display:none; z-index:20; }
+  .company-select-list.open { display:block; }
+  .company-select-item { width:100%; display:flex; align-items:center; gap:12px; background:none; border:none; padding:9px 10px; border-radius:12px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#1a1009; text-align:left; }
+  .company-select-item:hover, .company-select-item.active { background:var(--surface); }
   .company-moodboard { display:grid; grid-template-columns:minmax(250px,0.9fr) minmax(330px,1.2fr) 92px; gap:24px; align-items:start; }
   .company-left, .company-mid { display:flex; flex-direction:column; gap:18px; }
-  .company-logo { height:118px; border-radius:0; background:#cbd5dc; display:flex; align-items:center; justify-content:center; font-size:18px; letter-spacing:0; text-transform:uppercase; color:#111; overflow:hidden; position:relative; }
-  .company-logo img { width:100%; height:100%; object-fit:contain; padding:12px; background:#fff; }
+  .company-logo { height:118px; border-radius:0; background:transparent; display:flex; align-items:center; justify-content:center; font-size:18px; letter-spacing:0; text-transform:uppercase; color:var(--text-dim); overflow:hidden; position:relative; cursor:pointer; }
+  .company-logo img { width:100%; height:100%; object-fit:contain; background:transparent; }
   .company-upload { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:9px 14px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; width:max-content; }
   .company-photo-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .company-photo { min-height:170px; background:#fff; border-radius:16px; overflow:hidden; display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:12px; position:relative; }
+  .company-photo { min-height:170px; background:#fff; border-radius:20px; overflow:hidden; display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:12px; position:relative; border:none; }
   .company-photo.large { min-height:330px; grid-row:span 2; }
   .company-photo img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
   .company-panel { border-radius:18px; padding:24px 20px; background:var(--fuschia); color:#fff; min-height:210px; }
-  .company-panel-title { font-size:22px; font-style:italic; text-align:center; margin-bottom:18px; }
+  .company-panel-title { font-size:22px; font-style:italic; text-align:center; margin-bottom:18px; cursor:pointer; }
   .company-font-preview { font-family:'Cormorant Garamond',serif; font-size:34px; line-height:0.92; text-align:center; letter-spacing:3px; }
-  .company-keywords { font-size:22px; line-height:1.65; text-align:center; letter-spacing:3px; text-transform:uppercase; }
-  .company-note { position:relative; background:#ece9de; min-height:250px; padding:52px 20px 18px; background-image:linear-gradient(rgba(60,80,60,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(60,80,60,0.08) 1px,transparent 1px); background-size:22px 22px; }
-  .company-note .dash-clip { top:-25px; transform:translateX(-50%) scale(0.72); }
-  .company-note textarea { width:100%; min-height:150px; border:none; resize:vertical; outline:none; background:rgba(255,255,255,0.45); border-radius:6px; padding:12px; font-family:'Caveat',cursive; font-size:24px; }
+  .company-keywords { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+  .company-keyword-tag { font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:rgba(255,255,255,0.18); border-radius:999px; padding:6px 12px; }
+  .company-keyword-more { width:100%; text-align:center; margin-top:14px; background:none; border:none; color:#fff; opacity:0.8; font-size:20px; letter-spacing:3px; cursor:pointer; line-height:1; }
+  .company-note { position:relative; min-height:250px; padding:52px 20px 18px; background:url('assets/note-paper.png') center/cover no-repeat; }
+  .company-note .dash-clip { top:-75px; transform:translateX(-50%) scale(0.72); }
+  .company-note textarea { width:100%; min-height:150px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; border-radius:0; padding:12px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
+  .company-note textarea:focus { border-color:rgba(26,16,9,0.32); }
   .company-swatches { display:flex; flex-direction:column; gap:24px; align-items:center; }
   .company-swatch { width:72px; height:72px; border-radius:50%; border:0; padding:0; cursor:pointer; overflow:hidden; background:transparent; }
   .company-swatch::-webkit-color-swatch-wrapper { padding:0; }
   .company-swatch::-webkit-color-swatch { border:none; border-radius:50%; }
-  .company-fields { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:18px; }
-  .company-fields .input { margin-bottom:0; background:#fff; }
+  .company-swatch-add { width:72px; height:72px; border-radius:50%; border:1.5px dashed var(--border); background:#fff; color:var(--text-dim); font-size:26px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .company-name-input, .company-subtitle-input { border:none; background:transparent; outline:none; width:100%; }
+  .company-name-input:focus, .company-subtitle-input:focus { border-bottom:1.5px dashed var(--border); }
   @media (max-width:820px) {
     .cal-grid { gap:6px; }
     .cal-cell { min-height:94px; padding:7px; }
+    .cal-dh { font-size:15px; }
+    .planning-view-tab { padding:9px 13px; }
     .company-list { grid-template-columns:1fr; }
     .company-moodboard { grid-template-columns:1fr; }
     .company-swatches { flex-direction:row; justify-content:center; }
@@ -452,7 +483,10 @@
           <div class="companies-title">Mes entreprises</div>
           <div class="companies-sub">fiches moodboard</div>
         </div>
-        <div class="company-list" id="company-list"></div>
+        <div class="company-select" id="company-select">
+          <button class="company-select-btn" onclick="toggleCompanySelect()" id="company-select-btn"></button>
+          <div class="company-select-list" id="company-select-list"></div>
+        </div>
         <div id="company-detail"></div>
       </div>
       <input type="file" id="company-file-input" accept="image/*" style="display:none" onchange="handleCompanyFile(this.files);this.value=''">
@@ -465,12 +499,18 @@
           <div class="planning-title">Planning</div>
           <div class="planning-script" id="planning-week-title">de la semaine</div>
         </div>
+        <div class="planning-view-tabs">
+          <button class="planning-view-tab" id="pv-day" onclick="setPlanningView('day')">Jour</button>
+          <button class="planning-view-tab" id="pv-week" onclick="setPlanningView('week')">Semaine</button>
+          <button class="planning-view-tab active" id="pv-month" onclick="setPlanningView('month')">Mois</button>
+        </div>
         <div class="plan-month-nav">
-          <button class="mnav-btn" onclick="changeMonth(-1)">‹</button>
+          <button class="mnav-btn" onclick="changePlanningPeriod(-1)">‹</button>
           <div class="plan-month-label" id="cal-label"></div>
-          <button class="mnav-btn" onclick="changeMonth(1)">›</button>
+          <button class="mnav-btn" onclick="changePlanningPeriod(1)">›</button>
         </div>
         <div class="planning-actions">
+          <button class="planning-reset" onclick="promptAddRdv()">+ RDV</button>
           <button class="planning-reset" onclick="resetPlanning()">Reset planning</button>
         </div>
         <div class="cal-days-header">
@@ -627,10 +667,6 @@
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
       Contenu
     </button>
-    <button class="nav-btn" id="nb-companies" onclick="showPage('companies')">
-      <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-7h6v7"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
-      Entreprises
-    </button>
     <button class="nav-btn" id="nb-planning" onclick="showPage('planning')">
       <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       Planning
@@ -642,6 +678,10 @@
     <button class="nav-btn" id="nb-mini" onclick="showPage('mini')">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
       Miniature
+    </button>
+    <button class="nav-btn" id="nb-companies" onclick="showPage('companies')">
+      <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-7h6v7"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
+      Entreprises
     </button>
   </nav>
 
@@ -675,6 +715,30 @@
       <div class="form-row"><label class="input-label">Vidéo exemple</label><input class="input" id="ct-exemple" placeholder="https://tiktok.com/..."></div>
       <button class="btn btn-papaya" style="width:100%" onclick="createTrend()">Créer →</button>
       <div id="create-trend-msg" style="text-align:center;margin-top:10px;font-size:13px"></div>
+    </div>
+  </div>
+
+  <!-- MODAL AJOUTER RDV (Planning) -->
+  <div class="modal-overlay" id="modal-rdv">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Ajouter un RDV 📌</div>
+        <button class="modal-close" onclick="closeModal('modal-rdv')">✕</button>
+      </div>
+      <div class="form-row"><label class="input-label">Titre *</label><input class="input" id="rdv-titre" placeholder="Ex: Appel point mensuel"></div>
+      <div class="form-row"><label class="input-label">Client</label>
+        <select class="input" id="rdv-client">
+          <option value="">—</option>
+          <option value="lf">🍷 Le Foyer</option>
+          <option value="cpc">🃏 CPC</option>
+          <option value="cm">🗾 CM au Japon</option>
+        </select>
+      </div>
+      <div class="form-row"><label class="input-label">Date *</label><input class="input" id="rdv-date" type="date"></div>
+      <div class="form-row"><label class="input-label">Heure</label><input class="input" id="rdv-heure" type="time"></div>
+      <div class="form-row"><label class="input-label">Note</label><textarea class="input" id="rdv-note" rows="3" placeholder="Ordre du jour, lien visio..."></textarea></div>
+      <button class="btn btn-paradise" style="width:100%" onclick="createRdv()">Ajouter le RDV →</button>
+      <div id="rdv-msg" style="text-align:center;margin-top:10px;font-size:13px"></div>
     </div>
   </div>
 
@@ -742,9 +806,12 @@ const ACCOUNTS={
 let activeAccounts=new Set(['lf','cpc','cm']);
 let allTrends=[]; let trendsLoaded=false;
 let allSels=[]; let selsSaved=false;
+let allRdv=[];
 let selTrends={}; // {id:{date:''}}
 let planStates={};
 let curMonth=new Date().getMonth(); let curYear=new Date().getFullYear();
+let planningView='month';
+let selectedPlanDate=new Date();
 let dragId=null; let currentFicheId=null; let clientsCache={};
 let currentPage='trends'; let currentContentTab='trends';
 let currentCompany='lf'; let companyUploadTarget=null;
@@ -1009,12 +1076,39 @@ function updateDashboardWeekTitle(){
   const month=d.toLocaleDateString('fr-FR',{month:'long'});
   el.textContent=`de la semaine du ${d.getDate()} ${month}`;
 }
+function frenchMonth(date){
+  return date.toLocaleDateString('fr-FR',{month:'long'});
+}
+function deMonth(date){
+  const month=frenchMonth(date);
+  return /^[aeiouy]/i.test(month)?`D'${month}`:`De ${month}`;
+}
+function startOfWeek(date){
+  const d=new Date(date);
+  const day=d.getDay();
+  const diff=day===0?-6:1-day;
+  d.setDate(d.getDate()+diff);
+  d.setHours(0,0,0,0);
+  return d;
+}
+function dateISO(date){
+  return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+}
+function planningPeriodText(){
+  if(planningView==='day') return `Du ${selectedPlanDate.getDate()} ${frenchMonth(selectedPlanDate)}`;
+  if(planningView==='week'){
+    const start=startOfWeek(selectedPlanDate);
+    const end=new Date(start);
+    end.setDate(start.getDate()+6);
+    if(start.getMonth()===end.getMonth()) return `Du ${start.getDate()} au ${end.getDate()} ${frenchMonth(end)}`;
+    return `Du ${start.getDate()} ${frenchMonth(start)} au ${end.getDate()} ${frenchMonth(end)}`;
+  }
+  return deMonth(new Date(curYear,curMonth,1));
+}
 function updatePlanningWeekTitle(){
   const el=document.getElementById('planning-week-title');
   if(!el) return;
-  const d=new Date(curYear,curMonth,new Date().getDate());
-  const month=d.toLocaleDateString('fr-FR',{month:'long'});
-  el.textContent=`du ${d.getDate()} ${month}`;
+  el.textContent=planningPeriodText();
 }
 function dashboardFilteredTrends(query=''){
   const q=query.trim().toLowerCase();
@@ -1104,6 +1198,8 @@ function loadPlanningNotes(){
   if(el) el.value=readStore('Planning','notes','');
 }
 function initDashboard(){
+  planningView=readStore('Planning','view','month');
+  loadRdv();
   updateDashboardWeekTitle();
   loadPlanningNotes();
   loadDashboardNotes();
@@ -1122,8 +1218,8 @@ function defaultCompanyProfiles(){
       keywords:'#FOUÉES\n#CUISINE\nFRANÇAISE',
       font:'Cormorant Garamond',
       note:'Le Foyer est un bistrot et bar à vin français situé à Ebisu.',
-      logo:'',
-      photos:[]
+      logo:'assets/logo-lefoyer.png',
+      photos:['assets/lf-charcuterie.jpg','assets/lf-bavette-frites.jpg','assets/lf-fouees-vin.jpg']
     },
     cpc:{
       name:'CPC',
@@ -1132,8 +1228,8 @@ function defaultCompanyProfiles(){
       keywords:'#POKEMON\n#TCG\n#ONE PIECE',
       font:'Barlow Condensed',
       note:'CPC est un site d’import export spécialisé en TCG japonais.',
-      logo:'',
-      photos:[]
+      logo:'assets/logo-cpc.png',
+      photos:['assets/cpc-pikachu-card.png','assets/cpc-mew-card.png','assets/cpc-onepiece-box.png','assets/cpc-30th-banner.png']
     },
     cm:{
       name:'CM au Japon',
@@ -1150,7 +1246,12 @@ function defaultCompanyProfiles(){
 function companyProfiles(){
   const defaults=defaultCompanyProfiles();
   const saved=readStore('Companies','profiles',{});
-  return Object.fromEntries(Object.entries(defaults).map(([key,val])=>[key,{...val,...(saved[key]||{}),colors:(saved[key]?.colors||val.colors),photos:(saved[key]?.photos||val.photos)}]));
+  return Object.fromEntries(Object.entries(defaults).map(([key,val])=>[key,{...val,...(saved[key]||{}),
+    colors:(saved[key]?.colors?.length?saved[key].colors:val.colors),
+    photos:(saved[key]?.photos?.length?saved[key].photos:val.photos),
+    logo:(saved[key]?.logo||val.logo),
+    note:(saved[key]?.note||val.note)
+  }]));
 }
 function saveCompanyProfiles(profiles){
   writeStore('Companies','profiles',profiles);
@@ -1160,16 +1261,26 @@ function companyProfile(key=currentCompany){
 }
 function renderCompanies(){
   const profiles=companyProfiles();
-  const list=document.getElementById('company-list');
-  if(!list) return;
-  list.innerHTML=Object.entries(profiles).map(([key,c])=>`<button class="company-tile ${key===currentCompany?'active':''}" onclick="selectCompany('${key}')">
-    <div class="company-tile-name" style="color:${htmlSafe(c.colors[0])};font-family:${htmlSafe(c.font)},sans-serif">${htmlSafe(c.name)}</div>
-    <div class="company-tile-sub">${htmlSafe(c.subtitle)} · ${htmlSafe((c.keywords||'').split('\n')[0]||'moodboard')}</div>
+  const btn=document.getElementById('company-select-btn');
+  const list=document.getElementById('company-select-list');
+  if(!btn||!list) return;
+  const c=profiles[currentCompany];
+  btn.innerHTML=`<span class="company-select-logo">${c.logo?`<img src="${c.logo}" alt="">`:'🏢'}</span><span>${htmlSafe(c.name)}</span>`;
+  list.innerHTML=Object.entries(profiles).map(([key,co])=>`<button class="company-select-item ${key===currentCompany?'active':''}" onclick="selectCompany('${key}')">
+    <span class="company-select-logo">${co.logo?`<img src="${co.logo}" alt="">`:'🏢'}</span><span>${htmlSafe(co.name)}</span>
   </button>`).join('');
   renderCompanyDetail();
 }
+function toggleCompanySelect(){
+  document.getElementById('company-select-list')?.classList.toggle('open');
+}
+document.addEventListener('click',(e)=>{
+  const wrap=document.getElementById('company-select');
+  if(wrap&&!wrap.contains(e.target)) document.getElementById('company-select-list')?.classList.remove('open');
+});
 function selectCompany(key){
   currentCompany=key;
+  document.getElementById('company-select-list')?.classList.remove('open');
   renderCompanies();
 }
 function renderCompanyDetail(){
@@ -1178,41 +1289,39 @@ function renderCompanyDetail(){
   const c=companyProfile();
   const photos=[...(c.photos||[])];
   while(photos.length<4) photos.push('');
+  const keywordTags=(c.keywords||'').split('\n').filter(Boolean);
   el.innerHTML=`<div class="company-moodboard">
     <div class="company-left">
       <div class="company-logo" onclick="uploadCompanyAsset('logo')">${c.logo?`<img src="${c.logo}" alt="">`:'LOGO'}</div>
       <button class="company-upload" onclick="uploadCompanyAsset('logo')">Changer le logo</button>
+      <button class="company-upload" style="background:transparent;text-decoration:underline;padding-left:0" onclick="resetCompanyProfile()">↺ Réinitialiser cette fiche</button>
       <div class="company-photo-grid">
         ${photos.slice(0,3).map((src,i)=>`<button class="company-photo ${i===0?'large':''}" onclick="uploadCompanyAsset('photo-${i}')">${src?`<img src="${src}" alt="">`:'Ajouter photo'}</button>`).join('')}
       </div>
       <div class="company-panel" style="background:${htmlSafe(c.colors[0])}">
-        <div class="company-panel-title">Mes polices</div>
+        <div class="company-panel-title" onclick="editCompanyFont()">Mes polices</div>
         <div class="company-font-preview" style="font-family:${htmlSafe(c.font)},serif">ABCDEF<br>GHIJKL<br>MNOPQ<br>RSTUVW<br>XYZ</div>
       </div>
       <div class="company-panel" style="background:${htmlSafe(c.colors[2]||c.colors[0])}">
         <div class="company-panel-title">Mots clés</div>
-        <div class="company-keywords">${htmlSafe(c.keywords).replace(/\n/g,'<br>')}</div>
+        <div class="company-keywords">${keywordTags.map(k=>`<span class="company-keyword-tag">${htmlSafe(k)}</span>`).join('')}</div>
+        <button class="company-keyword-more" onclick="addCompanyKeyword()">•••</button>
       </div>
     </div>
     <div class="company-mid">
       <div>
-        <div class="companies-title" style="font-size:58px;color:${htmlSafe(c.colors[0])};font-family:${htmlSafe(c.font)},serif">${htmlSafe(c.name)}</div>
-        <div class="companies-sub">${htmlSafe(c.subtitle)}</div>
+        <input class="companies-title company-name-input" style="font-size:58px;color:${htmlSafe(c.colors[0])};font-family:${htmlSafe(c.font)},serif" value="${htmlSafe(c.name)}" oninput="saveCompanyField('name',this.value);renderCompanies()">
+        <input class="companies-sub company-subtitle-input" value="${htmlSafe(c.subtitle)}" oninput="saveCompanyField('subtitle',this.value)">
       </div>
       <div class="company-note">
         <div class="dash-clip" aria-hidden="true"></div>
         <textarea oninput="saveCompanyField('note',this.value)" placeholder="Notes de marque...">${htmlSafe(c.note)}</textarea>
       </div>
       <button class="company-photo" style="min-height:280px;width:100%" onclick="uploadCompanyAsset('photo-3')">${photos[3]?`<img src="${photos[3]}" alt="">`:'Ajouter une grande photo'}</button>
-      <div class="company-fields">
-        <input class="input" value="${htmlSafe(c.name)}" oninput="saveCompanyField('name',this.value)" placeholder="Nom entreprise">
-        <input class="input" value="${htmlSafe(c.subtitle)}" oninput="saveCompanyField('subtitle',this.value)" placeholder="Sous-titre">
-        <input class="input" value="${htmlSafe(c.font)}" oninput="saveCompanyField('font',this.value)" placeholder="Police">
-        <textarea class="input" rows="3" oninput="saveCompanyField('keywords',this.value)" placeholder="Mots clés">${htmlSafe(c.keywords)}</textarea>
-      </div>
     </div>
     <div class="company-swatches">
       ${c.colors.map((color,i)=>`<input class="company-swatch" type="color" value="${htmlSafe(color)}" oninput="saveCompanyColor(${i},this.value)">`).join('')}
+      <button class="company-swatch-add" onclick="addCompanyColor()">+</button>
     </div>
   </div>`;
 }
@@ -1225,6 +1334,39 @@ function saveCompanyColor(index,value){
   const profiles=companyProfiles();
   profiles[currentCompany].colors[index]=value;
   saveCompanyProfiles(profiles);
+  renderCompanyDetail();
+  renderCompanies();
+}
+function addCompanyColor(){
+  const profiles=companyProfiles();
+  profiles[currentCompany].colors.push('#CCCCCC');
+  saveCompanyProfiles(profiles);
+  renderCompanyDetail();
+}
+function editCompanyFont(){
+  const profiles=companyProfiles();
+  const current=profiles[currentCompany].font;
+  const next=prompt('Nom de la police (doit déjà être chargée dans la page, ex : Cormorant Garamond, Barlow Condensed)',current);
+  if(next===null||!next.trim())return;
+  profiles[currentCompany].font=next.trim();
+  saveCompanyProfiles(profiles);
+  renderCompanyDetail();
+  renderCompanies();
+}
+function addCompanyKeyword(){
+  const kw=prompt('Nouveau mot clé (ex : #BIENÊTRE)');
+  if(!kw||!kw.trim())return;
+  const profiles=companyProfiles();
+  const current=profiles[currentCompany].keywords||'';
+  profiles[currentCompany].keywords=current?current+'\n'+kw.trim():kw.trim();
+  saveCompanyProfiles(profiles);
+  renderCompanyDetail();
+}
+function resetCompanyProfile(){
+  if(!confirm('Réinitialiser cette fiche avec les valeurs par défaut (logo, photos, couleurs, texte) ? Tes modifications locales sur cette fiche seront perdues.'))return;
+  const saved=readStore('Companies','profiles',{});
+  delete saved[currentCompany];
+  writeStore('Companies','profiles',saved);
   renderCompanyDetail();
   renderCompanies();
 }
@@ -1594,27 +1736,139 @@ async function loadSels(force=false){
   if(currentPage==='planning') renderCal();
 }
 
-function changeMonth(dir){
-  curMonth+=dir;
-  if(curMonth>11){curMonth=0;curYear++;}
-  if(curMonth<0){curMonth=11;curYear--;}
+function setPlanningView(view){
+  planningView=view;
+  writeStore('Planning','view',view);
+  document.querySelectorAll('.planning-view-tab').forEach(btn=>btn.classList.remove('active'));
+  document.getElementById(`pv-${view}`)?.classList.add('active');
+  if(view==='month'){
+    curMonth=selectedPlanDate.getMonth();
+    curYear=selectedPlanDate.getFullYear();
+  }
   document.getElementById('day-detail').innerHTML='';
   renderCal();
 }
 
-function renderCal(){
-  document.getElementById('cal-label').textContent=`${MONTHS[curMonth]} ${curYear}`;
-  updatePlanningWeekTitle();
+function changePlanningPeriod(dir){
+  if(planningView==='day') selectedPlanDate.setDate(selectedPlanDate.getDate()+dir);
+  else if(planningView==='week') selectedPlanDate.setDate(selectedPlanDate.getDate()+(dir*7));
+  else {
+    curMonth+=dir;
+    if(curMonth>11){curMonth=0;curYear++;}
+    if(curMonth<0){curMonth=11;curYear--;}
+    selectedPlanDate=new Date(curYear,curMonth,Math.min(selectedPlanDate.getDate(),28));
+  }
+  curMonth=selectedPlanDate.getMonth();
+  curYear=selectedPlanDate.getFullYear();
+  document.getElementById('day-detail').innerHTML='';
+  renderCal();
+}
+
+function activePlanningRecords(){
+  const activeNames=[...activeAccounts].map(a=>ACCOUNTS[a].name);
+  return allSels.filter(r=>{
+    const title=r.fields['Titre']||'';
+    return activeNames.some(name=>title.includes(name));
+  });
+}
+function recordsForDate(date){
+  const iso=dateISO(date);
+  return activePlanningRecords().filter(r=>r.fields['Date de tournage prévue']===iso);
+}
+// ===== RDV (post-it) =====
+function loadRdv(){ allRdv=readStore('Planning','rdv',[]); }
+function saveAllRdv(){ writeStore('Planning','rdv',allRdv); }
+function rdvForDate(date){ const iso=dateISO(date); return allRdv.filter(r=>r.date===iso); }
+function rdvPostitHtml(r){
+  const time=r.heure?`${htmlSafe(r.heure)} · `:'';
+  const client=r.client?`<div class="rdv-postit-client">${htmlSafe(r.client)}</div>`:'';
+  return `<div class="rdv-postit" onclick="openRdvDetail('${r.id}')">
+    <div class="rdv-postit-title">📌 ${time}${htmlSafe(r.titre)}</div>
+    ${client}
+  </div>`;
+}
+function openRdvDetail(id){
+  const r=allRdv.find(x=>x.id===id); if(!r)return;
+  const infos=`RDV : ${r.titre}\n${r.client||''} ${r.heure||''}\n${r.note||''}`;
+  if(confirm(infos+'\n\nSupprimer ce RDV ?')){
+    allRdv=allRdv.filter(x=>x.id!==id);
+    saveAllRdv();
+    renderCal();
+  }
+}
+function promptAddRdv(){
+  document.getElementById('rdv-titre').value='';
+  document.getElementById('rdv-client').value='';
+  document.getElementById('rdv-date').value=dateISO(selectedPlanDate);
+  document.getElementById('rdv-heure').value='';
+  document.getElementById('rdv-note').value='';
+  document.getElementById('rdv-msg').textContent='';
+  openModal('modal-rdv');
+}
+function createRdv(){
+  const titre=document.getElementById('rdv-titre').value.trim();
+  const dateStr=document.getElementById('rdv-date').value;
+  if(!titre||!dateStr){document.getElementById('rdv-msg').textContent='⚠️ Titre et date obligatoires';document.getElementById('rdv-msg').style.color='#dc2626';return;}
+  const accKey=document.getElementById('rdv-client').value;
+  const client=accKey?ACCOUNTS[accKey].name:'';
+  const heure=document.getElementById('rdv-heure').value;
+  const note=document.getElementById('rdv-note').value.trim();
+  allRdv.push({id:'rdv-'+Date.now(),titre,client,date:dateStr,heure,note});
+  saveAllRdv();
+  document.getElementById('rdv-msg').textContent='✅ RDV ajouté !';
+  document.getElementById('rdv-msg').style.color='#2F4731';
+  setTimeout(()=>{closeModal('modal-rdv');renderCal();},600);
+}
+function planPillHtml(r,extraClass=''){
+  const title=htmlSafe((r.fields['Titre']||'Vidéo').replace(/\s—\s.*/,''));
+  const pc=`vpill ${pillClass(r)} ${accountClass(r)} ${extraClass}`;
+  return `<button class="${pc}" draggable="true" ondragstart="dragStart(event,'${r.id}')" ondragend="dragEnd(event)" onmousedown="startLP(event,'${r.id}')" onmouseup="cancelLP()" onmouseleave="cancelLP()" ontouchstart="startLP(event,'${r.id}')" ontouchend="cancelLP()" ontouchmove="cancelLP()" onclick="openFiche('${r.id}')">${title}</button>`;
+}
+function renderPlanningDay(){
+  const records=recordsForDate(selectedPlanDate);
+  const posts=records.filter(r=>!isStory(r));
+  const stories=records.filter(r=>isStory(r));
+  document.querySelector('.cal-days-header').style.display='none';
+  document.getElementById('cal-label').textContent=selectedPlanDate.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+  document.getElementById('cal-grid').innerHTML=`<div class="plan-day-layout" style="grid-column:1/-1">
+    <section class="plan-day-card large">
+      <div class="plan-day-title">Post</div>
+      <div class="plan-day-items">${posts.length?posts.map(r=>planPillHtml(r,'plan-day-pill')).join(''):'<div class="plan-day-empty">Aucun post prévu.</div>'}</div>
+    </section>
+    <section class="plan-day-card large">
+      <div class="plan-day-title">Story</div>
+      <div class="plan-day-items">${stories.length?stories.map(r=>planPillHtml(r,'plan-day-pill')).join(''):'<div class="plan-day-empty">Aucune story prévue.</div>'}</div>
+    </section>
+    <section class="plan-day-card large">
+      <div class="plan-day-title">RDV</div>
+      <div class="plan-day-items">${rdvForDate(selectedPlanDate).length?rdvForDate(selectedPlanDate).map(rdvPostitHtml).join(''):'<div class="plan-day-empty">Aucun RDV prévu.</div>'}</div>
+    </section>
+  </div>`;
+  setupTouchDrag();
+}
+function renderPlanningWeek(){
+  const start=startOfWeek(selectedPlanDate);
+  const today=new Date();
+  const days=[...Array(7)].map((_,i)=>{const d=new Date(start);d.setDate(start.getDate()+i);return d;});
+  document.querySelector('.cal-days-header').style.display='grid';
+  document.getElementById('cal-label').textContent=`Semaine ${start.getDate()}-${days[6].getDate()}`;
+  document.getElementById('cal-grid').innerHTML=days.map(date=>{
+    const isToday=today.toDateString()===date.toDateString();
+    const sels=recordsForDate(date);
+    return `<div class="cal-cell week-cell ${isToday?'today':''}" data-date="${dateISO(date)}" ondragover="dragOver(event)" ondrop="dropOnDate(event,'${dateISO(date)}')" ondragleave="this.classList.remove('drag-over')">
+      <div class="cal-dnum ${isToday?'today-n':''}">${date.getDate()}</div>
+      ${sels.map(r=>planPillHtml(r)).join('')}
+      ${rdvForDate(date).map(rdvPostitHtml).join('')}
+    </div>`;
+  }).join('');
+  setupTouchDrag();
+}
+function renderPlanningMonth(){
   const today=new Date();
   const firstDay=new Date(curYear,curMonth,1);
   const lastDay=new Date(curYear,curMonth+1,0);
   let startDow=firstDay.getDay();startDow=startDow===0?6:startDow-1;
-  // Filter by active accounts
-  const activeNames=[...activeAccounts].map(a=>ACCOUNTS[a].name);
-  const filtered=allSels.filter(r=>{
-    const title=r.fields['Titre']||'';
-    return activeNames.some(name=>title.includes(name));
-  });
+  const filtered=activePlanningRecords();
   const byDay={};
   filtered.forEach(r=>{
     const d=r.fields['Date de tournage prévue'];if(!d)return;
@@ -1623,24 +1877,40 @@ function renderCal(){
       const day=dt.getDate();if(!byDay[day])byDay[day]=[];byDay[day].push(r);
     }
   });
+  const byDayRdv={};
+  allRdv.forEach(r=>{
+    if(!r.date)return;
+    const dt=new Date(r.date);
+    if(dt.getMonth()===curMonth&&dt.getFullYear()===curYear){
+      const day=dt.getDate();if(!byDayRdv[day])byDayRdv[day]=[];byDayRdv[day].push(r);
+    }
+  });
+  document.querySelector('.cal-days-header').style.display='grid';
+  document.getElementById('cal-label').textContent=`${MONTHS[curMonth]} ${curYear}`;
   let html='';
   for(let i=0;i<startDow;i++)html+=`<div class="cal-cell empty"></div>`;
   for(let day=1;day<=lastDay.getDate();day++){
     const isToday=today.getDate()===day&&today.getMonth()===curMonth&&today.getFullYear()===curYear;
     const sels=byDay[day]||[];
+    const rdvs=byDayRdv[day]||[];
     html+=`<div class="cal-cell ${isToday?'today':''}" data-day="${day}" ondragover="dragOver(event,${day})" ondrop="dropOn(event,${day})" ondragleave="this.classList.remove('drag-over')">
       <div class="cal-dnum ${isToday?'today-n':''}">${day}</div>
-      ${sels.map(r=>{
-        const t=(r.fields['Titre']||'Vidéo').substring(0,14);
-        const pc=`${pillClass(r)} ${accountClass(r)}`;
-        return `<button class="vpill ${pc}" draggable="true" ondragstart="dragStart(event,'${r.id}')" ondragend="dragEnd(event)" onmousedown="startLP(event,'${r.id}')" onmouseup="cancelLP()" onmouseleave="cancelLP()" ontouchstart="startLP(event,'${r.id}')" ontouchend="cancelLP()" ontouchmove="cancelLP()" onclick="openFiche('${r.id}')">${t}</button>`;
-      }).join('')}
+      ${sels.map(r=>planPillHtml(r)).join('')}
+      ${rdvs.map(rdvPostitHtml).join('')}
     </div>`;
   }
   const rem=(startDow+lastDay.getDate())%7;
   if(rem>0)for(let i=0;i<7-rem;i++)html+=`<div class="cal-cell empty"></div>`;
   document.getElementById('cal-grid').innerHTML=html;
   setupTouchDrag();
+}
+function renderCal(){
+  document.querySelectorAll('.planning-view-tab').forEach(btn=>btn.classList.remove('active'));
+  document.getElementById(`pv-${planningView}`)?.classList.add('active');
+  updatePlanningWeekTitle();
+  if(planningView==='day') return renderPlanningDay();
+  if(planningView==='week') return renderPlanningWeek();
+  return renderPlanningMonth();
 }
 
 // Long press delete
@@ -1662,6 +1932,14 @@ async function dropOn(e,day){
   e.preventDefault();e.currentTarget.classList.remove('drag-over');
   const id=e.dataTransfer?.getData('text/plain')||dragId;if(!id)return;
   const newDate=`${curYear}-${String(curMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+  await moveSelectionToDate(id,newDate);
+}
+async function dropOnDate(e,newDate){
+  e.preventDefault();e.currentTarget.classList.remove('drag-over');
+  const id=e.dataTransfer?.getData('text/plain')||dragId;if(!id)return;
+  await moveSelectionToDate(id,newDate);
+}
+async function moveSelectionToDate(id,newDate){
   const r=allSels.find(r=>r.id===id);
   if(r){r.fields['Date de tournage prévue']=newDate;await atUpdate('Sélections',id,{'Date de tournage prévue':newDate});renderCal();}
   dragId=null;
@@ -1687,15 +1965,14 @@ function setupTouchDrag(){
     pill.addEventListener('touchend',async e=>{
       if(!clone||!tdId)return;
       const t=e.changedTouches[0];
-      const cell=document.elementFromPoint(t.clientX,t.clientY)?.closest('.cal-cell[data-day]');
+      const cell=document.elementFromPoint(t.clientX,t.clientY)?.closest('.cal-cell[data-day],.cal-cell[data-date]');
       clone.remove();clone=null;
       document.querySelectorAll('.vpill').forEach(p=>p.classList.remove('dragging'));
       document.querySelectorAll('.cal-cell').forEach(c=>c.classList.remove('drag-over'));
       if(cell){
         const day=parseInt(cell.dataset.day);
-        const newDate=`${curYear}-${String(curMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-        const r=allSels.find(r=>r.id===tdId);
-        if(r){r.fields['Date de tournage prévue']=newDate;await atUpdate('Sélections',tdId,{'Date de tournage prévue':newDate});renderCal();}
+        const newDate=cell.dataset.date||`${curYear}-${String(curMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+        await moveSelectionToDate(tdId,newDate);
       }
       tdId=null;
     },{passive:true});
