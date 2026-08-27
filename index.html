@@ -85,14 +85,12 @@
   .dashboard-page { max-width:980px; margin:0 auto; }
   .dash-hero { text-align:center; padding:48px 0 34px; }
   .dash-stats-row { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:28px; }
-  .dash-stat-card { background:#fff; border:1.5px solid var(--border); border-radius:16px; padding:16px 14px; }
+  .dash-stat-card { background:var(--surface); border:none; border-radius:16px; padding:16px 14px; }
   .dash-stat-icon { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
   .dash-stat-icon svg { width:18px; height:18px; }
-  .dsi-1 { background:#FBEADD; color:#C9762E; }
-  .dsi-2 { background:#E4EAE1; color:var(--fuschia); }
-  .dsi-3 { background:#F6E3D9; color:#B85C3E; }
-  .dsi-4 { background:#E9E3F2; color:var(--purple); }
-  .dsi-5 { background:#EDEFE5; color:#6B7A5E; }
+  .dsi-green { background:#E4EAE1; color:var(--fuschia); }
+  .dsi-orange { background:#FBEADD; color:var(--papaya); }
+  .dsi-lin { background:var(--surface2); color:#8a7355; }
   .dash-stat-num { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:700; line-height:1; color:#0d0a07; }
   .dash-stat-label { font-size:12.5px; color:var(--text-dim); margin-top:4px; line-height:1.3; }
   .dash-stat-link { display:block; margin-top:10px; font-size:11.5px; font-weight:700; color:var(--fuschia); text-decoration:none; cursor:pointer; }
@@ -100,17 +98,14 @@
     .dash-stats-row { grid-template-columns:repeat(2,1fr); }
   }
   .dash-title { font-family:'Cormorant Garamond',serif; font-size:clamp(46px,10vw,96px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
-  .dash-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(34px,7vw,62px); color:var(--fuschia); line-height:0.72; font-weight:700; transform:translateY(-2px); }
-  .dashboard-grid { display:grid; grid-template-columns:minmax(220px,0.75fr) minmax(320px,1.45fr); gap:24px; align-items:start; }
+  .dash-script { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(28px,5.5vw,44px); color:var(--fuschia); line-height:1; font-weight:600; }
+  .dashboard-grid { display:flex; flex-direction:column; gap:26px; }
   .dash-card { background:#fff; border:none; border-radius:8px; padding:22px; box-shadow:none; }
   .dash-card-title { font-family:'Cormorant Garamond',serif; font-size:25px; font-weight:700; letter-spacing:0; text-transform:uppercase; text-align:center; margin-bottom:24px; color:#0d0a07; }
-  .dash-news-list { display:flex; flex-direction:column; gap:18px; }
-  .dash-news-item { display:grid; grid-template-columns:58px 1fr; gap:14px; align-items:center; min-height:58px; cursor:pointer; }
-  .dash-hash { width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:31px; font-family:'DM Sans',sans-serif; font-weight:500; }
-  .dash-hash.c1 { background:#ef7200; }
-  .dash-hash.c2 { background:#f69aa5; }
-  .dash-hash.c3 { background:#f7b919; }
-  .dash-news-text { font-size:22px; line-height:1.2; letter-spacing:1px; }
+  .dash-news-list { display:flex; gap:16px; }
+  .dash-news-item { flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px; cursor:pointer; }
+  .dash-hash { width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; font-family:'DM Sans',sans-serif; font-weight:700; }
+  .dash-news-text { font-size:15px; line-height:1.25; font-weight:700; color:var(--text); }
   .dash-ideas { background:#d8ccc7; border-radius:34px; padding:0 0 22px; overflow:hidden; min-height:230px; }
   .dash-search { height:52px; background:#fff; border-radius:28px; display:flex; align-items:center; gap:12px; padding:0 18px 0 32px; }
   .dash-search input { flex:1; min-width:0; border:none; outline:none; font-family:'DM Mono',monospace; font-size:13px; letter-spacing:3px; text-transform:uppercase; background:transparent; color:#15100e; }
@@ -118,24 +113,41 @@
   .dash-search-icon::after { content:''; position:absolute; width:10px; height:3px; background:#171413; right:-8px; bottom:-5px; transform:rotate(45deg); border-radius:2px; }
   .dash-idea-results { padding:14px 40px; display:flex; flex-direction:column; gap:14px; }
   .dash-idea-row { font-family:'DM Mono',monospace; font-size:18px; letter-spacing:1px; cursor:pointer; }
-  .dash-trends-card { margin-top:28px; padding:32px 26px; border-radius:12px; }
-  .dash-main-col { display:flex; flex-direction:column; gap:26px; }
-  .dash-note-card { position:relative; border-radius:0; min-height:330px; padding:66px 28px 24px; background:url('assets/note-paper.png') center/cover no-repeat; margin-top:22px; }
+  .dash-trends-card { padding:26px; border-radius:12px; }
+  .dash-trend-row { display:flex; gap:16px; overflow-x:auto; padding-bottom:6px; }
+  .dash-trend-card { flex:0 0 240px; background:var(--surface); border-radius:18px; overflow:hidden; cursor:pointer; scroll-snap-align:start; }
+  .dash-trend-row { scroll-snap-type:x proximity; }
+  .dash-trend-img-wrap { position:relative; height:150px; background:var(--surface2); }
+  .dash-trend-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+  .dash-trend-num { position:absolute; top:10px; left:10px; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:800; font-family:'DM Sans',sans-serif; }
+  .dash-trend-card.no-img .dash-trend-num { position:static; margin:14px 0 0 14px; }
+  .dash-trend-body { padding:14px 14px 16px; }
+  .dash-trend-title { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; line-height:1.15; margin-bottom:6px; }
+  .dash-trend-desc { font-size:12px; color:var(--text-dim); line-height:1.35; margin-bottom:10px; }
+  .dash-trend-tags { display:flex; flex-wrap:wrap; gap:6px; }
+  .dash-trend-tag { font-size:10.5px; font-weight:700; color:var(--text-dim); background:var(--surface2); border-radius:999px; padding:3px 9px; }
+  .dash-trend-card.selected { box-shadow:0 0 0 2px var(--papaya); }
+  .dash-notes-row { display:flex; gap:18px; flex-wrap:wrap; }
+  .dash-note-card { position:relative; flex:1 1 260px; min-width:220px; border-radius:0; min-height:330px; padding:66px 24px 22px; background:url('assets/note-paper.png') center/cover no-repeat; }
+  .dash-note-card.note-green { background-image:url('assets/note-paper-green.png'); }
+  .dash-note-remove { position:absolute; top:8px; right:10px; background:none; border:none; font-size:14px; color:rgba(0,0,0,0.4); cursor:pointer; }
+  .dash-note-add { flex:0 0 90px; min-height:330px; border-radius:16px; border:1.5px dashed var(--border); background:transparent; color:var(--text-dim); font-size:32px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .dash-clip { position:absolute; top:-62px; left:50%; transform:translateX(-50%); width:132px; height:132px; background:url('assets/binder-clip.png') center/contain no-repeat; pointer-events:none; }
   .dash-note-title { font-family:'Cormorant Garamond',serif; font-size:29px; text-align:center; text-transform:uppercase; margin-bottom:14px; color:#0a0807; }
   .dash-note-area { width:100%; min-height:170px; resize:vertical; border:1.5px dashed transparent; background:transparent; border-radius:0; padding:14px; outline:none; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
   .dash-note-area:focus { border-color:rgba(26,16,9,0.32); }
-  .dash-photo-row { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; align-items:center; }
-  .dash-photo-btn { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:9px 15px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
-  .dash-photos { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
-  .dash-photo { width:112px; height:138px; object-fit:cover; background:#fff; border:8px solid #fff; box-shadow:0 8px 18px rgba(0,0,0,0.12); transform:rotate(-5deg); }
+  .dash-photo-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; align-items:center; }
+  .dash-photo-btn { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:8px 13px; font-size:11px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .dash-photos { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  .dash-photo { width:88px; height:110px; object-fit:cover; background:#fff; border:6px solid #fff; box-shadow:0 8px 18px rgba(0,0,0,0.12); transform:rotate(-5deg); }
   .dash-photo:nth-child(even) { transform:rotate(6deg); }
   .dash-photo-empty { font-size:12px; color:rgba(0,0,0,0.45); font-family:'DM Mono',monospace; }
   @media (max-width:640px) {
     .dash-hero { padding:34px 0 24px; }
-    .dashboard-grid { grid-template-columns:1fr; gap:18px; }
     .dash-ideas { border-radius:24px; }
     .dash-card { padding:20px; }
+    .dash-news-list { flex-wrap:wrap; }
+    .dash-news-item { flex:1 1 30%; }
   }
   .feed-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
   .feed-title { font-size:20px; font-weight:700; }
@@ -441,36 +453,24 @@
         </div>
         <div class="dash-stats-row" id="dash-stats-row"></div>
         <div class="dashboard-grid">
-          <div>
-            <section class="dash-card">
-              <div class="dash-card-title">Actualités</div>
-              <div class="dash-news-list" id="dashboard-news"></div>
-            </section>
-            <section class="dash-card dash-trends-card">
-              <div class="dash-card-title">Trends</div>
-              <div id="trends-content"><div class="loading"><div class="spinner"></div>Chargement...</div></div>
-            </section>
-          </div>
-          <div class="dash-main-col">
-            <section class="dash-ideas">
-              <div class="dash-search">
-                <input id="dash-search-input" placeholder="SUCCESS" oninput="renderIdeaResults(this.value)">
-                <span class="dash-search-icon"></span>
-              </div>
-              <div class="dash-idea-results" id="dash-idea-results"></div>
-            </section>
-            <section class="dash-note-card">
-              <div class="dash-clip" aria-hidden="true"></div>
-              <div class="dash-note-title">Notes</div>
-              <textarea class="dash-note-area" id="dash-notes" placeholder="Notes, idées libres, rappels client..." oninput="saveDashboardNotes()"></textarea>
-              <div class="dash-photo-row">
-                <button class="dash-photo-btn" onclick="document.getElementById('dash-photo-input').click()">Ajouter photo</button>
-                <button class="dash-photo-btn" onclick="clearDashboardPhotos()">Vider photos</button>
-                <input id="dash-photo-input" type="file" accept="image/*" multiple style="display:none" onchange="addDashboardPhotos(this.files);this.value=''">
-              </div>
-              <div class="dash-photos" id="dash-photos"></div>
-            </section>
-          </div>
+          <section class="dash-card">
+            <div class="dash-card-title">Actualités</div>
+            <div class="dash-news-list" id="dashboard-news"></div>
+          </section>
+          <section class="dash-ideas">
+            <div class="dash-search">
+              <input id="dash-search-input" placeholder="Idées créatives" oninput="renderIdeaResults(this.value)">
+              <span class="dash-search-icon"></span>
+            </div>
+            <div class="dash-idea-results" id="dash-idea-results"></div>
+          </section>
+          <section class="dash-card dash-trends-card">
+            <div class="dash-card-title">Trends</div>
+            <div id="trends-content"><div class="loading"><div class="spinner"></div>Chargement...</div></div>
+          </section>
+          <section>
+            <div class="dash-notes-row" id="dash-notes-row"></div>
+          </section>
         </div>
       </div>
       <div class="selbar" id="selbar">
@@ -1159,8 +1159,9 @@ function renderDashboardNews(records=dashboardFilteredTrends()){
     {id:'fb-news-3',fields:{'Titre de la trend':'idée chaude'}}
   ];
   const items=(records.length?records:fallback).slice(0,3);
+  const cls=['dsi-green','dsi-orange','dsi-lin'];
   el.innerHTML=items.map((r,i)=>`<div class="dash-news-item" onclick="${allTrends.some(t=>t.id===r.id)?`toggleTrend('${r.id}')`:''}">
-    <div class="dash-hash c${(i%3)+1}">#</div>
+    <div class="dash-hash ${cls[i%3]}">#</div>
     <div class="dash-news-text">${htmlSafe(toHashtag(dashboardTitle(r)))}</div>
   </div>`).join('');
 }
@@ -1205,27 +1206,69 @@ function renderDashboardStats(){
     <a class="dash-stat-link" onclick="${s.go}">${s.link} →</a>
   </div>`).join('');
 }
-function saveDashboardNotes(){
-  const el=document.getElementById('dash-notes');
-  if(el) writeStore('Dashboard','notes',el.value);
+function dashboardNotesList(){
+  const list=readStore('Dashboard','notesList',null);
+  if(list&&list.length) return list;
+  const legacyText=readStore('Dashboard','notes','');
+  const legacyPhotos=readStore('Dashboard','photos',[]);
+  return [{id:'n0',color:'beige',text:legacyText,photos:legacyPhotos}];
 }
-function loadDashboardNotes(){
-  const el=document.getElementById('dash-notes');
-  if(el) el.value=readStore('Dashboard','notes','');
+function saveDashboardNotesList(list){
+  writeStore('Dashboard','notesList',list);
 }
-function dashboardPhotos(){
-  return readStore('Dashboard','photos',[]);
+function noteColorForIndex(i){
+  return i===1?'green':'beige';
 }
-function saveDashboardPhotos(photos){
-  writeStore('Dashboard','photos',photos.slice(0,4));
-}
-function renderDashboardPhotos(){
-  const el=document.getElementById('dash-photos');
+function renderDashboardNotes(){
+  const el=document.getElementById('dash-notes-row');
   if(!el) return;
-  const photos=dashboardPhotos();
-  el.innerHTML=photos.length
-    ? photos.map(src=>`<img class="dash-photo" src="${src}" alt="">`).join('')
-    : '<div class="dash-photo-empty">Ajoute des photos de refs ici.</div>';
+  const notes=dashboardNotesList();
+  el.innerHTML=notes.map((n,i)=>`<div class="dash-note-card ${n.color==='green'?'note-green':''}">
+    <div class="dash-clip" aria-hidden="true"></div>
+    ${notes.length>1?`<button class="dash-note-remove" onclick="removeDashboardNote('${n.id}')">✕</button>`:''}
+    <div class="dash-note-title">Notes</div>
+    <textarea class="dash-note-area" placeholder="Notes, idées libres, rappels client..." oninput="updateDashboardNoteText('${n.id}',this.value)">${htmlSafe(n.text)}</textarea>
+    <div class="dash-photo-row">
+      <button class="dash-photo-btn" onclick="document.getElementById('dnp-${n.id}').click()">Ajouter photo</button>
+      <button class="dash-photo-btn" onclick="clearDashboardNotePhotos('${n.id}')">Vider photos</button>
+      <input id="dnp-${n.id}" type="file" accept="image/*" multiple style="display:none" onchange="addDashboardNotePhotos('${n.id}',this.files);this.value=''">
+    </div>
+    <div class="dash-photos">${(n.photos||[]).length?(n.photos||[]).map(src=>`<img class="dash-photo" src="${src}" alt="">`).join(''):'<div class="dash-photo-empty">Ajoute des photos de refs ici.</div>'}</div>
+  </div>`).join('')
+  +(notes.length<3?`<button class="dash-note-add" onclick="addDashboardNote()">+</button>`:'');
+}
+function updateDashboardNoteText(id,val){
+  const notes=dashboardNotesList();
+  const n=notes.find(x=>x.id===id);
+  if(n){n.text=val;saveDashboardNotesList(notes);}
+}
+function addDashboardNote(){
+  const notes=dashboardNotesList();
+  if(notes.length>=3) return;
+  notes.push({id:'n'+Date.now(),color:noteColorForIndex(notes.length),text:'',photos:[]});
+  saveDashboardNotesList(notes);
+  renderDashboardNotes();
+}
+function removeDashboardNote(id){
+  let notes=dashboardNotesList().filter(n=>n.id!==id);
+  if(!notes.length) notes=[{id:'n0',color:'beige',text:'',photos:[]}];
+  saveDashboardNotesList(notes);
+  renderDashboardNotes();
+}
+async function addDashboardNotePhotos(id,files){
+  const incoming=await Promise.all([...files].slice(0,4).map(fileToDataUrl));
+  const notes=dashboardNotesList();
+  const n=notes.find(x=>x.id===id);
+  if(n){
+    n.photos=(n.photos||[]).concat(incoming.filter(Boolean)).slice(0,4);
+    saveDashboardNotesList(notes);
+    renderDashboardNotes();
+  }
+}
+function clearDashboardNotePhotos(id){
+  const notes=dashboardNotesList();
+  const n=notes.find(x=>x.id===id);
+  if(n){n.photos=[];saveDashboardNotesList(notes);renderDashboardNotes();}
 }
 function fileToDataUrl(file){
   return new Promise(resolve=>{
@@ -1234,16 +1277,6 @@ function fileToDataUrl(file){
     reader.onerror=()=>resolve(null);
     reader.readAsDataURL(file);
   });
-}
-async function addDashboardPhotos(files){
-  const incoming=await Promise.all([...files].slice(0,4).map(fileToDataUrl));
-  const photos=dashboardPhotos().concat(incoming.filter(Boolean)).slice(0,4);
-  saveDashboardPhotos(photos);
-  renderDashboardPhotos();
-}
-function clearDashboardPhotos(){
-  saveDashboardPhotos([]);
-  renderDashboardPhotos();
 }
 function savePlanningNotes(){
   const el=document.getElementById('planning-notes');
@@ -1258,8 +1291,7 @@ function initDashboard(){
   loadRdv();
   updateDashboardWeekTitle();
   loadPlanningNotes();
-  loadDashboardNotes();
-  renderDashboardPhotos();
+  renderDashboardNotes();
   renderDashboardNews();
   renderIdeaResults();
   renderDashboardStats();
@@ -1465,7 +1497,7 @@ function renderTrends(){
   renderIdeaResults(document.getElementById('dash-search-input')?.value||'');
   renderDashboardStats();
   if(!filtered.length){el.innerHTML='<div class="empty">Aucune trend — appuie sur + pour en créer une</div>';return;}
-  el.innerHTML='<div class="feed-list">'+filtered.map((r,i)=>tFeedCard(r,i)).join('')+'</div>'
+  el.innerHTML='<div class="dash-trend-row">'+filtered.map((r,i)=>tFeedCard(r,i)).join('')+'</div>'
     +'<div style="text-align:center;padding:20px 0"><button onclick="openModal(\'modal-trend\')" style="width:52px;height:52px;border-radius:50%;background:var(--papaya);color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 12px rgba(189,104,9,0.3)">+</button></div>';
 }
 
@@ -1477,33 +1509,36 @@ function tFeedCard(r,i=0){
   const music=f['Nom de la musique']||'';
   const reseaux=[].concat(f['Réseaux']||[]);
   const niches=[].concat(f['Niches compatibles']||[]);
+  const image=f['Image']||f['Photo']||f['Miniature URL']||'';
   const isSel=!!selTrends[r.id];
-  const numCls=['n1','n2','n3'][i%3];
-  return `<div class="trend-feed-card ${isSel?'selected':''}" id="tfc-${r.id}">
-    <div class="trend-feed-top">
-      <div class="tfc-num ${numCls}">${(i%3)+1}</div>
-      <div class="ttitle">${title}</div>
-      <div class="tmeta">
-        ${diff?`<span class="tag ${diff==='Facile'?'tag-fuschia':diff==='Moyen'?'tag-papaya':'tag-paradise'}">${diff}</span>`:''}
-        ${reseaux.map(r=>`<span class="tag tag-gray">${r}</span>`).join('')}
-      </div>
-      ${desc?`<div class="tdesc">${desc}</div>`:''}
+  const numColor=['var(--fuschia)','var(--papaya)','#8a7355'][i%3];
+  return `<div class="dash-trend-card ${image?'':'no-img'} ${isSel?'selected':''}" id="tfc-${r.id}">
+    ${image
+      ?`<div class="dash-trend-img-wrap"><img src="${image}" alt=""><div class="dash-trend-num" style="background:${numColor}">${(i%3)+1}</div></div>`
+      :`<div class="dash-trend-num" style="background:${numColor}">${(i%3)+1}</div>`}
+    <div class="dash-trend-body">
+      <div class="dash-trend-title">${title}</div>
+      ${desc?`<div class="dash-trend-desc">${desc}</div>`:''}
       ${music?`<div class="tmusic">♪ ${music}</div>`:''}
-    </div>
-    ${niches.length?`<div class="trend-feed-niches">${niches.map(n=>`<span class="trend-feed-niche-tag">#${htmlSafe(n)}</span>`).join('')}</div>`:''}
-    <div class="trend-feed-actions">
-      <div class="tfa-left">
-        <div class="tcheck-row" onclick="toggleTrend('${r.id}')">
-          <div class="tcheck-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <span>${isSel?'Sélectionnée':'Sélectionner'}</span>
-        </div>
+      <div class="dash-trend-tags">
+        ${diff?`<span class="tag ${diff==='Facile'?'tag-fuschia':diff==='Moyen'?'tag-papaya':'tag-paradise'}">${diff}</span>`:''}
+        ${reseaux.map(rs=>`<span class="dash-trend-tag">${rs}</span>`).join('')}
       </div>
-      <button class="del-btn" onclick="deleteTrend('${r.id}')">🗑</button>
+      ${niches.length?`<div class="dash-trend-tags" style="margin-top:6px">${niches.map(n=>`<span class="dash-trend-tag">#${htmlSafe(n)}</span>`).join('')}</div>`:''}
+      <div class="trend-feed-actions" style="padding:10px 0 0;border-top:none;margin-top:8px">
+        <div class="tfa-left">
+          <div class="tcheck-row" onclick="toggleTrend('${r.id}')">
+            <div class="tcheck-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>${isSel?'Sélectionnée':'Sélectionner'}</span>
+          </div>
+        </div>
+        <button class="del-btn" onclick="deleteTrend('${r.id}')">🗑</button>
+      </div>
+      ${isSel?`<div style="padding-top:10px;display:flex;gap:8px;align-items:center">
+        <input type="date" class="date-mini-input" style="flex:1" id="date-${r.id}" value="${selTrends[r.id]?.date||''}" onchange="setTrendDate('${r.id}',this.value)">
+        <button onclick="addOneTrend('${r.id}')" style="padding:8px 14px;border-radius:8px;background:var(--fuschia);color:#fff;border:none;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif">Ajouter →</button>
+      </div>`:''}
     </div>
-    ${isSel?`<div style="padding:0 16px 14px;display:flex;gap:8px;align-items:center">
-      <input type="date" class="date-mini-input" style="flex:1" id="date-${r.id}" placeholder="Date (optionnel)" value="${selTrends[r.id]?.date||''}" onchange="setTrendDate('${r.id}',this.value)">
-      <button onclick="addOneTrend('${r.id}')" style="padding:8px 14px;border-radius:8px;background:var(--fuschia);color:#fff;border:none;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif">Ajouter →</button>
-    </div>`:''}
   </div>`;
 }
 
