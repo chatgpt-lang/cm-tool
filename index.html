@@ -120,6 +120,7 @@
   .dash-idea-row { font-family:'DM Mono',monospace; font-size:13px; letter-spacing:1px; cursor:pointer; background:rgba(255,255,255,0.55); border-radius:999px; padding:8px 12px; white-space:nowrap; }
   .dash-trends-card { padding:16px; border-radius:12px; background:#fff8f1; }
   .dash-trends-title { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:16px; }
+  .dash-trends-flame { width:28px; height:28px; object-fit:contain; margin-left:-4px; }
   .dash-trends-count { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:800; text-transform:none; color:#806b55; background:#eee3d8; border-radius:999px; padding:6px 12px; }
   .dash-trend-row { display:flex; gap:18px; overflow-x:auto; padding:0 2px 6px; scroll-snap-type:x proximity; align-items:stretch; }
   .dash-trend-card { flex:0 0 250px; background:#fff; border-radius:16px; overflow:visible; cursor:pointer; scroll-snap-align:start; position:relative; box-shadow:0 10px 28px rgba(67,45,26,0.08); padding-bottom:12px; }
@@ -136,6 +137,8 @@
   .dash-trend-desc { font-size:11px; color:var(--text-dim); line-height:1.25; margin-bottom:8px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
   .dash-trend-tags { display:flex; flex-wrap:wrap; gap:6px; }
   .dash-trend-tag, .dash-trend-pill { font-size:10px; font-weight:800; color:#806b55; background:#f1ece6; border-radius:999px; padding:5px 8px; }
+  .dash-trend-pill { display:inline-flex; align-items:center; gap:5px; }
+  .dash-network-icon { width:15px; height:15px; object-fit:contain; border-radius:4px; }
   .dash-trend-meta { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:8px 0; }
   .dash-trend-score { width:54px; height:54px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:14px; font-weight:900; color:#21170f; background:conic-gradient(var(--papaya) calc(var(--score)*1%), #f1ece6 0); position:relative; flex-shrink:0; }
   .dash-trend-score::before { content:''; position:absolute; inset:5px; border-radius:50%; background:#fff; }
@@ -394,15 +397,18 @@
   }
 
   /* ===== PAGE ANALYSE ===== */
-  .analysis-page { max-width:1120px; margin:0 auto; }
+  .analysis-page { max-width:1120px; margin:0 auto; --analysis-1:var(--papaya); --analysis-2:var(--fuschia); --analysis-3:var(--paradise); }
   .analysis-workspace { display:flex; flex-direction:column; gap:18px; }
   .analysis-capture-panel { background:var(--surface); border:none; border-radius:8px; padding:16px; }
   .analysis-sheet { width:min(100%,760px); aspect-ratio:1/1.414; min-height:0; margin:0 auto; background:#fff; border-radius:12px; padding:34px; box-shadow:0 18px 48px rgba(26,16,9,0.10); overflow:auto; }
   .analysis-hero { text-align:left; padding:0 0 20px; }
   .analysis-title { font-family:'Cormorant Garamond',serif; font-size:clamp(44px,7vw,72px); line-height:0.82; font-weight:700; text-transform:uppercase; color:#080604; }
-  .analysis-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(24px,4vw,42px); color:#ff7b7d; line-height:0.8; font-weight:700; margin-left:90px; }
+  .analysis-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(24px,4vw,42px); color:var(--analysis-1); line-height:0.9; font-weight:700; margin-left:90px; display:flex; align-items:flex-end; gap:8px; flex-wrap:wrap; }
+  .analysis-month-input { width:min(100%,260px); border:none; border-bottom:1.5px dashed color-mix(in srgb, var(--analysis-1), transparent 45%); outline:none; background:transparent; font:inherit; color:var(--analysis-1); padding:0 0 3px; }
   .analysis-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:14px; }
-  .analysis-card { background:var(--surface); border:none; border-radius:8px; padding:14px; min-height:112px; }
+  .analysis-card { background:color-mix(in srgb, var(--analysis-1), white 88%); border:none; border-radius:8px; padding:14px; min-height:112px; }
+  .analysis-card:nth-child(2) { background:color-mix(in srgb, var(--analysis-2), white 88%); }
+  .analysis-card:nth-child(3) { background:color-mix(in srgb, var(--analysis-3), white 88%); }
   .analysis-card-kicker { font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; }
   .analysis-card-value { font-family:'Cormorant Garamond',serif; font-size:42px; line-height:1; color:var(--text); }
   .analysis-card-sub { font-size:12px; color:var(--text-dim); margin-top:8px; line-height:1.35; }
@@ -415,12 +421,15 @@
   .analysis-upload { border:1.5px dashed var(--border); background:var(--surface); border-radius:10px; color:var(--text-dim); width:82px; height:138px; flex:0 0 82px; font-family:'DM Sans',sans-serif; font-weight:800; cursor:pointer; }
   .analysis-content-list { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
   .analysis-content-card { background:var(--surface); border-radius:12px; padding:12px; min-height:126px; display:flex; flex-direction:column; gap:7px; }
-  .analysis-content-rank { width:32px; height:32px; border-radius:50%; background:var(--papaya); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:900; }
+  .analysis-content-rank { width:32px; height:32px; border-radius:50%; background:var(--analysis-1); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:900; }
+  .analysis-content-card:nth-child(2) .analysis-content-rank { background:var(--analysis-2); }
+  .analysis-content-card:nth-child(3) .analysis-content-rank { background:var(--analysis-3); }
   .analysis-content-card input { border:none; border-bottom:1.5px dashed rgba(0,0,0,0.18); background:transparent; outline:none; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:700; padding:4px 0; }
   .analysis-ai-box { background:var(--surface); color:var(--text); border:1.5px solid var(--border); border-radius:12px; padding:14px; font-size:13px; line-height:1.45; outline:none; min-height:108px; }
   .analysis-ai-box:focus { border-color:rgba(26,16,9,0.36); }
-  .analysis-ai-box strong { color:var(--papaya); }
-  .analysis-export-btn { border:none; background:var(--papaya); color:#fff; border-radius:999px; padding:9px 16px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .analysis-ai-box strong { color:var(--analysis-1); }
+  .analysis-export-wrap { width:min(100%,760px); margin:14px auto 0; display:flex; justify-content:center; }
+  .analysis-export-btn { border:none; background:var(--analysis-1); color:#fff; border-radius:999px; padding:11px 22px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
   .analysis-note { width:min(100%,760px); margin:8px auto 0; background:#d8ccc7; border-radius:14px; padding:18px; }
   .analysis-note-paper { background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; padding:48px 20px 18px; min-height:180px; position:relative; }
   .analysis-note .dash-clip { top:-20px; width:42px; height:42px; }
@@ -562,7 +571,7 @@
   <!-- TOPBAR -->
   <div class="topbar">
     <div>
-      <div class="topbar-title">CM Tool ✦</div>
+      <div class="topbar-title" id="topbar-title">CM Tool ✦</div>
       <div class="topbar-page" id="topbar-page">Tableau de bord</div>
     </div>
     <div class="acc-switcher" id="acc-switcher">
@@ -587,7 +596,7 @@
             <div class="dash-news-list" id="dashboard-news"></div>
           </section>
           <section class="dash-card dash-trends-card">
-            <div class="dash-card-title dash-trends-title">Tendances du moment <span class="dash-trends-count" id="dash-trends-count">0 tendances actives</span></div>
+            <div class="dash-card-title dash-trends-title">Tendances du moment <img class="dash-trends-flame" src="assets/picto-flamme.png" alt=""> <span class="dash-trends-count" id="dash-trends-count">0 tendances actives</span></div>
             <div id="trends-content"><div class="loading"><div class="spinner"></div>Chargement...</div></div>
           </section>
           <section class="dash-ideas">
@@ -703,8 +712,7 @@
           <div class="analysis-sheet">
             <div class="analysis-hero">
               <div class="analysis-title">Analyse</div>
-              <div class="analysis-script">du mois</div>
-              <button class="analysis-export-btn" onclick="alert('Export analyse bientôt disponible')">Exporter</button>
+              <div class="analysis-script">du mois : <input class="analysis-month-input" id="ana-month" value="août 2026" oninput="saveAnalysisData()"></div>
             </div>
             <div class="analysis-grid">
               <section class="analysis-card">
@@ -755,6 +763,9 @@
               </div>
               <div class="analysis-ai-box" id="analysis-ai-box" contenteditable="true" oninput="saveAnalysisText()"><strong>Démo :</strong> remplis les chiffres, ajoute tes captures, puis clique sur “Générer pistes”.</div>
             </section>
+          </div>
+          <div class="analysis-export-wrap">
+            <button class="analysis-export-btn" onclick="alert('Export analyse bientôt disponible')">Exporter</button>
           </div>
 
           <section class="analysis-note">
@@ -1193,7 +1204,10 @@ function showPage(name){
   document.getElementById('nb-'+name)?.classList.add('active');
   document.querySelector('.app')?.classList.toggle('dashboard-mode',name==='trends');
   const labels={trends:'Tableau de bord',content:'Mon contenu',companies:'Entreprises',planning:'Planning 📅',analyse:'Analyse',fiche:'Fiche 🎬',mini:'Création'};
-  document.getElementById('topbar-page').textContent=labels[name]||'';
+  const topbarTitle=document.getElementById('topbar-title');
+  const topbarPage=document.getElementById('topbar-page');
+  if(topbarTitle) topbarTitle.textContent=name==='mini'?'Création':'CM Tool ✦';
+  if(topbarPage) topbarPage.textContent=name==='mini'?'Créez et animez votre contenu':(labels[name]||'');
   currentPage=name;
   // Disable account switcher on fiche page
   const switcher=document.getElementById('acc-switcher');
@@ -1210,9 +1224,20 @@ function showPage(name){
 }
 
 function loadAnalysisNotes(){
+  applyAnalysisBrand();
   const el=document.getElementById('analysis-notes');
   if(el) el.value=localStorage.getItem(LOCAL_PREFIX+'analysis_notes')||'';
   loadAnalysisData();
+}
+
+function applyAnalysisBrand(){
+  const page=document.querySelector('.analysis-page');
+  if(!page) return;
+  const colors=(companyProfile(activeAccountKey())?.colors||[]).filter(Boolean);
+  const use=[colors[0]||'#D18D2B',colors[1]||'#A64255',colors[2]||'#2F4731'];
+  page.style.setProperty('--analysis-1',use[0]);
+  page.style.setProperty('--analysis-2',use[1]);
+  page.style.setProperty('--analysis-3',use[2]);
 }
 
 function saveAnalysisNotes(){
@@ -1226,7 +1251,7 @@ function analysisData(){
 
 function loadAnalysisData(){
   const data=analysisData();
-  ['views','nonfollowers','followers','top1-title','top1-stat','top1-why','top2-title','top2-stat','top2-why','top3-title','top3-stat','top3-why'].forEach(key=>{
+  ['month','views','nonfollowers','followers','top1-title','top1-stat','top1-why','top2-title','top2-stat','top2-why','top3-title','top3-stat','top3-why'].forEach(key=>{
     const el=document.getElementById('ana-'+key);
     if(el && data[key]) el.value=data[key];
   });
@@ -1236,7 +1261,7 @@ function loadAnalysisData(){
 
 function saveAnalysisData(){
   const data=analysisData();
-  ['views','nonfollowers','followers','top1-title','top1-stat','top1-why','top2-title','top2-stat','top2-why','top3-title','top3-stat','top3-why'].forEach(key=>{
+  ['month','views','nonfollowers','followers','top1-title','top1-stat','top1-why','top2-title','top2-stat','top2-why','top3-title','top3-stat','top3-why'].forEach(key=>{
     const el=document.getElementById('ana-'+key);
     if(el) data[key]=el.value;
   });
@@ -1309,6 +1334,7 @@ function toggleAccount(acc){
     updateCreationWorkshop();
     loadCreationDemo();
   }
+  if(currentPage==='analyse'||document.getElementById('page-analyse')?.classList.contains('active')) applyAnalysisBrand();
 }
 function updateAccountButtons(){
   Object.keys(ACCOUNTS).forEach(key=>{
@@ -1861,9 +1887,13 @@ async function loadTrends(){
   renderTrends();
 }
 
+function dashboardDisplayTrends(){
+  return dashboardFilteredTrends().sort((a,b)=>trendDisplayPriority(a)-trendDisplayPriority(b));
+}
+
 function renderTrends(){
   const el=document.getElementById('trends-content');
-  const filtered=dashboardFilteredTrends();
+  const filtered=dashboardDisplayTrends();
   const countEl=document.getElementById('dash-trends-count');
   if(countEl) countEl.textContent=`${filtered.length} tendance${filtered.length>1?'s':''} active${filtered.length>1?'s':''}`;
   renderDashboardNews(filtered);
@@ -1874,6 +1904,28 @@ function renderTrends(){
     +'<button class="dash-trend-add" onclick="openModal(\'modal-trend\')"><span class="dash-trend-add-plus">+</span><span>Ajouter<br>une tendance</span><span class="dash-trend-add-arrow">↝</span></button></div>';
 }
 
+function trendDisplayPriority(r){
+  return isAppearTrend(r)?0:1;
+}
+
+function isAppearTrend(r){
+  const title=dashboardTitle(r).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  return title.includes('faire apparaitre');
+}
+
+function trendImage(r){
+  if(isAppearTrend(r)) return 'assets/trend-faire-apparaitre.png';
+  const f=r.fields||{};
+  return f['Image']||f['Photo']||f['Miniature URL']||'';
+}
+
+function renderNetworkPill(rs){
+  const label=String(rs||'').trim();
+  const low=label.toLowerCase();
+  const src=low.includes('tiktok')?'assets/picto-tiktok.png':(low.includes('insta')?'assets/picto-instagram.png':'');
+  return `<span class="dash-trend-pill">${src?`<img class="dash-network-icon" src="${src}" alt="">`:''}${htmlSafe(label)}</span>`;
+}
+
 function tFeedCard(r,i=0){
   const f=r.fields;
   const title=f['Titre de la trend']||f['Titre']||'Sans titre';
@@ -1882,7 +1934,7 @@ function tFeedCard(r,i=0){
   const music=f['Nom de la musique']||'';
   const reseaux=[].concat(f['Réseaux']||[]);
   const niches=[].concat(f['Niches compatibles']||[]);
-  const image=f['Image']||f['Photo']||f['Miniature URL']||'';
+  const image=trendImage(r);
   const isSel=!!selTrends[r.id];
   const numColor=['#2f6d3d','var(--papaya)','#8a7355'][i%3];
   const score=Math.max(56, Math.min(96, Number(f['Viralité']||f['Score']||f['Score viral']||f['Viralite']) || (92 - (i*7)%34)));
@@ -1907,7 +1959,7 @@ function tFeedCard(r,i=0){
         <div class="dash-trend-score" style="--score:${score}"><strong>${score}%</strong><span>Viralité</span></div>
       </div>
       <div class="dash-trend-info">
-        ${reseaux.length?reseaux.map(rs=>`<span class="dash-trend-pill">${htmlSafe(rs)}</span>`).join(''):'<span class="dash-trend-pill">TikTok</span><span class="dash-trend-pill">Instagram</span>'}
+        ${reseaux.length?reseaux.map(renderNetworkPill).join(''):[renderNetworkPill('TikTok'),renderNetworkPill('Instagram')].join('')}
       </div>
       <div class="dash-trend-info" style="margin-top:8px">
         ${diff?`<span class="dash-trend-pill">● ${htmlSafe(diff)}</span>`:''}
@@ -1940,7 +1992,7 @@ function toggleTrend(id){
   // Re-render just this card
   const r=allTrends.find(r=>r.id===id);
   if(r){
-    const idx=dashboardFilteredTrends().findIndex(x=>x.id===id);
+    const idx=dashboardDisplayTrends().findIndex(x=>x.id===id);
     const el=document.getElementById('tfc-'+id);
     if(el)el.outerHTML=tFeedCard(r,idx<0?0:idx);
   }
