@@ -119,7 +119,7 @@
   .dash-idea-results { padding:0 28px; display:flex; flex-direction:row; gap:10px; overflow-x:auto; }
   .dash-idea-row { font-family:'DM Mono',monospace; font-size:13px; letter-spacing:1px; cursor:pointer; background:rgba(255,255,255,0.55); border-radius:999px; padding:8px 12px; white-space:nowrap; }
   .dash-trends-card { padding:16px; border-radius:12px; background:#fff8f1; }
-  .dash-trends-title { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:16px; }
+  .dash-trends-title { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:16px; transform:translateY(-15px); }
   .dash-trends-flame { width:28px; height:28px; object-fit:contain; margin-left:-4px; }
   .dash-trends-count { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:800; text-transform:none; color:#806b55; background:#eee3d8; border-radius:999px; padding:6px 12px; }
   .dash-trend-row { display:flex; gap:18px; overflow-x:auto; padding:0 2px 6px; scroll-snap-type:x proximity; align-items:stretch; }
@@ -129,9 +129,8 @@
   .dash-trend-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
   .dash-trend-card.no-img .dash-trend-img-wrap::before { content:'Trend'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:30px; text-transform:uppercase; color:rgba(26,16,9,0.32); }
   .dash-trend-num { position:absolute; top:10px; left:10px; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; font-weight:800; font-family:'DM Sans',sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.18); z-index:2; }
-  .dash-trend-badge { position:absolute; top:10px; right:10px; z-index:2; border-radius:999px; padding:5px 9px; color:#fff; font-size:9px; font-weight:900; font-family:'DM Sans',sans-serif; text-transform:uppercase; background:var(--papaya); box-shadow:0 2px 8px rgba(0,0,0,0.18); }
-  .dash-trend-card:nth-child(3n+1) .dash-trend-badge { background:var(--fuschia); }
-  .dash-trend-card:nth-child(3n+2) .dash-trend-badge { background:#e99b00; }
+  .dash-trend-flames { position:absolute; left:10px; bottom:8px; z-index:3; display:flex; gap:2px; padding:4px 6px; border-radius:999px; background:rgba(255,255,255,0.82); box-shadow:0 3px 10px rgba(0,0,0,0.12); }
+  .dash-trend-flames img { width:17px; height:17px; object-fit:contain; }
   .dash-trend-body { padding:10px 12px 0; }
   .dash-trend-title { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:800; line-height:1.05; margin:0 58px 5px 0; color:#21170f; }
   .dash-trend-desc { font-size:11px; color:var(--text-dim); line-height:1.25; margin-bottom:8px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
@@ -504,7 +503,8 @@
 
   /* ===== PAGE 5 : CRÉATION ===== */
   .mini-page { display:grid; grid-template-columns:1fr; grid-template-rows:minmax(0,1fr) auto auto; height:calc(100dvh - var(--nav-h) - 56px); padding:0; overflow:hidden; background:#f3eee8; border-radius:18px; }
-  .mini-toolbar { display:flex; gap:12px; padding:14px 16px; background:#fff; border-top:1px solid var(--border); overflow-x:auto; flex-shrink:0; height:auto; }
+  .mini-toolbar { display:flex; gap:12px; padding:14px 16px; background:#fff; border-top:1px solid var(--border); overflow-x:auto; flex-shrink:0; height:auto; align-items:stretch; }
+  .creation-heading { display:none; }
   .creation-panel-title { font-family:'Cormorant Garamond',serif; font-size:28px; line-height:0.95; text-transform:uppercase; color:var(--text); }
   .creation-panel-sub { font-size:12px; color:var(--text-dim); margin-top:4px; line-height:1.35; }
   .creation-group { display:flex; flex-direction:column; gap:8px; padding-left:12px; border-left:1px solid var(--border); min-width:180px; }
@@ -785,7 +785,7 @@
     <div id="page-mini" class="page">
       <div class="mini-page">
         <div class="mini-toolbar">
-          <div>
+          <div class="creation-heading">
             <div class="creation-panel-title">Création</div>
             <div class="creation-panel-sub" id="creation-workshop-label">Atelier CPC · posts rapides</div>
           </div>
@@ -943,6 +943,9 @@
       <div class="form-row"><label class="input-label">Lien musique</label><input class="input" id="ct-music-link" placeholder="https://..."></div>
       <div class="form-row"><label class="input-label">Difficulté</label>
         <select class="input" id="ct-diff"><option value="">—</option><option>Facile</option><option>Moyen</option><option>Difficile</option></select>
+      </div>
+      <div class="form-row"><label class="input-label">Flammes</label>
+        <select class="input" id="ct-flames"><option value="">Aucune</option><option value="1">1 flamme</option><option value="2">2 flammes</option><option value="3">3 flammes</option></select>
       </div>
       <div class="form-row"><label class="input-label">Réseaux</label>
         <div class="multi-select">
@@ -1915,8 +1918,14 @@ function isAppearTrend(r){
 
 function trendImage(r){
   if(isAppearTrend(r)) return 'assets/trend-faire-apparaitre.png';
+  if(isWithWithoutTrend(r)) return 'assets/trend-moi-avec-sans.png';
   const f=r.fields||{};
   return f['Image']||f['Photo']||f['Miniature URL']||'';
+}
+
+function isWithWithoutTrend(r){
+  const title=dashboardTitle(r).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  return title.includes('moi avec') || title.includes('moi sans');
 }
 
 function renderNetworkPill(rs){
@@ -1924,6 +1933,17 @@ function renderNetworkPill(rs){
   const low=label.toLowerCase();
   const src=low.includes('tiktok')?'assets/picto-tiktok.png':(low.includes('insta')?'assets/picto-instagram.png':'');
   return `<span class="dash-trend-pill">${src?`<img class="dash-network-icon" src="${src}" alt="">`:''}${htmlSafe(label)}</span>`;
+}
+
+function trendFlameCount(f){
+  const raw=f['Flammes']??f['Niveau flamme']??f['Niveau flammes']??f['Feu']??f['Fire']??'';
+  const num=Number(String(raw).match(/\d+/)?.[0]||0);
+  return Math.max(0, Math.min(3, num));
+}
+
+function renderTrendFlames(count){
+  if(!count) return '';
+  return `<div class="dash-trend-flames">${Array.from({length:count},()=>'<img src="assets/picto-flamme.png" alt="">').join('')}</div>`;
 }
 
 function tFeedCard(r,i=0){
@@ -1938,17 +1958,16 @@ function tFeedCard(r,i=0){
   const isSel=!!selTrends[r.id];
   const numColor=['#2f6d3d','var(--papaya)','#8a7355'][i%3];
   const score=Math.max(56, Math.min(96, Number(f['Viralité']||f['Score']||f['Score viral']||f['Viralite']) || (92 - (i*7)%34)));
-  const badge=['🔥 Viral','🔥 En hausse','🔥 Presque viral','🔥 Monte'][i%4];
+  const flames=trendFlameCount(f);
   const duration=f['Durée']||f['Durée estimée']||f['Temps']||`${[15,20,10,18][i%4]} sec`;
   const safeTitle=htmlSafe(title);
   const safeDesc=htmlSafe(desc);
   const safeMusic=htmlSafe(music);
   return `<div class="dash-trend-card ${image?'':'no-img'} ${isSel?'selected':''}" id="tfc-${r.id}">
     <div class="dash-trend-num" style="background:${numColor}">${(i%3)+1}</div>
-    <div class="dash-trend-badge">${badge}</div>
     ${image
-      ?`<div class="dash-trend-img-wrap"><img src="${htmlSafe(image)}" alt=""></div>`
-      :`<div class="dash-trend-img-wrap"></div>`}
+      ?`<div class="dash-trend-img-wrap"><img src="${htmlSafe(image)}" alt="">${renderTrendFlames(flames)}</div>`
+      :`<div class="dash-trend-img-wrap">${renderTrendFlames(flames)}</div>`}
     <div class="dash-trend-body">
       <div class="dash-trend-meta">
         <div>
@@ -2094,6 +2113,7 @@ async function createTrend(){
   const music=document.getElementById('ct-music').value.trim();if(music)fields['Nom de la musique']=music;
   const ml=document.getElementById('ct-music-link').value.trim();if(ml)fields['Lien de la musique']=ml;
   const diff=document.getElementById('ct-diff').value;if(diff)fields['Difficulté']=diff;
+  const flames=document.getElementById('ct-flames').value;if(flames)fields['Flammes']=Number(flames);
   const cc=document.getElementById('ct-capcut').value.trim();if(cc)fields['Template Cap Cut']=cc;
   const ex=document.getElementById('ct-exemple').value.trim();if(ex)fields['Vidéo exemple']=ex;
   if(reseaux.length)fields['Réseaux']=reseaux;
@@ -2104,7 +2124,7 @@ async function createTrend(){
     document.getElementById('create-trend-msg').textContent='✅ Trend créée !';
     document.getElementById('create-trend-msg').style.color='#2F4731';
     ['ct-titre','ct-desc','ct-music','ct-music-link','ct-capcut','ct-exemple'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('ct-diff').value='';document.getElementById('ct-niches').value='';
+    document.getElementById('ct-diff').value='';document.getElementById('ct-flames').value='';document.getElementById('ct-niches').value='';
     document.querySelectorAll('#modal-trend .ms-opt.selected').forEach(b=>b.classList.remove('selected'));
     allTrends=[];trendsLoaded=false;
     await loadTrends();
