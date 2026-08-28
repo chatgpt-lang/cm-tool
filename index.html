@@ -357,10 +357,10 @@
   .company-keywords { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
   .company-keyword-tag { font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:rgba(255,255,255,0.18); border-radius:999px; padding:6px 12px; }
   .company-keyword-more { width:100%; text-align:center; margin-top:14px; background:none; border:none; color:#fff; opacity:0.8; font-size:20px; letter-spacing:3px; cursor:pointer; line-height:1; }
-  .company-note { position:relative; grid-column:span 2; min-height:190px; padding:26px 28px; border-radius:22px; overflow:hidden; background:url('assets/company-note-paper.png') center/cover no-repeat #fff; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:16px; align-items:start; }
+  .company-note { position:relative; grid-column:span 2; min-height:190px; padding:26px 28px; border-radius:22px; overflow:hidden; background:url('assets/company-note-paper.png') center/cover no-repeat #fff; display:grid; grid-template-columns:auto minmax(0,1fr); gap:24px; align-items:center; }
   .company-note textarea { width:100%; min-height:150px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; border-radius:14px; padding:12px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
   .company-note textarea:focus { border-color:rgba(26,16,9,0.32); }
-  .company-note .company-swatches { position:static; display:grid; grid-template-columns:1fr; gap:12px; align-items:center; }
+  .company-note .company-swatches { position:static; display:grid; grid-template-columns:1fr; gap:14px; align-items:center; }
   .company-swatches { display:flex; flex-direction:column; gap:24px; align-items:center; }
   .company-swatch { width:72px; height:72px; border-radius:50%; border:0; padding:0; cursor:pointer; overflow:hidden; background:transparent; }
   .company-swatch::-webkit-color-swatch-wrapper { padding:0; }
@@ -1867,7 +1867,7 @@ function renderCompanyDetail(){
     <button class="company-swatch-add" onclick="addCompanyColor()">+</button>
   </div>`;
   const photoCard=(src,i)=>{
-    const shape=i===0?'large':(i%4===1?'tall':(i%5===3?'wide':''));
+    const shape=i===0?'wide':(i%4===1?'tall':(i%5===3?'wide':''));
     return `<button class="company-photo ${shape}" onclick="uploadCompanyAsset('photo-${i}')"><img src="${src}" alt=""></button>`;
   };
   const photoCards=photos.map(photoCard);
@@ -1877,22 +1877,23 @@ function renderCompanyDetail(){
       <input class="companies-sub company-subtitle-input" value="${htmlSafe(c.name)}" oninput="saveCompanyField('name',this.value);renderCompanies()" aria-label="Nom de l'entreprise">
     </div>
     <div class="company-pinterest-board">
-      ${photoCards.slice(0,2).join('')}
-      <div class="company-panel square" style="background:${htmlSafe(c.colors[0])}">
-        <div class="company-panel-title" onclick="editCompanyFont()">Mes polices</div>
-        <div class="company-font-preview" style="font-family:${htmlSafe(c.font)},serif">ABCDEF<br>GHIJKL<br>MNOPQ<br>RSTUVW<br>XYZ</div>
-      </div>
-      ${photoCards.slice(2,4).join('')}
+      ${photoCards.slice(0,1).join('')}
       <div class="company-panel square" style="background:${htmlSafe(c.colors[2]||c.colors[0])}">
         <div class="company-panel-title">Mots clés</div>
         <div class="company-keywords">${keywordTags.map(k=>`<span class="company-keyword-tag">${htmlSafe(k)}</span>`).join('')}</div>
         <button class="company-keyword-more" onclick="addCompanyKeyword()">•••</button>
       </div>
-      ${photoCards.slice(4).join('')}
+      ${photoCards.slice(1,2).join('')}
       <div class="company-note">
         ${swatches}
         <textarea oninput="saveCompanyField('note',this.value)" placeholder="Notes de marque...">${htmlSafe(c.note)}</textarea>
       </div>
+      ${photoCards.slice(2,4).join('')}
+      <div class="company-panel square" style="background:${htmlSafe(c.colors[0])}">
+        <div class="company-panel-title" onclick="editCompanyFont()">Mes polices</div>
+        <div class="company-font-preview" style="font-family:${htmlSafe(c.font)},serif">ABCDEF<br>GHIJKL<br>MNOPQ<br>RSTUVW<br>XYZ</div>
+      </div>
+      ${photoCards.slice(4).join('')}
       <button class="company-photo add-photo wide" onclick="uploadCompanyAsset('photo-new')">+ Ajouter photo</button>
     </div>
     <div class="company-reset-wrap"><button class="company-upload" style="background:transparent;text-decoration:underline" onclick="resetCompanyProfile()">Réinitialiser cette fiche</button></div>
