@@ -151,22 +151,22 @@
   .dash-trend-add { flex:0 0 150px; min-height:286px; align-self:stretch; border:1.8px dashed var(--papaya); border-radius:18px; background:rgba(255,255,255,0.35); color:var(--papaya); font-size:15px; font-weight:800; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; font-family:'DM Sans',sans-serif; text-align:center; }
   .dash-trend-add-plus { width:52px; height:52px; border-radius:50%; background:var(--papaya); color:#fff; display:flex; align-items:center; justify-content:center; font-size:32px; line-height:1; }
   .dash-trend-add-arrow { font-family:'Nothing You Could Do',cursive; font-size:28px; transform:rotate(-18deg); color:var(--papaya); }
-  .dash-notes-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; padding-top:12px; }
-  .dash-note-card { position:relative; border-radius:0; min-height:210px; padding:42px 16px 14px; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; }
+  .dash-notes-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; padding-top:12px; align-items:start; }
+  .dash-note-card { position:relative; border-radius:0; min-height:240px; padding:42px 16px 48px; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; overflow:hidden; }
   .dash-note-card.note-green, .dash-note-card.todo-card { background:url('assets/note-paper-green.jpg') center 48%/112% 112% no-repeat #E4EAE1; }
   .dash-note-remove { position:absolute; top:8px; right:10px; background:none; border:none; font-size:14px; color:rgba(0,0,0,0.4); cursor:pointer; }
   .dash-note-add { min-height:210px; border-radius:16px; border:1.5px dashed var(--border); background:transparent; color:var(--text-dim); font-size:32px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .dash-clip { position:absolute; top:-22px; left:50%; transform:translateX(-50%); width:45px; height:45px; background:url('assets/binder-clip.png') center/contain no-repeat; pointer-events:none; }
   .dash-note-title { font-family:'Cormorant Garamond',serif; font-size:22px; text-align:center; text-transform:uppercase; margin-bottom:8px; color:#0a0807; }
-  .dash-note-area { width:100%; min-height:90px; resize:vertical; border:1.5px dashed transparent; background:transparent; border-radius:0; padding:10px; outline:none; font-family:'Nothing You Could Do',cursive; font-size:19px; line-height:1.25; color:#1c1714; }
+  .dash-note-area { width:100%; min-height:112px; resize:vertical; border:1.5px dashed transparent; background:transparent; border-radius:0; padding:12px 8px; outline:none; font-family:'Nothing You Could Do',cursive; font-size:22px; line-height:1.22; color:#1c1714; }
   .dash-note-area:focus { border-color:rgba(26,16,9,0.32); }
-  .dash-photo-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; align-items:center; }
-  .dash-photo-btn { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:8px 13px; font-size:11px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; display:inline-flex; align-items:center; gap:6px; }
+  .dash-photo-row { position:absolute; left:18px; right:12px; bottom:12px; display:flex; align-items:center; gap:10px; color:rgba(26,16,9,0.44); font-family:'DM Mono',monospace; font-size:12px; line-height:1.2; }
+  .dash-photo-btn { border:none; background:transparent; color:#1a1009; border-radius:0; padding:0; font-size:30px; font-weight:300; cursor:pointer; font-family:'DM Sans',sans-serif; display:inline-flex; align-items:center; gap:0; line-height:1; }
   .dash-action-circle { width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:#1a1009; color:#fff; font-size:17px; line-height:1; font-weight:800; }
-  .dash-photos { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
-  .dash-photo { width:62px; height:78px; object-fit:cover; background:#fff; border:4px solid #fff; box-shadow:0 8px 18px rgba(0,0,0,0.12); transform:rotate(-5deg); }
+  .dash-photos { display:flex; flex-wrap:wrap; gap:8px; margin-top:2px; }
+  .dash-photo { width:44px; height:56px; object-fit:cover; background:#fff; border:3px solid #fff; box-shadow:0 6px 14px rgba(0,0,0,0.10); transform:rotate(-5deg); }
   .dash-photo:nth-child(even) { transform:rotate(6deg); }
-  .dash-photo-empty { font-size:12px; color:rgba(0,0,0,0.45); font-family:'DM Mono',monospace; }
+  .dash-photo-empty { max-width:150px; color:rgba(26,16,9,0.44); font-family:'DM Mono',monospace; }
   .dash-todo-list { display:flex; flex-direction:column; gap:8px; }
   .dash-todo-row { display:flex; align-items:center; gap:8px; }
   .dash-todo-check { width:18px; height:18px; border:2px solid rgba(26,16,9,0.58); border-radius:50%; background:transparent; flex-shrink:0; cursor:pointer; }
@@ -179,6 +179,13 @@
     .dash-ideas { border-radius:24px; }
     .dash-card { padding:20px; }
     .dash-news-item { min-width:150px; }
+    .dash-notes-row { gap:8px; }
+    .dash-note-card { min-height:228px; padding:38px 10px 54px; }
+    .dash-note-title { font-size:21px; }
+    .dash-note-area { font-size:21px; min-height:100px; padding:8px 4px; }
+    .dash-photo-row { left:12px; right:8px; bottom:10px; font-size:11px; }
+    .dash-photo-btn { font-size:28px; }
+    .dash-photo { width:38px; height:50px; }
   }
   .feed-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
   .feed-title { font-size:20px; font-weight:700; }
@@ -1670,12 +1677,11 @@ function renderDashboardNotes(){
     <div class="dash-note-title">Notes</div>
     <textarea class="dash-note-area" placeholder="Notes, idées libres, rappels client..." oninput="updateDashboardNoteText('${n.id}',this.value)">${htmlSafe(n.text)}</textarea>
     <div class="dash-photo-row">
-      <button class="dash-photo-btn" onclick="document.getElementById('dnp-${n.id}').click()"><span class="dash-action-circle">+</span> Photo</button>
-      <button class="dash-photo-btn" onclick="document.getElementById('dnp-${n.id}').click()"><span class="dash-action-circle">+</span> Vidéo</button>
-      <button class="dash-photo-btn" onclick="clearDashboardNotePhotos('${n.id}')">Vider photos</button>
+      <button class="dash-photo-btn" onclick="document.getElementById('dnp-${n.id}').click()" aria-label="Ajouter une photo">+</button>
+      ${(n.photos||[]).length?'':'<span class="dash-photo-empty">Ajoute des photos de refs ici.</span>'}
       <input id="dnp-${n.id}" type="file" accept="image/*" multiple style="display:none" onchange="addDashboardNotePhotos('${n.id}',this.files);this.value=''">
     </div>
-    <div class="dash-photos">${(n.photos||[]).length?(n.photos||[]).map(src=>`<img class="dash-photo" src="${src}" alt="">`).join(''):'<div class="dash-photo-empty">Ajoute des photos de refs ici.</div>'}</div>
+    <div class="dash-photos">${(n.photos||[]).length?(n.photos||[]).map(src=>`<img class="dash-photo" src="${src}" alt="">`).join(''):''}</div>
   </div>
   <div class="dash-note-card todo-card">
     <div class="dash-clip" aria-hidden="true"></div>
