@@ -288,7 +288,7 @@
   .plan-cell-add { position:absolute; right:6px; top:5px; width:22px; height:22px; border-radius:50%; border:none; background:#fff; color:var(--papaya); font-size:16px; line-height:20px; font-weight:800; cursor:pointer; box-shadow:0 2px 7px rgba(0,0,0,0.08); }
   .month-grid .plan-cell-add { width:18px; height:18px; font-size:13px; line-height:16px; right:5px; top:5px; }
   .cal-cell { position:relative; }
-  .planning-notes { margin-top:18px; position:relative; border-radius:0; padding:34px 28px 24px; min-height:220px; background:url('assets/note-paper.png') center/cover no-repeat; }
+  .planning-notes { margin:24px 18px 58px; position:relative; border-radius:0; padding:42px 36px 32px; min-height:220px; background:url('assets/note-paper.png') center/cover no-repeat; }
   .planning-notes-title { font-family:'Cormorant Garamond',serif; font-size:26px; text-transform:uppercase; text-align:center; margin-bottom:10px; }
   .planning-notes textarea { width:100%; min-height:125px; border:1.5px dashed transparent; outline:none; resize:vertical; background:transparent; border-radius:0; padding:14px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
   .planning-notes textarea:focus { border-color:rgba(26,16,9,0.32); }
@@ -347,7 +347,7 @@
   .company-photo.large { min-height:0; }
   .company-photo.tall { min-height:0; }
   .company-photo.wide { grid-column:span 2; min-height:0; }
-  .company-photo.add-photo { border:1.5px dashed var(--border); background:rgba(255,255,255,0.58); }
+  .company-photo.add-photo { border:1.5px dashed var(--border); background:rgba(255,255,255,0.58); min-height:140px; font-family:'DM Sans',sans-serif; font-weight:800; }
   .company-photo img { display:block; width:100%; height:auto; object-fit:contain; position:static; background:transparent; }
   .company-panel { border-radius:18px; padding:24px 20px; background:var(--fuschia); color:#fff; min-height:210px; }
   .company-panel.square { aspect-ratio:1/1; min-height:0; }
@@ -408,7 +408,7 @@
   /* ===== PAGE ANALYSE ===== */
   .analysis-page { max-width:1120px; margin:0 auto; --analysis-1:var(--papaya); --analysis-2:var(--fuschia); --analysis-3:var(--paradise); }
   .analysis-workspace { display:flex; flex-direction:column; gap:18px; }
-  .analysis-capture-panel { background:var(--surface); border:none; border-radius:8px; padding:16px; }
+  .analysis-capture-panel { background:#d8ccc7; border:none; border-radius:8px; padding:18px; margin:0 14px; }
   .analysis-sheet { width:min(100%,760px); margin:0 auto; display:flex; flex-direction:column; gap:18px; }
   .analysis-slide { aspect-ratio:1/1.414; min-height:0; background:#fff; border-radius:12px; padding:34px; box-shadow:0 18px 48px rgba(26,16,9,0.10); overflow:auto; position:relative; }
   .analysis-hero { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:18px; padding:0 0 24px; }
@@ -426,6 +426,7 @@
   .analysis-card-sub { font-size:12px; color:var(--text-dim); margin-top:8px; line-height:1.35; }
   .analysis-input { width:100%; border:none; border-bottom:1.5px dashed var(--border); outline:none; background:transparent; font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:700; line-height:1; color:var(--text); padding:0 0 4px; }
   .analysis-wide { background:#fff; border-radius:10px; border:1.5px solid var(--border); padding:14px; margin-bottom:14px; }
+  .analysis-wide.analysis-capture-panel { background:#d8ccc7; border:none; padding:18px; margin:0 auto 14px; }
   .analysis-wide-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
   .analysis-section-title { font-family:'Cormorant Garamond',serif; font-size:24px; text-transform:uppercase; color:#0d0a07; }
   .analysis-shot-row { display:flex; gap:12px; overflow-x:auto; padding-bottom:4px; }
@@ -446,9 +447,9 @@
   .analysis-ai-box strong { color:var(--analysis-1); }
   .analysis-export-wrap { width:min(100%,760px); margin:14px auto 0; display:flex; justify-content:center; }
   .analysis-export-btn { border:none; background:var(--analysis-1); color:#fff; border-radius:999px; padding:11px 22px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
-  .analysis-note { width:min(100%,760px); margin:8px auto 0; background:#d8ccc7; border-radius:14px; padding:18px; }
-  .analysis-note-paper { background:transparent; padding:0; min-height:150px; position:relative; }
-  .analysis-note textarea { width:100%; min-height:100px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; font-family:'Nothing You Could Do',cursive; font-size:20px; line-height:1.25; color:#1c1714; }
+  .analysis-note { width:min(100%,760px); margin:12px auto 42px; background:#d8ccc7; border-radius:14px; padding:18px 22px 24px; }
+  .analysis-note-paper { background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; padding:32px 28px 24px; min-height:170px; position:relative; }
+  .analysis-note textarea { width:100%; min-height:112px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; font-family:'Nothing You Could Do',cursive; font-size:20px; line-height:1.25; color:#1c1714; padding:10px; box-sizing:border-box; }
   .analysis-note textarea:focus { border-color:rgba(26,16,9,0.32); }
   @media (max-width:720px) {
     .analysis-slide { padding:22px; }
@@ -549,6 +550,7 @@
   .mini-canvas.creation-reels { aspect-ratio:9/16; }
   .mini-element { position:absolute; cursor:move; user-select:none; touch-action:none; transform-origin:center center; }
   .mini-element.selected { outline:2px solid var(--papaya); outline-offset:2px; }
+  .mini-delete-handle { position:absolute; width:24px; height:24px; border-radius:50%; border:none; background:#fff; color:#1a1009; box-shadow:0 2px 10px rgba(0,0,0,0.22); font-size:16px; line-height:1; font-weight:900; cursor:pointer; z-index:999; display:none; align-items:center; justify-content:center; transform:translate(35%,-35%); }
   .mini-text-el { font-family:'Bebas Neue','Barlow Condensed',sans-serif; font-weight:400; text-transform:uppercase; color:#fff; text-shadow:3px 5px 8px rgba(0,0,0,0.75); line-height:0.95; text-align:center; letter-spacing:0; }
   .mini-card-el { filter:drop-shadow(0 18px 18px rgba(0,0,0,0.38)); border-radius:10px; }
   .creation-card-appear { animation:cardPop 0.55s cubic-bezier(.2,.9,.25,1.2) both; }
@@ -858,6 +860,7 @@
             <div id="mini-bg-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:13px;font-family:'DM Sans',sans-serif">
               Choisis un fond ou importe une image
             </div>
+            <button class="mini-delete-handle" id="mini-delete-handle" onclick="deleteSelectedEl(event)" aria-label="Supprimer">×</button>
           </div>
         </div>
 
@@ -1857,38 +1860,40 @@ function renderCompanyDetail(){
   const el=document.getElementById('company-detail');
   if(!el) return;
   const c=companyProfile();
-  const photos=[...(c.photos||[])];
-  while(photos.length<6) photos.push('');
+  const photos=[...(c.photos||[])].filter(Boolean);
   const keywordTags=(c.keywords||'').split('\n').filter(Boolean);
   const swatches=`<div class="company-swatches">
     ${c.colors.map((color,i)=>`<input class="company-swatch" type="color" value="${htmlSafe(color)}" oninput="saveCompanyColor(${i},this.value)">`).join('')}
     <button class="company-swatch-add" onclick="addCompanyColor()">+</button>
   </div>`;
+  const photoCard=(src,i)=>{
+    const shape=i===0?'large':(i%4===1?'tall':(i%5===3?'wide':''));
+    return `<button class="company-photo ${shape}" onclick="uploadCompanyAsset('photo-${i}')"><img src="${src}" alt=""></button>`;
+  };
+  const photoCards=photos.map(photoCard);
   el.innerHTML=`<div class="company-moodboard">
     <div class="company-identity">
       <button class="company-hero-logo" onclick="uploadCompanyAsset('logo')">${c.logo?`<img src="${c.logo}" alt="${htmlSafe(c.name)}">`:'<span class="company-hero-logo-empty">Ajouter logo</span>'}</button>
       <input class="companies-sub company-subtitle-input" value="${htmlSafe(c.name)}" oninput="saveCompanyField('name',this.value);renderCompanies()" aria-label="Nom de l'entreprise">
     </div>
     <div class="company-pinterest-board">
-      <button class="company-photo large ${photos[0]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-0')">${photos[0]?`<img src="${photos[0]}" alt="">`:'Ajouter photo'}</button>
-      <button class="company-photo tall ${photos[1]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-1')">${photos[1]?`<img src="${photos[1]}" alt="">`:'Ajouter photo'}</button>
+      ${photoCards.slice(0,2).join('')}
       <div class="company-panel square" style="background:${htmlSafe(c.colors[0])}">
         <div class="company-panel-title" onclick="editCompanyFont()">Mes polices</div>
         <div class="company-font-preview" style="font-family:${htmlSafe(c.font)},serif">ABCDEF<br>GHIJKL<br>MNOPQ<br>RSTUVW<br>XYZ</div>
       </div>
-      <button class="company-photo ${photos[2]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-2')">${photos[2]?`<img src="${photos[2]}" alt="">`:'Ajouter photo'}</button>
-      <button class="company-photo wide ${photos[3]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-3')">${photos[3]?`<img src="${photos[3]}" alt="">`:'Ajouter photo'}</button>
+      ${photoCards.slice(2,4).join('')}
       <div class="company-panel square" style="background:${htmlSafe(c.colors[2]||c.colors[0])}">
         <div class="company-panel-title">Mots clés</div>
         <div class="company-keywords">${keywordTags.map(k=>`<span class="company-keyword-tag">${htmlSafe(k)}</span>`).join('')}</div>
         <button class="company-keyword-more" onclick="addCompanyKeyword()">•••</button>
       </div>
-      <button class="company-photo ${photos[4]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-4')">${photos[4]?`<img src="${photos[4]}" alt="">`:'Ajouter photo'}</button>
-      <button class="company-photo tall ${photos[5]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-5')">${photos[5]?`<img src="${photos[5]}" alt="">`:'Ajouter photo'}</button>
+      ${photoCards.slice(4).join('')}
       <div class="company-note">
         ${swatches}
         <textarea oninput="saveCompanyField('note',this.value)" placeholder="Notes de marque...">${htmlSafe(c.note)}</textarea>
       </div>
+      <button class="company-photo add-photo wide" onclick="uploadCompanyAsset('photo-new')">+ Ajouter photo</button>
     </div>
     <div class="company-reset-wrap"><button class="company-upload" style="background:transparent;text-decoration:underline" onclick="resetCompanyProfile()">Réinitialiser cette fiche</button></div>
   </div>`;
@@ -1949,11 +1954,16 @@ async function handleCompanyFile(files){
   const profiles=companyProfiles();
   const c=profiles[currentCompany];
   if(companyUploadTarget==='logo') c.logo=data;
+  if(companyUploadTarget==='photo-new'){
+    c.photos=[...(c.photos||[]).filter(Boolean),data];
+  }
   if(companyUploadTarget.startsWith('photo-')){
     const idx=Number(companyUploadTarget.split('-')[1]);
-    const photos=[...(c.photos||[])];
-    photos[idx]=data;
-    c.photos=photos;
+    if(Number.isFinite(idx)){
+      const photos=[...(c.photos||[])].filter(Boolean);
+      photos[idx]=data;
+      c.photos=photos;
+    }
   }
   saveCompanyProfiles(profiles);
   companyUploadTarget=null;
@@ -3233,6 +3243,7 @@ function makeDraggable(el){
       const dy=(t.clientY-startY)/rect.height*100;
       el.style.left=(startLeft+dx)+'%';
       el.style.top=(startTop+dy)+'%';
+      positionMiniDeleteHandle();
     } else if(e.touches.length===2){
       const dx=e.touches[0].clientX-e.touches[1].clientX;
       const dy=e.touches[0].clientY-e.touches[1].clientY;
@@ -3241,6 +3252,7 @@ function makeDraggable(el){
       const scaleDelta=1+((dist/lastDist)-1)*0.35;
       el.dataset.scale=Math.max(0.2,Math.min(5,parseFloat(el.dataset.scale||1)*scaleDelta));
       applyTransform();
+      positionMiniDeleteHandle();
       lastDist=dist;
       lastAngle=angle;
     }
@@ -3264,6 +3276,7 @@ function makeDraggable(el){
       const dy=(e.clientY-startY)/rect.height*100;
       el.style.left=(startLeft+dx)+'%';
       el.style.top=(startTop+dy)+'%';
+      positionMiniDeleteHandle();
     };
     const onUp=()=>{document.removeEventListener('mousemove',onMove);document.removeEventListener('mouseup',onUp);};
     document.addEventListener('mousemove',onMove);
@@ -3277,6 +3290,7 @@ function setElTransform(el,scale,rotate){
   el.style.setProperty('--scale', scale);
   el.style.setProperty('--rot', rotate + 'deg');
   el.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+  if(el===selectedEl) positionMiniDeleteHandle();
 }
 
 function scaleSelected(factor){
@@ -3291,10 +3305,12 @@ function rotateSelected(deg){
   setElTransform(selectedEl,parseFloat(selectedEl.dataset.scale||1),r);
 }
 
-function deleteSelectedEl(){
+function deleteSelectedEl(event){
+  event?.stopPropagation?.();
   if(selectedEl&&selectedEl.classList.contains('mini-element')){
     selectedEl.remove(); selectedEl=null;
     document.getElementById('mini-bottom-controls').style.display='none';
+    positionMiniDeleteHandle();
   }
 }
 
@@ -3304,12 +3320,29 @@ function selectEl(el){
   el.classList.add('selected');
   el.style.zIndex=String(++miniZ);
   document.getElementById('mini-bottom-controls').style.display='flex';
+  positionMiniDeleteHandle();
 }
 
 function deselectAll(){
   document.querySelectorAll('.mini-element').forEach(e=>e.classList.remove('selected'));
   selectedEl=null;
   document.getElementById('mini-bottom-controls').style.display='none';
+  positionMiniDeleteHandle();
+}
+
+function positionMiniDeleteHandle(){
+  const handle=document.getElementById('mini-delete-handle');
+  const canvas=document.getElementById('mini-canvas');
+  if(!handle||!canvas) return;
+  if(!selectedEl){
+    handle.style.display='none';
+    return;
+  }
+  const canvasRect=canvas.getBoundingClientRect();
+  const elRect=selectedEl.getBoundingClientRect();
+  handle.style.left=((elRect.right-canvasRect.left)/canvasRect.width*100)+'%';
+  handle.style.top=((elRect.top-canvasRect.top)/canvasRect.height*100)+'%';
+  handle.style.display='flex';
 }
 
 async function openAssociatePanel(){
