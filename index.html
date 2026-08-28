@@ -493,6 +493,7 @@
   .creation-bg-btn.fire { background:linear-gradient(135deg,#ef7200,#ffd23f 48%,#004fb8); color:#fff; text-shadow:0 2px 8px rgba(0,0,0,0.35); }
   .creation-bg-btn.ice { background:linear-gradient(135deg,#dff7ff,#fff 42%,#79b9ff); color:#0d3450; }
   .creation-bg-btn.dark { background:linear-gradient(135deg,#111,#26335c); color:#fff; }
+  .creation-bg-btn.brand { background:linear-gradient(135deg,var(--palm),var(--papaya)); color:#fff; }
   .tool-btn { display:flex; flex-direction:column; align-items:center; gap:3px; padding:8px 10px; border-radius:10px; border:1.5px solid var(--border); background:#fff; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:10px; font-weight:600; color:var(--text-dim); white-space:nowrap; flex-shrink:0; transition:all 0.15s; }
   .tool-btn:active { background:var(--surface); }
   .tool-btn.active { border-color:var(--papaya); color:var(--papaya); background:#FFF8F0; }
@@ -774,12 +775,14 @@
             <div class="creation-label">Fond</div>
             <button class="creation-bg-btn fire" onclick="setPresetBg('fire')">Electric orange</button>
             <button class="creation-bg-btn ice" onclick="setPresetBg('ice')">Glace pastel</button>
+            <button class="creation-bg-btn brand" onclick="setBrandBg()">Fond marque</button>
             <button class="creation-bg-btn dark" onclick="setPresetBg('dark')">Nuit live</button>
             <button class="tool-btn" onclick="triggerBgUpload()"><span class="tool-btn-icon">🖼️</span>Fond image</button>
           </div>
           <div class="creation-group">
             <div class="creation-label">Eléments</div>
-            <button class="tool-btn" onclick="addPresetCard()"><span class="tool-btn-icon">🃏</span>Carte CPC</button>
+            <button class="tool-btn" id="cpc-card-btn" onclick="addPresetCard()"><span class="tool-btn-icon">🃏</span>Carte CPC</button>
+            <button class="tool-btn" onclick="addAccountLogo()"><span class="tool-btn-icon">◎</span>Logo</button>
             <button class="tool-btn" onclick="triggerElementUpload()"><span class="tool-btn-icon">✂️</span>Importer + détourer</button>
             <button class="tool-btn" onclick="triggerRawElementUpload()"><span class="tool-btn-icon">＋</span>Importer image</button>
             <button class="tool-btn" onclick="openTextPanel()"><span class="tool-btn-icon">T</span>Texte</button>
@@ -1288,7 +1291,10 @@ function toggleAccount(acc){
   if(currentPage==='content') loadContent();
   if(currentPage==='planning') renderCal();
   if(currentPage==='companies') renderCompanies();
-  if(currentPage==='mini') updateCreationWorkshop();
+  if(currentPage==='mini'||document.getElementById('page-mini')?.classList.contains('active')){
+    updateCreationWorkshop();
+    loadCreationDemo();
+  }
 }
 function updateAccountButtons(){
   Object.keys(ACCOUNTS).forEach(key=>{
@@ -2709,8 +2715,27 @@ const EMOJIS = ['🔥','⭐','💥','✨','🎯','👀','🤯','😱','🙌','�
 const CREATION_PRESETS = {
   fire:'linear-gradient(145deg,#5b1800 0%,#ef7200 24%,#ffd43b 48%,#0055c8 70%,#ff3a9e 100%)',
   ice:'radial-gradient(circle at 35% 25%,#fff 0 12%,#ffd4ed 24%,#99e6ff 48%,#276bd8 100%)',
-  dark:'radial-gradient(circle at 50% 20%,#374a7d 0,#101421 58%,#050608 100%)'
+  dark:'radial-gradient(circle at 50% 20%,#374a7d 0,#101421 58%,#050608 100%)',
+  brand:'linear-gradient(145deg,#2f4731,#d18d2b)'
 };
+
+function activeAccountKey(){
+  return [...activeAccounts][0]||'lf';
+}
+
+function creationPalette(){
+  const profile=companyProfile(activeAccountKey());
+  const brand=(profile?.colors||[]).filter(Boolean);
+  return [...new Set([...brand,'#ffffff','#000000','#FFD700','#FF4444','#44AAFF','#44FF88','#FF88FF','#FF8800'])].slice(0,10);
+}
+
+function renderCreationPalette(){
+  const cr = document.getElementById('text-colors');
+  if(!cr) return;
+  cr.innerHTML = creationPalette().map((c,i) =>
+    `<div class="color-dot ${i===0?'selected':''}" data-color="${c}" style="background:${c}" onclick="selectColor(this,'${c}')"></div>`
+  ).join('');
+}
 
 function initMiniEditor(){
   const wrap = document.querySelector('.mini-canvas-wrap');
@@ -2729,11 +2754,7 @@ function initMiniEditor(){
   canvas.classList.toggle('creation-post', creationFormat==='post');
   canvas.classList.toggle('creation-reels', creationFormat==='reels');
 
-  // Color dots
-  const cr = document.getElementById('text-colors');
-  cr.innerHTML = TEXT_COLORS.map((c,i) => 
-    `<div class="color-dot ${i===0?'selected':''}" data-color="${c}" style="background:${c}" onclick="selectColor(this,'${c}')"></div>`
-  ).join('');
+  renderCreationPalette();
 
   // Emoji grid
   document.getElementById('emoji-grid').innerHTML = EMOJIS.map(e =>
@@ -2775,11 +2796,23 @@ function setPresetBg(name){
   document.getElementById('mini-bg-placeholder').style.display='none';
 }
 
+function setBrandBg(){
+  const key=activeAccountKey();
+  const colors=(companyProfile(key)?.colors||[]).filter(Boolean);
+  const fallback=key==='cpc'?['#1390F6','#F0B51A','#EF7100']:['#fff7fb','#dff7ff','#fce2b4'];
+  const use=colors.length>=2?colors:fallback;
+  CREATION_PRESETS.brand=`linear-gradient(145deg,${use.join(',')})`;
+  setPresetBg('brand');
+}
+
 function updateCreationWorkshop(){
-  const active=[...activeAccounts][0]||'cpc';
+  const active=activeAccountKey();
   const label=document.getElementById('creation-workshop-label');
   const names={lf:'Atelier Le Foyer · contenus restaurant',cpc:'Atelier CPC · cartes et lives',cm:'Atelier CM · templates social media'};
   if(label) label.textContent=names[active]||names.cpc;
+  const cpcBtn=document.getElementById('cpc-card-btn');
+  if(cpcBtn) cpcBtn.style.display=active==='cpc'?'flex':'none';
+  renderCreationPalette();
 }
 
 function clearCreationElements(){
@@ -2791,13 +2824,20 @@ function loadCreationDemo(){
   const canvas=document.getElementById('mini-canvas');
   if(!canvas) return;
   clearCreationElements();
-  setPresetBg(creationFormat==='post'?'ice':'fire');
-  if(creationFormat==='post'){
-    addImageElement('assets/cpc-demo-card.png',{left:15,top:9,width:70,rotate:0,card:true});
-    addTextElement('NOUVELLE CARTE',{left:18,top:84,width:64,size:34});
+  const active=activeAccountKey();
+  setPresetBg('ice');
+  if(active==='cpc'){
+    if(creationFormat==='post'){
+      addImageElement('assets/cpc-demo-card.png',{left:15,top:9,width:70,rotate:0,card:true});
+      addTextElement('NOUVELLE CARTE',{left:18,top:84,width:64,size:34});
+    } else {
+      addImageElement('assets/cpc-demo-card.png',{left:28,top:17,width:44,rotate:-3,card:true});
+      addTextElement('NOUVELLE CARTE',{left:12,top:84,width:76,size:36});
+    }
   } else {
-    addImageElement('assets/cpc-demo-card.png',{left:28,top:17,width:44,rotate:-3,card:true});
-    addTextElement('NOUVELLE CARTE',{left:12,top:84,width:76,size:36});
+    setBrandBg();
+    addAccountLogo({select:false});
+    addTextElement('NOUVEAU POST',{left:12,top:72,width:76,size:creationFormat==='post'?36:32,color:'#ffffff'});
   }
 }
 
@@ -2845,6 +2885,20 @@ function loadRawElement(e){
 function addPresetCard(){
   addImageElement('assets/cpc-demo-card.png',{left:creationFormat==='post'?24:30,top:creationFormat==='post'?20:22,width:creationFormat==='post'?52:42,rotate:creationFormat==='post'?-4:4,card:true});
   playCreationAnimation();
+}
+
+function addAccountLogo(opts={}){
+  const profile=companyProfile(activeAccountKey());
+  if(profile?.logo){
+    addImageElement(profile.logo,{left:creationFormat==='post'?28:24,top:creationFormat==='post'?12:10,width:creationFormat==='post'?44:52,rotate:0,card:false});
+    if(opts.select===false) deselectAll();
+    return;
+  }
+  const prevFont=currentFont;
+  currentFont='dm';
+  addTextElement(profile?.name||'LOGO',{left:20,top:14,width:60,size:30,color:'#ffffff'});
+  currentFont=prevFont;
+  if(opts.select===false) deselectAll();
 }
 
 function addImageElement(url,opts={}){
@@ -2955,7 +3009,7 @@ function makeDraggable(el){
       lastDist=Math.hypot(dx,dy);
       lastAngle=Math.atan2(dy,dx)*180/Math.PI;
     }
-  },{passive:true});
+  },{passive:false});
 
   el.addEventListener('touchmove', e=>{
     e.preventDefault();
@@ -2963,8 +3017,8 @@ function makeDraggable(el){
       const t=e.touches[0];
       const canvas=document.getElementById('mini-canvas');
       const rect=canvas.getBoundingClientRect();
-      const dx=(t.clientX-startX)/rect.width*45;
-      const dy=(t.clientY-startY)/rect.height*45;
+      const dx=(t.clientX-startX)/rect.width*100;
+      const dy=(t.clientY-startY)/rect.height*100;
       el.style.left=(startLeft+dx)+'%';
       el.style.top=(startTop+dy)+'%';
     } else if(e.touches.length===2){
@@ -2973,9 +3027,7 @@ function makeDraggable(el){
       const dist=Math.hypot(dx,dy);
       const angle=Math.atan2(dy,dx)*180/Math.PI;
       const scaleDelta=1+((dist/lastDist)-1)*0.35;
-      const angleDelta=(angle-lastAngle)*0.25;
       el.dataset.scale=Math.max(0.2,Math.min(5,parseFloat(el.dataset.scale||1)*scaleDelta));
-      el.dataset.rotate=parseFloat(el.dataset.rotate||0)+angleDelta;
       applyTransform();
       lastDist=dist;
       lastAngle=angle;
@@ -2996,8 +3048,8 @@ function makeDraggable(el){
     startLeft=parseFloat(el.style.left)||0;
     startTop=parseFloat(el.style.top)||0;
     const onMove=e=>{
-      const dx=(e.clientX-startX)/rect.width*45;
-      const dy=(e.clientY-startY)/rect.height*45;
+      const dx=(e.clientX-startX)/rect.width*100;
+      const dy=(e.clientY-startY)/rect.height*100;
       el.style.left=(startLeft+dx)+'%';
       el.style.top=(startTop+dy)+'%';
     };
@@ -3179,6 +3231,12 @@ function drawPresetGradient(ctx,preset){
   } else if(preset==='dark'){
     const g=ctx.createRadialGradient(miniCanvasW*.5,miniCanvasH*.2,10,miniCanvasW*.5,miniCanvasH*.45,miniCanvasH*.65);
     g.addColorStop(0,'#374a7d'); g.addColorStop(.58,'#101421'); g.addColorStop(1,'#050608'); ctx.fillStyle=g;
+  } else if(preset==='brand'){
+    const colors=(companyProfile(activeAccountKey())?.colors||[]).filter(Boolean);
+    const use=colors.length>=2?colors:['#fff7fb','#dff7ff','#fce2b4'];
+    const g=ctx.createLinearGradient(0,0,miniCanvasW,miniCanvasH);
+    use.forEach((color,i)=>g.addColorStop(use.length===1?0:i/(use.length-1),color));
+    ctx.fillStyle=g;
   } else {
     const g=ctx.createLinearGradient(0,0,miniCanvasW,miniCanvasH);
     g.addColorStop(0,'#5b1800'); g.addColorStop(.24,'#ef7200'); g.addColorStop(.48,'#ffd43b'); g.addColorStop(.7,'#0055c8'); g.addColorStop(1,'#ff3a9e'); ctx.fillStyle=g;
