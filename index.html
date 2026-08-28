@@ -17,7 +17,7 @@
   * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
   body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); min-height:100dvh; overscroll-behavior:none; }
   .app { display:flex; flex-direction:column; height:100dvh; }
-  .app.dashboard-mode .main { background:#fff; }
+  .app.dashboard-mode .main, .app.companies-mode .main { background:#fff; }
 
   /* TOPBAR */
   .topbar { background:#fff; padding:12px 16px; flex-shrink:0; display:flex; align-items:center; justify-content:space-between; position:relative; z-index:10; border-bottom:1px solid rgba(26,16,9,0.08); }
@@ -31,7 +31,7 @@
   .acc-cm { background:var(--fuschia); }
 
   /* MAIN */
-  .main { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:18px 16px calc(var(--nav-h)+18px); }
+  .main { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:18px 16px calc(var(--nav-h)+54px); }
   .page { display:none; }
   .page.active { display:block; }
 
@@ -84,18 +84,19 @@
 
   /* ===== PAGE 1 — TABLEAU DE BORD ===== */
   .dashboard-page { max-width:1220px; margin:0 auto; }
-  .dash-hero { text-align:center; padding:22px 0 18px; }
+  .dash-hero { text-align:center; padding:22px 0 0; }
+  .dash-recap-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:800; text-transform:uppercase; text-align:center; margin:-2px 0 10px; color:#0d0a07; }
   .dash-stats-row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-bottom:14px; }
-  .dash-stat-card { background:var(--surface); border:none; border-radius:12px; padding:11px 12px; min-height:92px; }
-  .dash-stat-icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:7px; }
-  .dash-stat-icon svg { width:14px; height:14px; }
+  .dash-stat-card { background:var(--surface); border:none; border-radius:12px; padding:13px 14px; min-height:102px; }
+  .dash-stat-icon { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:8px; }
+  .dash-stat-icon svg { width:20px; height:20px; }
   .dsi-1 { background:#FBEADD; color:#C9762E; }
   .dsi-2 { background:#EEF4EA; color:#4e7657; }
   .dsi-3 { background:#F6E3D9; color:#B85C3E; }
   .dsi-4 { background:#F5EAC8; color:#A8821E; }
   .dsi-5 { background:#F2F6ED; color:#6B7A5E; }
   .dsi-lin { background:var(--surface2); color:#8a7355; }
-  .dash-stat-num { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:700; line-height:1; color:#0d0a07; }
+  .dash-stat-num { font-family:'Cormorant Garamond',serif; font-size:39px; font-weight:700; line-height:1; color:#0d0a07; }
   .dash-stat-label { font-size:11.5px; color:var(--text-dim); margin-top:3px; line-height:1.2; }
   .dash-stat-link { display:block; margin-top:6px; font-size:10.5px; font-weight:700; color:var(--fuschia); text-decoration:none; cursor:pointer; }
   @media (max-width:820px) {
@@ -103,12 +104,13 @@
   }
   .dash-title { font-family:'Cormorant Garamond',serif; font-size:clamp(40px,7vw,76px); line-height:0.78; font-weight:700; letter-spacing:0; text-transform:uppercase; color:#080604; }
   .dash-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(25px,4vw,38px); color:#6f9970; line-height:1; font-weight:700; text-transform:none; }
+  #dash-week-title { display:block; transform:translateY(-11px); }
   .dashboard-grid { display:flex; flex-direction:column; gap:14px; }
   .dash-card { background:var(--surface); border:none; border-radius:8px; padding:16px; box-shadow:none; }
   .dash-card-title { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:700; letter-spacing:0; text-transform:uppercase; text-align:center; margin-bottom:14px; color:#0d0a07; }
   .dash-news-list { display:flex; gap:10px; overflow-x:auto; padding:4px 2px 8px; scroll-snap-type:x proximity; }
-  .dash-news-item { flex:0 0 auto; min-width:172px; display:flex; align-items:center; justify-content:flex-start; text-align:left; gap:9px; cursor:pointer; background:#fff; border-radius:999px; padding:8px 13px; scroll-snap-align:start; }
-  .dash-hash { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; font-family:'DM Sans',sans-serif; font-weight:700; flex-shrink:0; }
+  .dash-news-item { flex:0 0 auto; min-width:205px; display:flex; align-items:center; justify-content:flex-start; text-align:left; gap:9px; cursor:pointer; background:#fff; border-radius:999px; padding:8px 13px; scroll-snap-align:start; }
+  .dash-hash { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; font-family:'DM Sans',sans-serif; font-weight:700; flex-shrink:0; }
   .dash-news-text { font-size:11.5px; line-height:1.15; font-weight:700; color:var(--text); min-width:0; white-space:nowrap; }
   .dash-ideas { background:#d8ccc7; border-radius:24px; padding:0 0 14px; overflow:hidden; min-height:150px; }
   .dash-ideas-help { padding:10px 24px 0; font-size:11.5px; color:rgba(26,16,9,0.58); line-height:1.35; }
@@ -120,7 +122,7 @@
   .dash-idea-row { font-family:'DM Mono',monospace; font-size:13px; letter-spacing:1px; cursor:pointer; background:rgba(255,255,255,0.55); border-radius:999px; padding:8px 12px; white-space:nowrap; }
   .dash-trends-card { padding:16px; border-radius:12px; background:#fff8f1; }
   .dash-trends-title { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:16px; transform:translateY(-15px); }
-  .dash-trends-flame { width:28px; height:28px; object-fit:contain; margin-left:-4px; }
+  .dash-trends-flame { width:34px; height:34px; object-fit:contain; margin-left:-4px; }
   .dash-trends-count { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:800; text-transform:none; color:#806b55; background:#eee3d8; border-radius:999px; padding:6px 12px; }
   .dash-trend-row { display:flex; gap:18px; overflow-x:auto; padding:0 2px 6px; scroll-snap-type:x proximity; align-items:stretch; }
   .dash-trend-card { flex:0 0 250px; background:#fff; border-radius:16px; overflow:visible; cursor:pointer; scroll-snap-align:start; position:relative; box-shadow:0 10px 28px rgba(67,45,26,0.08); padding-bottom:12px; }
@@ -137,7 +139,8 @@
   .dash-trend-tags { display:flex; flex-wrap:wrap; gap:6px; }
   .dash-trend-tag, .dash-trend-pill { font-size:10px; font-weight:800; color:#806b55; background:#f1ece6; border-radius:999px; padding:5px 8px; }
   .dash-trend-pill { display:inline-flex; align-items:center; gap:5px; }
-  .dash-network-icon { width:15px; height:15px; object-fit:contain; border-radius:4px; }
+  .dash-trend-pill.network-pill { background:#a49386; color:#fff; }
+  .dash-network-icon { width:19px; height:19px; object-fit:contain; border-radius:4px; }
   .dash-trend-meta { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:8px 0; }
   .dash-trend-score { width:54px; height:54px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:14px; font-weight:900; color:#21170f; background:conic-gradient(var(--papaya) calc(var(--score)*1%), #f1ece6 0); position:relative; flex-shrink:0; }
   .dash-trend-score::before { content:''; position:absolute; inset:5px; border-radius:50%; background:#fff; }
@@ -158,7 +161,8 @@
   .dash-note-area { width:100%; min-height:90px; resize:vertical; border:1.5px dashed transparent; background:transparent; border-radius:0; padding:10px; outline:none; font-family:'Nothing You Could Do',cursive; font-size:19px; line-height:1.25; color:#1c1714; }
   .dash-note-area:focus { border-color:rgba(26,16,9,0.32); }
   .dash-photo-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; align-items:center; }
-  .dash-photo-btn { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:8px 13px; font-size:11px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .dash-photo-btn { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:8px 13px; font-size:11px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; display:inline-flex; align-items:center; gap:6px; }
+  .dash-action-circle { width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:#1a1009; color:#fff; font-size:17px; line-height:1; font-weight:800; }
   .dash-photos { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
   .dash-photo { width:62px; height:78px; object-fit:cover; background:#fff; border:4px solid #fff; box-shadow:0 8px 18px rgba(0,0,0,0.12); transform:rotate(-5deg); }
   .dash-photo:nth-child(even) { transform:rotate(6deg); }
@@ -169,7 +173,7 @@
   .dash-todo-check.done { background:rgba(26,16,9,0.68); box-shadow:inset 0 0 0 4px #E4EAE1; }
   .dash-todo-input { flex:1; min-width:0; border:none; border-bottom:1.5px dashed transparent; outline:none; background:transparent; font-family:'Nothing You Could Do',cursive; font-size:18px; color:#1c1714; }
   .dash-todo-input:focus { border-color:rgba(26,16,9,0.32); }
-  .dash-todo-add { align-self:flex-start; border:none; background:rgba(255,255,255,0.72); color:#1a1009; border-radius:999px; padding:7px 11px; font-size:11px; font-weight:800; cursor:pointer; margin-top:4px; }
+  .dash-todo-add { align-self:flex-start; border:none; background:rgba(255,255,255,0.72); color:#1a1009; border-radius:999px; padding:7px 11px; font-size:11px; font-weight:800; cursor:pointer; margin-top:8px; display:inline-flex; align-items:center; gap:6px; }
   @media (max-width:640px) {
     .dash-hero { padding:34px 0 24px; }
     .dash-ideas { border-radius:24px; }
@@ -198,19 +202,16 @@
   .dash-trends-card .tag { font-size:9px; }
   .trend-feed-actions { display:flex; align-items:center; justify-content:space-between; padding:8px 16px 12px; border-top:1px solid var(--surface); }
   .tfa-left { display:flex; gap:8px; align-items:center; }
-  .tcheck-row { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--text-dim); cursor:pointer; }
-  .tcheck-box { width:22px; height:22px; border-radius:50%; border:2px solid var(--border); background:#fff; display:flex; align-items:center; justify-content:center; transition:all 0.15s; flex-shrink:0; }
-  .trend-feed-card.selected .tcheck-box { background:var(--papaya); border-color:var(--papaya); }
-  .tcheck-box svg { width:11px; height:11px; stroke:#fff; opacity:0; }
-  .trend-feed-card.selected .tcheck-box svg { opacity:1; }
-  .trend-feed-card.selected .tcheck-row { color:var(--papaya); }
+  .trend-plan-btn { display:inline-flex; align-items:center; gap:8px; border:none; background:#1a1009; color:#fff; border-radius:999px; padding:9px 12px 9px 9px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .trend-plan-plus { width:28px; height:28px; border-radius:50%; background:var(--papaya); display:flex; align-items:center; justify-content:center; color:#fff; font-size:22px; line-height:1; }
+  .trend-feed-card.selected .trend-plan-btn { background:var(--papaya); }
   .date-mini-input { padding:5px 8px; border-radius:8px; border:1.5px solid var(--border); background:var(--surface); font-family:'DM Sans',sans-serif; font-size:11px; color:var(--text); outline:none; width:130px; }
   .date-mini-input:focus { border-color:var(--papaya); }
   .ttitle { font-size:15px; font-weight:700; margin-bottom:6px; color:var(--text); }
   .tmeta { display:flex; gap:5px; flex-wrap:wrap; margin-bottom:6px; }
   .tdesc { font-size:12px; color:var(--text-dim); line-height:1.5; margin-bottom:6px; }
   .tmusic { font-size:11px; color:var(--papaya); font-family:'DM Mono',monospace; }
-  .del-btn { font-size:11px; padding:4px 10px; border-radius:8px; border:1px solid #fecaca; background:#fff5f5; color:#dc2626; cursor:pointer; font-family:'DM Sans',sans-serif; font-weight:600; }
+  .del-btn { width:28px; height:28px; border-radius:50%; border:1.5px solid var(--border); background:#fff; color:#7a6a5a; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:18px; line-height:1; display:flex; align-items:center; justify-content:center; }
 
   /* Selbar */
   .selbar { position:fixed; bottom:calc(var(--nav-h)+10px); left:12px; right:72px; background:var(--papaya); border-radius:var(--r); padding:12px 16px; display:flex; align-items:center; justify-content:space-between; opacity:0; pointer-events:none; transition:all 0.2s; box-shadow:0 8px 24px rgba(189,104,9,0.35); z-index:98; }
@@ -321,33 +322,31 @@
   .company-select-list.open { display:block; }
   .company-select-item { width:100%; display:flex; align-items:center; gap:12px; background:none; border:none; padding:9px 10px; border-radius:12px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#1a1009; text-align:left; }
   .company-select-item:hover, .company-select-item.active { background:var(--surface); }
-  .company-moodboard { display:grid; grid-template-columns:minmax(0,1fr) 92px; gap:24px; align-items:start; }
-  .company-identity { grid-column:1 / -1; display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
-  .company-board { display:grid; grid-template-columns:minmax(330px,1.08fr) minmax(260px,0.92fr); gap:18px; align-items:start; }
-  .company-left, .company-mid { display:flex; flex-direction:column; gap:18px; }
+  .company-moodboard { display:block; }
+  .company-identity { display:flex; flex-direction:column; align-items:flex-start; gap:10px; margin-bottom:18px; }
+  .company-pinterest-board { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-flow:dense; gap:16px; align-items:start; }
   .company-logo { min-height:118px; border-radius:0; background:transparent; display:flex; align-items:center; justify-content:center; font-size:18px; letter-spacing:0; text-transform:uppercase; color:var(--text-dim); overflow:hidden; position:relative; cursor:pointer; }
   .company-logo img { width:100%; height:100%; object-fit:contain; background:transparent; }
-  .company-logo-main { width:min(320px,100%); min-height:96px; max-height:140px; }
+  .company-logo-main { width:100%; min-height:120px; max-height:170px; grid-column:span 1; }
   .company-upload { border:none; background:#fff; color:#1a1009; border-radius:999px; padding:9px 14px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; width:max-content; }
-  .company-photo-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .company-pinterest { grid-auto-flow:dense; }
   .company-photo { min-height:170px; background:#fff; border-radius:18px; overflow:hidden; display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:12px; position:relative; border:none; cursor:pointer; }
-  .company-photo.large { min-height:330px; grid-row:span 2; }
+  .company-photo.large { min-height:330px; }
   .company-photo.tall { min-height:260px; }
+  .company-photo.wide { grid-column:span 2; min-height:210px; }
   .company-photo.add-photo { border:1.5px dashed var(--border); background:rgba(255,255,255,0.58); }
   .company-photo img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
   .company-panel { border-radius:18px; padding:24px 20px; background:var(--fuschia); color:#fff; min-height:210px; }
-  .company-panels-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch; }
-  .company-panels-row .company-panel { min-height:190px; aspect-ratio:1/1; }
+  .company-panel.square { aspect-ratio:1/1; min-height:0; }
   .company-reset-wrap { grid-column:1 / -1; text-align:center; opacity:0.55; }
   .company-panel-title { font-size:22px; font-style:italic; text-align:center; margin-bottom:18px; cursor:pointer; }
   .company-font-preview { font-family:'Cormorant Garamond',serif; font-size:34px; line-height:0.92; text-align:center; letter-spacing:3px; }
   .company-keywords { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
   .company-keyword-tag { font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:rgba(255,255,255,0.18); border-radius:999px; padding:6px 12px; }
   .company-keyword-more { width:100%; text-align:center; margin-top:14px; background:none; border:none; color:#fff; opacity:0.8; font-size:20px; letter-spacing:3px; cursor:pointer; line-height:1; }
-  .company-note { position:relative; min-height:230px; padding:18px; border-radius:22px; overflow:hidden; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; }
+  .company-note { position:relative; grid-column:span 2; min-height:230px; padding:18px 122px 18px 18px; border-radius:22px; overflow:hidden; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; }
   .company-note textarea { width:100%; min-height:180px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; border-radius:14px; padding:12px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
   .company-note textarea:focus { border-color:rgba(26,16,9,0.32); }
+  .company-note .company-swatches { position:absolute; top:22px; right:22px; display:grid; grid-template-columns:1fr; gap:12px; align-items:center; }
   .company-swatches { display:flex; flex-direction:column; gap:24px; align-items:center; }
   .company-swatch { width:72px; height:72px; border-radius:50%; border:0; padding:0; cursor:pointer; overflow:hidden; background:transparent; }
   .company-swatch::-webkit-color-swatch-wrapper { padding:0; }
@@ -369,29 +368,24 @@
     .company-tile { min-height:76px; padding:10px; border-radius:8px; }
     .company-tile-name { font-size:20px; }
     .company-tile-sub { font-size:10px; margin-top:4px; }
-    .company-moodboard { grid-template-columns:minmax(0,1fr) 58px; gap:10px; align-items:start; }
     .company-identity { gap:6px; }
-    .company-board { grid-template-columns:1fr; gap:8px; }
-    .company-left, .company-mid { gap:8px; }
+    .company-pinterest-board { gap:8px; }
     .company-logo { min-height:56px; justify-content:center; font-size:12px; }
-    .company-logo-main { width:140px; min-height:58px; max-height:72px; }
+    .company-logo-main { width:100%; min-height:72px; max-height:90px; }
     .company-upload { padding:6px 10px; font-size:10px; }
-    .company-photo-grid { grid-template-columns:repeat(3,1fr); gap:7px; }
     .company-photo { min-height:76px; border-radius:10px; font-size:10px; }
-    .company-photo.large, .company-photo.tall { min-height:120px; grid-row:auto; }
+    .company-photo.large { min-height:150px; }
+    .company-photo.tall { min-height:118px; }
+    .company-photo.wide { min-height:86px; }
     .company-panel { min-height:92px; border-radius:12px; padding:12px 10px; }
     .company-panel-title { font-size:14px; margin-bottom:8px; }
     .company-font-preview { font-size:20px; letter-spacing:1px; line-height:0.9; }
     .company-keywords { gap:5px; }
     .company-keyword-tag { font-size:10px; padding:4px 7px; }
     .company-keyword-more { margin-top:6px; font-size:14px; }
-    .company-mid { grid-column:1 / -1; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-    .company-mid > div:first-child { grid-column:1 / -1; }
-    .company-mid .companies-title { font-size:30px !important; }
-    .company-note { min-height:126px; padding:8px; border-radius:14px; }
+    .company-note { min-height:126px; padding:8px 62px 8px 8px; border-radius:14px; }
     .company-note textarea { min-height:74px; font-size:16px; padding:6px; }
-    .company-mid .company-photo { min-height:126px !important; width:100% !important; }
-    .company-swatches { flex-direction:column; gap:10px; grid-column:2; grid-row:1; align-self:start; }
+    .company-note .company-swatches { top:10px; right:10px; gap:7px; }
     .company-swatch, .company-swatch-add { width:44px; height:44px; font-size:18px; }
   }
 
@@ -589,6 +583,7 @@
           <div class="dash-title">Tableau de bord</div>
           <div class="dash-script" id="dash-week-title">de la semaine</div>
         </div>
+        <div class="dash-recap-title">Récap</div>
         <div class="dash-stats-row" id="dash-stats-row"></div>
         <div class="dashboard-grid">
           <section class="dash-card">
@@ -1206,6 +1201,7 @@ function showPage(name){
   document.getElementById('page-'+name).classList.add('active');
   document.getElementById('nb-'+name)?.classList.add('active');
   document.querySelector('.app')?.classList.toggle('dashboard-mode',name==='trends');
+  document.querySelector('.app')?.classList.toggle('companies-mode',name==='companies');
   const labels={trends:'Tableau de bord',content:'Mon contenu',companies:'Entreprises',planning:'Planning 📅',analyse:'Analyse',fiche:'Fiche 🎬',mini:'Création'};
   const topbarTitle=document.getElementById('topbar-title');
   const topbarPage=document.getElementById('topbar-page');
@@ -1446,7 +1442,7 @@ function updateDashboardWeekTitle(){
   if(!el) return;
   const d=new Date();
   const month=d.toLocaleDateString('fr-FR',{month:'long'});
-  el.textContent=`semaine du ${d.getDate()} ${month}`;
+  el.textContent=`Semaine du ${d.getDate()} ${month}`;
 }
 function frenchMonth(date){
   return date.toLocaleDateString('fr-FR',{month:'long'});
@@ -1506,20 +1502,21 @@ function dashboardFilteredTrends(query=''){
 function toHashtag(text){
   return '#'+String(text||'').trim().split(/\s+/).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join('');
 }
+function dashboardDemoNews(){
+  const key=activeAccountKey();
+  const data={
+    lf:['Semaine de la France à Tokyo','Journée mondiale du vin rouge'],
+    cpc:['Sortie Pokémon 30 ans','Sortie OP-17','Rentrée','Festival été au Japon'],
+    cm:['Éclipse solaire','Rentrée','Vacances au Japon','Festival été au Japon']
+  };
+  return (data[key]||data.cm).map((title,i)=>({id:`demo-news-${key}-${i}`,fields:{'Titre de la trend':title}}));
+}
 function renderDashboardNews(records=dashboardFilteredTrends()){
   const el=document.getElementById('dashboard-news');
   if(!el) return;
-  const fallback=[
-    {id:'fb-news-1',fields:{'Titre de la trend':'éclipse solaire'}},
-    {id:'fb-news-2',fields:{'Titre de la trend':'canicule'}},
-    {id:'fb-news-3',fields:{'Titre de la trend':'rentrée'}},
-    {id:'fb-news-4',fields:{'Titre de la trend':'vacances au Japon'}},
-    {id:'fb-news-5',fields:{'Titre de la trend':'festival été'}},
-    {id:'fb-news-6',fields:{'Titre de la trend':'sortie Pokémon'}}
-  ];
-  const items=(records.length?records:fallback).slice(0,8);
+  const items=dashboardDemoNews();
   const cls=['dsi-2','dsi-1','dsi-lin','dsi-4','dsi-5'];
-  el.innerHTML=items.map((r,i)=>`<div class="dash-news-item" onclick="${allTrends.some(t=>t.id===r.id)?`toggleTrend('${r.id}')`:''}">
+  el.innerHTML=items.map((r,i)=>`<div class="dash-news-item">
     <div class="dash-hash ${cls[i%cls.length]}">#</div>
     <div class="dash-news-text">${htmlSafe(dashboardTitle(r))}</div>
   </div>`).join('');
@@ -1586,7 +1583,8 @@ function renderDashboardNotes(){
     <div class="dash-note-title">Notes</div>
     <textarea class="dash-note-area" placeholder="Notes, idées libres, rappels client..." oninput="updateDashboardNoteText('${n.id}',this.value)">${htmlSafe(n.text)}</textarea>
     <div class="dash-photo-row">
-      <button class="dash-photo-btn" onclick="document.getElementById('dnp-${n.id}').click()">Ajouter photo</button>
+      <button class="dash-photo-btn" onclick="document.getElementById('dnp-${n.id}').click()"><span class="dash-action-circle">+</span> Photo</button>
+      <button class="dash-photo-btn" onclick="document.getElementById('dnp-${n.id}').click()"><span class="dash-action-circle">+</span> Vidéo</button>
       <button class="dash-photo-btn" onclick="clearDashboardNotePhotos('${n.id}')">Vider photos</button>
       <input id="dnp-${n.id}" type="file" accept="image/*" multiple style="display:none" onchange="addDashboardNotePhotos('${n.id}',this.files);this.value=''">
     </div>
@@ -1601,7 +1599,7 @@ function renderDashboardNotes(){
         <input class="dash-todo-input" value="${htmlSafe(t.text)}" placeholder="to do" oninput="updateDashboardTodoText('${t.id}',this.value)">
       </div>`).join('')}
     </div>
-    <button class="dash-todo-add" onclick="addDashboardTodo()">+ to do</button>
+    <button class="dash-todo-add" onclick="addDashboardTodo()"><span class="dash-action-circle">+</span> To do</button>
   </div>`;
 }
 function updateDashboardNoteText(id,val){
@@ -1778,38 +1776,38 @@ function renderCompanyDetail(){
   const photos=[...(c.photos||[])];
   while(photos.length<6) photos.push('');
   const keywordTags=(c.keywords||'').split('\n').filter(Boolean);
+  const swatches=`<div class="company-swatches">
+    ${c.colors.map((color,i)=>`<input class="company-swatch" type="color" value="${htmlSafe(color)}" oninput="saveCompanyColor(${i},this.value)">`).join('')}
+    <button class="company-swatch-add" onclick="addCompanyColor()">+</button>
+  </div>`;
   el.innerHTML=`<div class="company-moodboard">
     <div class="company-identity">
       <div>
         <input class="companies-title company-name-input" style="font-size:58px;color:${htmlSafe(c.colors[0])};font-family:${htmlSafe(c.font)},serif" value="${htmlSafe(c.name)}" oninput="saveCompanyField('name',this.value);renderCompanies()">
         <input class="companies-sub company-subtitle-input" value="${htmlSafe(c.subtitle)}" oninput="saveCompanyField('subtitle',this.value)">
       </div>
+    </div>
+    <div class="company-pinterest-board">
       <div class="company-logo company-logo-main" onclick="uploadCompanyAsset('logo')">${c.logo?`<img src="${c.logo}" alt="">`:'LOGO'}</div>
-    </div>
-    <div class="company-board">
-      <div class="company-photo-grid company-pinterest">
-        ${photos.map((src,i)=>`<button class="company-photo ${i===0?'large':i===3?'tall':''} ${src?'':'add-photo'}" onclick="uploadCompanyAsset('photo-${i}')">${src?`<img src="${src}" alt="">`:'Ajouter photo'}</button>`).join('')}
+      <button class="company-photo large ${photos[0]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-0')">${photos[0]?`<img src="${photos[0]}" alt="">`:'Ajouter photo'}</button>
+      <button class="company-photo tall ${photos[1]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-1')">${photos[1]?`<img src="${photos[1]}" alt="">`:'Ajouter photo'}</button>
+      <div class="company-panel square" style="background:${htmlSafe(c.colors[0])}">
+        <div class="company-panel-title" onclick="editCompanyFont()">Mes polices</div>
+        <div class="company-font-preview" style="font-family:${htmlSafe(c.font)},serif">ABCDEF<br>GHIJKL<br>MNOPQ<br>RSTUVW<br>XYZ</div>
       </div>
-      <div class="company-left">
-      <div class="company-panels-row">
-        <div class="company-panel" style="background:${htmlSafe(c.colors[0])}">
-          <div class="company-panel-title" onclick="editCompanyFont()">Mes polices</div>
-          <div class="company-font-preview" style="font-family:${htmlSafe(c.font)},serif">ABCDEF<br>GHIJKL<br>MNOPQ<br>RSTUVW<br>XYZ</div>
-        </div>
-        <div class="company-panel" style="background:${htmlSafe(c.colors[2]||c.colors[0])}">
-          <div class="company-panel-title">Mots clés</div>
-          <div class="company-keywords">${keywordTags.map(k=>`<span class="company-keyword-tag">${htmlSafe(k)}</span>`).join('')}</div>
-          <button class="company-keyword-more" onclick="addCompanyKeyword()">•••</button>
-        </div>
+      <button class="company-photo ${photos[2]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-2')">${photos[2]?`<img src="${photos[2]}" alt="">`:'Ajouter photo'}</button>
+      <button class="company-photo wide ${photos[3]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-3')">${photos[3]?`<img src="${photos[3]}" alt="">`:'Ajouter photo'}</button>
+      <div class="company-panel square" style="background:${htmlSafe(c.colors[2]||c.colors[0])}">
+        <div class="company-panel-title">Mots clés</div>
+        <div class="company-keywords">${keywordTags.map(k=>`<span class="company-keyword-tag">${htmlSafe(k)}</span>`).join('')}</div>
+        <button class="company-keyword-more" onclick="addCompanyKeyword()">•••</button>
       </div>
-        <div class="company-note">
-          <textarea oninput="saveCompanyField('note',this.value)" placeholder="Notes de marque...">${htmlSafe(c.note)}</textarea>
-        </div>
+      <button class="company-photo ${photos[4]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-4')">${photos[4]?`<img src="${photos[4]}" alt="">`:'Ajouter photo'}</button>
+      <button class="company-photo tall ${photos[5]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-5')">${photos[5]?`<img src="${photos[5]}" alt="">`:'Ajouter photo'}</button>
+      <div class="company-note">
+        ${swatches}
+        <textarea oninput="saveCompanyField('note',this.value)" placeholder="Notes de marque...">${htmlSafe(c.note)}</textarea>
       </div>
-    </div>
-    <div class="company-swatches">
-      ${c.colors.map((color,i)=>`<input class="company-swatch" type="color" value="${htmlSafe(color)}" oninput="saveCompanyColor(${i},this.value)">`).join('')}
-      <button class="company-swatch-add" onclick="addCompanyColor()">+</button>
     </div>
     <div class="company-reset-wrap"><button class="company-upload" style="background:transparent;text-decoration:underline" onclick="resetCompanyProfile()">Réinitialiser cette fiche</button></div>
   </div>`;
@@ -1932,7 +1930,7 @@ function renderNetworkPill(rs){
   const label=String(rs||'').trim();
   const low=label.toLowerCase();
   const src=low.includes('tiktok')?'assets/picto-tiktok.png':(low.includes('insta')?'assets/picto-instagram.png':'');
-  return `<span class="dash-trend-pill">${src?`<img class="dash-network-icon" src="${src}" alt="">`:''}${htmlSafe(label)}</span>`;
+  return `<span class="dash-trend-pill ${src?'network-pill':''}">${src?`<img class="dash-network-icon" src="${src}" alt="">`:''}${htmlSafe(label)}</span>`;
 }
 
 function trendFlameCount(f){
@@ -1987,12 +1985,9 @@ function tFeedCard(r,i=0){
       ${niches.length?`<div class="dash-trend-tags" style="margin-top:8px">${niches.slice(0,3).map(n=>`<span class="dash-trend-tag">#${htmlSafe(n)}</span>`).join('')}</div>`:''}
       <div class="trend-feed-actions" style="padding:10px 0 0;border-top:none;margin-top:8px">
         <div class="tfa-left">
-          <div class="tcheck-row" onclick="toggleTrend('${r.id}')">
-            <div class="tcheck-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span>${isSel?'Sélectionnée':'Sélectionner'}</span>
-          </div>
+          <button class="trend-plan-btn" onclick="toggleTrend('${r.id}')"><span class="trend-plan-plus">+</span><span>${isSel?'Au planning':'Ajouter au planning'}</span></button>
         </div>
-        <button class="del-btn" onclick="deleteTrend('${r.id}')">🗑</button>
+        <button class="del-btn" onclick="deleteTrend('${r.id}')" aria-label="Supprimer">×</button>
       </div>
       ${isSel?`<div style="padding-top:10px;display:flex;gap:8px;align-items:center">
         <input type="date" class="date-mini-input" style="flex:1" id="date-${r.id}" value="${selTrends[r.id]?.date||''}" onchange="setTrendDate('${r.id}',this.value)">
