@@ -346,7 +346,7 @@
   .company-keywords { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
   .company-keyword-tag { font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:rgba(255,255,255,0.18); border-radius:999px; padding:6px 12px; }
   .company-keyword-more { width:100%; text-align:center; margin-top:14px; background:none; border:none; color:#fff; opacity:0.8; font-size:20px; letter-spacing:3px; cursor:pointer; line-height:1; }
-  .company-note { position:relative; grid-column:span 2; min-height:190px; padding:18px; border-radius:22px; overflow:hidden; background:#fff; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:16px; align-items:start; }
+  .company-note { position:relative; grid-column:span 2; min-height:190px; padding:26px 28px; border-radius:22px; overflow:hidden; background:url('assets/company-note-paper.png') center/cover no-repeat #fff; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:16px; align-items:start; }
   .company-note textarea { width:100%; min-height:150px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; border-radius:14px; padding:12px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
   .company-note textarea:focus { border-color:rgba(26,16,9,0.32); }
   .company-note .company-swatches { position:static; display:grid; grid-template-columns:1fr; gap:12px; align-items:center; }
@@ -402,7 +402,7 @@
   .analysis-slide { aspect-ratio:1/1.414; min-height:0; background:#fff; border-radius:12px; padding:34px; box-shadow:0 18px 48px rgba(26,16,9,0.10); overflow:auto; position:relative; }
   .analysis-hero { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:18px; padding:0 0 24px; }
   .analysis-title { font-family:'Cormorant Garamond',serif; font-size:clamp(44px,7vw,72px); line-height:0.82; font-weight:700; text-transform:uppercase; color:#080604; }
-  .analysis-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(24px,4vw,42px); color:var(--analysis-1); line-height:0.9; font-weight:700; margin-left:90px; display:flex; align-items:flex-end; gap:8px; flex-wrap:wrap; }
+  .analysis-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(24px,4vw,42px); color:var(--analysis-1); line-height:0.9; font-weight:700; margin:8px 0 0; display:flex; align-items:flex-end; gap:8px; flex-wrap:wrap; }
   .analysis-month-input { width:min(100%,260px); border:none; border-bottom:1.5px dashed color-mix(in srgb, var(--analysis-1), transparent 45%); outline:none; background:transparent; font:inherit; color:var(--analysis-1); padding:0 0 3px; }
   .analysis-company-logo { width:86px; height:86px; object-fit:contain; justify-self:end; background:transparent; }
   .analysis-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px; }
@@ -754,7 +754,7 @@
                 <div class="analysis-wide-head">
                   <div class="analysis-section-title">Analyse</div>
                 </div>
-                <div class="analysis-ai-box" id="analysis-ai-box" contenteditable="true" oninput="saveAnalysisText()"><strong>Démo :</strong> remplis les chiffres, ajoute tes captures, puis clique sur “Générer pistes”.</div>
+                <div class="analysis-ai-box" id="analysis-ai-box" contenteditable="true" oninput="saveAnalysisText()"><strong>Démo :</strong> remplis les chiffres, ajoute tes captures, puis ajuste l'analyse avant export.</div>
               </section>
             </section>
 
@@ -762,7 +762,6 @@
               <img class="analysis-instagram-corner" src="assets/picto-instagram.png" alt="">
               <div class="analysis-wide-head">
                 <div class="analysis-section-title">Publications les plus performantes</div>
-                <button class="dash-photo-btn" onclick="generateAnalysisSummary()">Générer pistes</button>
               </div>
               <div class="analysis-post-image-row" id="analysis-post-image-row"></div>
               <div class="analysis-content-list">
