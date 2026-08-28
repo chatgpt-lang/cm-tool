@@ -324,6 +324,9 @@
   .company-select-item:hover, .company-select-item.active { background:var(--surface); }
   .company-moodboard { display:block; }
   .company-identity { display:flex; flex-direction:column; align-items:flex-start; gap:10px; margin-bottom:18px; }
+  .company-hero-logo { width:min(100%,360px); min-height:118px; display:flex; align-items:center; justify-content:flex-start; background:transparent; border:none; padding:0; cursor:pointer; }
+  .company-hero-logo img { display:block; width:100%; max-height:150px; object-fit:contain; object-position:left center; }
+  .company-hero-logo-empty { width:220px; min-height:96px; display:flex; align-items:center; justify-content:center; color:var(--text-dim); border:1.5px dashed var(--border); border-radius:16px; font-size:13px; font-weight:800; }
   .company-pinterest-board { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-flow:dense; gap:16px; align-items:start; }
   .company-logo { min-height:118px; border-radius:0; background:transparent; display:flex; align-items:center; justify-content:center; font-size:18px; letter-spacing:0; text-transform:uppercase; color:var(--text-dim); overflow:hidden; position:relative; cursor:pointer; }
   .company-logo img { display:block; width:min(76%,360px); max-height:170px; object-fit:contain; background:transparent; margin:auto; }
@@ -369,6 +372,9 @@
     .company-tile-name { font-size:20px; }
     .company-tile-sub { font-size:10px; margin-top:4px; }
     .company-identity { gap:6px; }
+    .company-hero-logo { min-height:64px; justify-content:center; }
+    .company-hero-logo img { width:min(78%,210px); max-height:80px; object-position:center; }
+    .company-hero-logo-empty { width:150px; min-height:58px; border-radius:12px; font-size:11px; }
     .company-pinterest-board { gap:8px; }
     .company-logo { min-height:56px; justify-content:center; font-size:12px; }
     .company-logo img { width:min(78%,210px); max-height:90px; }
@@ -392,15 +398,18 @@
   .analysis-page { max-width:1120px; margin:0 auto; --analysis-1:var(--papaya); --analysis-2:var(--fuschia); --analysis-3:var(--paradise); }
   .analysis-workspace { display:flex; flex-direction:column; gap:18px; }
   .analysis-capture-panel { background:var(--surface); border:none; border-radius:8px; padding:16px; }
-  .analysis-sheet { width:min(100%,760px); aspect-ratio:1/1.414; min-height:0; margin:0 auto; background:#fff; border-radius:12px; padding:34px; box-shadow:0 18px 48px rgba(26,16,9,0.10); overflow:auto; }
-  .analysis-hero { text-align:left; padding:0 0 20px; }
+  .analysis-sheet { width:min(100%,760px); margin:0 auto; display:flex; flex-direction:column; gap:18px; }
+  .analysis-slide { aspect-ratio:1/1.414; min-height:0; background:#fff; border-radius:12px; padding:34px; box-shadow:0 18px 48px rgba(26,16,9,0.10); overflow:auto; position:relative; }
+  .analysis-hero { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:18px; padding:0 0 24px; }
   .analysis-title { font-family:'Cormorant Garamond',serif; font-size:clamp(44px,7vw,72px); line-height:0.82; font-weight:700; text-transform:uppercase; color:#080604; }
   .analysis-script { font-family:'Nothing You Could Do',cursive; font-size:clamp(24px,4vw,42px); color:var(--analysis-1); line-height:0.9; font-weight:700; margin-left:90px; display:flex; align-items:flex-end; gap:8px; flex-wrap:wrap; }
   .analysis-month-input { width:min(100%,260px); border:none; border-bottom:1.5px dashed color-mix(in srgb, var(--analysis-1), transparent 45%); outline:none; background:transparent; font:inherit; color:var(--analysis-1); padding:0 0 3px; }
-  .analysis-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:14px; }
+  .analysis-company-logo { width:86px; height:86px; object-fit:contain; justify-self:end; background:transparent; }
+  .analysis-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px; }
   .analysis-card { background:color-mix(in srgb, var(--analysis-1), white 88%); border:none; border-radius:8px; padding:14px; min-height:112px; }
   .analysis-card:nth-child(2) { background:color-mix(in srgb, var(--analysis-2), white 88%); }
   .analysis-card:nth-child(3) { background:color-mix(in srgb, var(--analysis-3), white 88%); }
+  .analysis-card:nth-child(4) { background:color-mix(in srgb, var(--analysis-1), white 82%); }
   .analysis-card-kicker { font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; }
   .analysis-card-value { font-family:'Cormorant Garamond',serif; font-size:42px; line-height:1; color:var(--text); }
   .analysis-card-sub { font-size:12px; color:var(--text-dim); margin-top:8px; line-height:1.35; }
@@ -417,19 +426,26 @@
   .analysis-content-card:nth-child(2) .analysis-content-rank { background:var(--analysis-2); }
   .analysis-content-card:nth-child(3) .analysis-content-rank { background:var(--analysis-3); }
   .analysis-content-card input { border:none; border-bottom:1.5px dashed rgba(0,0,0,0.18); background:transparent; outline:none; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:700; padding:4px 0; }
+  .analysis-instagram-corner { position:absolute; top:22px; right:24px; width:38px; height:38px; object-fit:contain; }
+  .analysis-post-image-row { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:18px 0 8px; }
+  .analysis-post-image { min-height:170px; border-radius:12px; background:var(--surface); border:1.5px dashed var(--border); display:flex; align-items:center; justify-content:center; overflow:hidden; color:var(--text-dim); font-size:12px; font-weight:800; cursor:pointer; }
+  .analysis-post-image img { width:100%; height:100%; object-fit:cover; display:block; }
   .analysis-ai-box { background:var(--surface); color:var(--text); border:1.5px solid var(--border); border-radius:12px; padding:14px; font-size:13px; line-height:1.45; outline:none; min-height:108px; }
   .analysis-ai-box:focus { border-color:rgba(26,16,9,0.36); }
   .analysis-ai-box strong { color:var(--analysis-1); }
   .analysis-export-wrap { width:min(100%,760px); margin:14px auto 0; display:flex; justify-content:center; }
   .analysis-export-btn { border:none; background:var(--analysis-1); color:#fff; border-radius:999px; padding:11px 22px; font-size:12px; font-weight:800; cursor:pointer; font-family:'DM Sans',sans-serif; }
   .analysis-note { width:min(100%,760px); margin:8px auto 0; background:#d8ccc7; border-radius:14px; padding:18px; }
-  .analysis-note-paper { background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; padding:48px 20px 18px; min-height:180px; position:relative; }
-  .analysis-note .dash-clip { top:-20px; width:42px; height:42px; }
+  .analysis-note-paper { background:transparent; padding:0; min-height:150px; position:relative; }
   .analysis-note textarea { width:100%; min-height:100px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; font-family:'Nothing You Could Do',cursive; font-size:20px; line-height:1.25; color:#1c1714; }
   .analysis-note textarea:focus { border-color:rgba(26,16,9,0.32); }
   @media (max-width:720px) {
-    .analysis-grid { grid-template-columns:1fr; }
+    .analysis-slide { padding:22px; }
+    .analysis-grid { grid-template-columns:repeat(2,1fr); }
     .analysis-content-list { grid-template-columns:1fr; }
+    .analysis-post-image-row { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+    .analysis-post-image { min-height:94px; }
+    .analysis-company-logo { width:62px; height:62px; }
   }
 
   /* ===== PAGE 4 FICHE ===== */
@@ -704,32 +720,51 @@
           </section>
 
           <div class="analysis-sheet">
-            <div class="analysis-hero">
-              <div class="analysis-title">Analyse</div>
-              <div class="analysis-script">du mois : <input class="analysis-month-input" id="ana-month" value="août 2026" oninput="saveAnalysisData()"></div>
-            </div>
-            <div class="analysis-grid">
-              <section class="analysis-card">
-                <div class="analysis-card-kicker">Vues</div>
-                <input class="analysis-input" id="ana-views" value="121 K" oninput="saveAnalysisData()">
-                <div class="analysis-card-sub">+28 % vs mois précédent</div>
+            <section class="analysis-slide">
+              <div class="analysis-hero">
+                <div>
+                  <div class="analysis-title">Analyse</div>
+                  <div class="analysis-script"><input class="analysis-month-input" id="ana-month" value="août 2026" oninput="saveAnalysisData()"></div>
+                </div>
+                <img class="analysis-company-logo" id="analysis-company-logo" alt="">
+              </div>
+              <div class="analysis-grid">
+                <section class="analysis-card">
+                  <div class="analysis-card-kicker">Vues</div>
+                  <input class="analysis-input" id="ana-views" value="121 K" oninput="saveAnalysisData()">
+                  <div class="analysis-card-sub">+28 % vs mois précédent</div>
+                </section>
+                <section class="analysis-card">
+                  <div class="analysis-card-kicker">Non-followers</div>
+                  <input class="analysis-input" id="ana-nonfollowers" value="36 %" oninput="saveAnalysisData()">
+                  <div class="analysis-card-sub">Portée froide à convertir.</div>
+                </section>
+                <section class="analysis-card">
+                  <div class="analysis-card-kicker">Followers</div>
+                  <input class="analysis-input" id="ana-followers" value="+98" oninput="saveAnalysisData()">
+                  <div class="analysis-card-sub">Croissance du mois.</div>
+                </section>
+                <section class="analysis-card">
+                  <div class="analysis-card-kicker">Abonnés</div>
+                  <input class="analysis-input" id="ana-subscribers" value="12 K" oninput="saveAnalysisData()">
+                  <div class="analysis-card-sub">Communauté totale.</div>
+                </section>
+              </div>
+              <section class="analysis-wide">
+                <div class="analysis-wide-head">
+                  <div class="analysis-section-title">Analyse</div>
+                </div>
+                <div class="analysis-ai-box" id="analysis-ai-box" contenteditable="true" oninput="saveAnalysisText()"><strong>Démo :</strong> remplis les chiffres, ajoute tes captures, puis clique sur “Générer pistes”.</div>
               </section>
-              <section class="analysis-card">
-                <div class="analysis-card-kicker">Non-followers</div>
-                <input class="analysis-input" id="ana-nonfollowers" value="36 %" oninput="saveAnalysisData()">
-                <div class="analysis-card-sub">Portée froide à convertir.</div>
-              </section>
-              <section class="analysis-card">
-                <div class="analysis-card-kicker">Followers</div>
-                <input class="analysis-input" id="ana-followers" value="+98" oninput="saveAnalysisData()">
-                <div class="analysis-card-sub">Croissance du mois.</div>
-              </section>
-            </div>
-            <section class="analysis-wide">
+            </section>
+
+            <section class="analysis-slide">
+              <img class="analysis-instagram-corner" src="assets/picto-instagram.png" alt="">
               <div class="analysis-wide-head">
-                <div class="analysis-section-title">Top contenus</div>
+                <div class="analysis-section-title">Publications les plus performantes</div>
                 <button class="dash-photo-btn" onclick="generateAnalysisSummary()">Générer pistes</button>
               </div>
+              <div class="analysis-post-image-row" id="analysis-post-image-row"></div>
               <div class="analysis-content-list">
                 <div class="analysis-content-card">
                   <div class="analysis-content-rank">1</div>
@@ -751,12 +786,6 @@
                 </div>
               </div>
             </section>
-            <section class="analysis-wide">
-              <div class="analysis-wide-head">
-                <div class="analysis-section-title">Analyse</div>
-              </div>
-              <div class="analysis-ai-box" id="analysis-ai-box" contenteditable="true" oninput="saveAnalysisText()"><strong>Démo :</strong> remplis les chiffres, ajoute tes captures, puis clique sur “Générer pistes”.</div>
-            </section>
           </div>
           <div class="analysis-export-wrap">
             <button class="analysis-export-btn" onclick="alert('Export analyse bientôt disponible')">Exporter</button>
@@ -764,7 +793,6 @@
 
           <section class="analysis-note">
             <div class="analysis-note-paper">
-              <div class="dash-clip" aria-hidden="true"></div>
               <div class="dash-note-title">Mes notes personnelles</div>
               <textarea id="analysis-notes" placeholder="Bilan, apprentissages, idées pour le mois prochain..." oninput="saveAnalysisNotes()"></textarea>
             </div>
@@ -1231,11 +1259,17 @@ function loadAnalysisNotes(){
 function applyAnalysisBrand(){
   const page=document.querySelector('.analysis-page');
   if(!page) return;
-  const colors=(companyProfile(activeAccountKey())?.colors||[]).filter(Boolean);
+  const profile=companyProfile(activeAccountKey());
+  const colors=(profile?.colors||[]).filter(Boolean);
   const use=[colors[0]||'#D18D2B',colors[1]||'#A64255',colors[2]||'#2F4731'];
   page.style.setProperty('--analysis-1',use[0]);
   page.style.setProperty('--analysis-2',use[1]);
   page.style.setProperty('--analysis-3',use[2]);
+  const logo=document.getElementById('analysis-company-logo');
+  if(logo){
+    logo.src=profile?.logo||'';
+    logo.style.display=profile?.logo?'block':'none';
+  }
 }
 
 function saveAnalysisNotes(){
@@ -1249,7 +1283,7 @@ function analysisData(){
 
 function loadAnalysisData(){
   const data=analysisData();
-  ['month','views','nonfollowers','followers','top1-title','top1-stat','top1-why','top2-title','top2-stat','top2-why','top3-title','top3-stat','top3-why'].forEach(key=>{
+  ['month','views','nonfollowers','followers','subscribers','top1-title','top1-stat','top1-why','top2-title','top2-stat','top2-why','top3-title','top3-stat','top3-why'].forEach(key=>{
     const el=document.getElementById('ana-'+key);
     if(el && data[key]) el.value=data[key];
   });
@@ -1259,7 +1293,7 @@ function loadAnalysisData(){
 
 function saveAnalysisData(){
   const data=analysisData();
-  ['month','views','nonfollowers','followers','top1-title','top1-stat','top1-why','top2-title','top2-stat','top2-why','top3-title','top3-stat','top3-why'].forEach(key=>{
+  ['month','views','nonfollowers','followers','subscribers','top1-title','top1-stat','top1-why','top2-title','top2-stat','top2-why','top3-title','top3-stat','top3-why'].forEach(key=>{
     const el=document.getElementById('ana-'+key);
     if(el) data[key]=el.value;
   });
@@ -1274,9 +1308,18 @@ function saveAnalysisText(){
 
 function renderAnalysisShots(shots){
   const row=document.getElementById('analysis-shot-row');
-  if(!row) return;
-  row.innerHTML=(shots||[]).map((src,i)=>`<img class="analysis-shot" src="${src}" onclick="removeAnalysisShot(${i})">`).join('')
-    + `<button class="analysis-upload" onclick="document.getElementById('analysis-shot-upload').click()">+ capture</button>`;
+  const list=shots||[];
+  if(row){
+    row.innerHTML=list.map((src,i)=>`<img class="analysis-shot" src="${src}" onclick="removeAnalysisShot(${i})">`).join('')
+      + `<button class="analysis-upload" onclick="document.getElementById('analysis-shot-upload').click()">+ capture</button>`;
+  }
+  const postRow=document.getElementById('analysis-post-image-row');
+  if(postRow){
+    postRow.innerHTML=[0,1,2].map(i=>list[i]
+      ? `<button class="analysis-post-image" onclick="document.getElementById('analysis-shot-upload').click()"><img src="${list[i]}" alt=""></button>`
+      : `<button class="analysis-post-image" onclick="document.getElementById('analysis-shot-upload').click()">+ image</button>`
+    ).join('');
+  }
 }
 
 function addAnalysisShots(e){
@@ -1781,13 +1824,10 @@ function renderCompanyDetail(){
   </div>`;
   el.innerHTML=`<div class="company-moodboard">
     <div class="company-identity">
-      <div>
-        <input class="companies-title company-name-input" style="font-size:58px;color:${htmlSafe(c.colors[0])};font-family:${htmlSafe(c.font)},serif" value="${htmlSafe(c.name)}" oninput="saveCompanyField('name',this.value);renderCompanies()">
-        <input class="companies-sub company-subtitle-input" value="${htmlSafe(c.subtitle)}" oninput="saveCompanyField('subtitle',this.value)">
-      </div>
+      <button class="company-hero-logo" onclick="uploadCompanyAsset('logo')">${c.logo?`<img src="${c.logo}" alt="${htmlSafe(c.name)}">`:'<span class="company-hero-logo-empty">Ajouter logo</span>'}</button>
+      <input class="companies-sub company-subtitle-input" value="${htmlSafe(c.name)}" oninput="saveCompanyField('name',this.value);renderCompanies()" aria-label="Nom de l'entreprise">
     </div>
     <div class="company-pinterest-board">
-      <div class="company-logo company-logo-main" onclick="uploadCompanyAsset('logo')">${c.logo?`<img src="${c.logo}" alt="">`:'LOGO'}</div>
       <button class="company-photo large ${photos[0]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-0')">${photos[0]?`<img src="${photos[0]}" alt="">`:'Ajouter photo'}</button>
       <button class="company-photo tall ${photos[1]?'':'add-photo'}" onclick="uploadCompanyAsset('photo-1')">${photos[1]?`<img src="${photos[1]}" alt="">`:'Ajouter photo'}</button>
       <div class="company-panel square" style="background:${htmlSafe(c.colors[0])}">
@@ -1913,11 +1953,17 @@ function isAppearTrend(r){
   return title.includes('faire apparaitre');
 }
 
-function trendImage(r){
+function trendImage(r,i=0){
   if(isAppearTrend(r)) return 'assets/trend-faire-apparaitre.png';
+  if(isKimchiTrend(r)) return 'assets/trend-kimchi.jpg';
   if(isWithWithoutTrend(r)) return 'assets/trend-moi-avec-sans.png';
   const f=r.fields||{};
-  return f['Image']||f['Photo']||f['Miniature URL']||'';
+  return f['Image']||f['Photo']||f['Miniature URL']||(i===1?'assets/trend-kimchi.jpg':'');
+}
+
+function isKimchiTrend(r){
+  const title=dashboardTitle(r).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  return title.includes('kimchi') || title.includes('riz') || title.includes('plat');
 }
 
 function isWithWithoutTrend(r){
@@ -1951,7 +1997,7 @@ function tFeedCard(r,i=0){
   const music=f['Nom de la musique']||'';
   const reseaux=[].concat(f['Réseaux']||[]);
   const niches=[].concat(f['Niches compatibles']||[]);
-  const image=trendImage(r);
+  const image=trendImage(r,i);
   const isSel=!!selTrends[r.id];
   const numColor=['#2f6d3d','var(--papaya)','#8a7355'][i%3];
   const score=Math.max(56, Math.min(96, Number(f['Viralité']||f['Score']||f['Score viral']||f['Viralite']) || (92 - (i*7)%34)));
