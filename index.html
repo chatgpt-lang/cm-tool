@@ -256,34 +256,41 @@
   .planning-view-tab.active { background:var(--papaya); color:#fff; }
   .planning-actions { display:flex; justify-content:flex-end; gap:8px; margin:-2px 0 18px; }
   .planning-reset { font-size:11px; font-weight:800; padding:9px 16px; border-radius:999px; border:1.5px solid var(--border); background:#fff; color:var(--text-dim); cursor:pointer; font-family:'DM Sans',sans-serif; }
-  .cal-days-header { display:grid; grid-template-columns:repeat(7,1fr); gap:10px; margin-bottom:8px; padding:0 2px; }
+  .cal-days-header { display:grid; grid-template-columns:repeat(7,1fr); gap:0; margin-bottom:0; padding:0 2px; }
   .cal-dh { font-size:20px; font-weight:700; color:#0f0b08; text-align:center; padding:4px 0; font-family:'Cormorant Garamond',serif; text-transform:uppercase; }
   .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); grid-auto-rows:128px; gap:8px; margin-bottom:14px; }
   .cal-cell { min-height:0; height:128px; border-radius:8px; background:#fff; border:none; padding:8px; transition:all 0.15s; box-shadow:0 1px 0 rgba(0,0,0,0.02); overflow-y:auto; }
+  .month-grid { gap:0; border-top:1px solid #e6e0d9; border-left:1px solid #e6e0d9; background:#fff; }
+  .month-grid .cal-cell { height:132px; border-radius:0; border-right:1px solid #e6e0d9; border-bottom:1px solid #e6e0d9; box-shadow:none; overflow:hidden; padding:7px 6px; }
+  .month-grid .cal-cell.empty { background:#fbfaf8; }
   .cal-cell.empty { background:rgba(255,255,255,0.38); border-color:transparent; }
   .cal-cell.today { outline:2px solid var(--papaya); outline-offset:0; }
   .cal-cell.drag-over { background:#fff8f0; outline:2px dashed var(--papaya); }
-  .cal-dnum { font-size:12px; font-weight:800; color:var(--text-dim); margin-bottom:8px; font-family:'DM Mono',monospace; }
+  .cal-dnum { font-size:15px; font-weight:700; color:#5f574f; margin-bottom:7px; font-family:'DM Sans',sans-serif; text-align:center; }
   .cal-dnum.today-n { color:var(--papaya); font-weight:900; }
-  .cal-cell.week-cell { height:auto; min-height:88px; display:grid; grid-template-columns:92px 1fr; gap:12px; align-items:start; }
+  .cal-cell.week-cell { height:auto; min-height:112px; display:grid; grid-template-columns:132px minmax(0,1fr); gap:22px; align-items:start; padding:16px 18px; overflow:visible; }
   .week-day-head { font-family:'Cormorant Garamond',serif; font-size:24px; line-height:1; text-transform:uppercase; color:#0f0b08; }
   .week-day-date { font-family:'DM Mono',monospace; font-size:11px; color:var(--text-dim); margin-top:4px; }
-  .week-day-items { display:flex; flex-wrap:wrap; gap:6px; align-items:flex-start; }
-  .plan-day-layout { display:grid; grid-template-columns:1fr; gap:14px; max-width:760px; margin:0 auto 16px; }
-  .plan-day-card { background:#fff; border-radius:8px; padding:22px; min-height:190px; }
-  .plan-day-card.large { min-height:250px; }
-  .plan-day-title { font-family:'Cormorant Garamond',serif; font-size:28px; line-height:1; text-transform:uppercase; text-align:center; margin-bottom:18px; }
+  .week-day-items { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; align-items:start; min-width:0; }
+  .plan-day-layout { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; max-width:1060px; margin:-8px auto 12px; }
+  .plan-day-card { background:#fff; border-radius:8px; padding:16px; min-height:148px; }
+  .plan-day-card.large { min-height:148px; }
+  .plan-day-title { font-family:'Cormorant Garamond',serif; font-size:24px; line-height:1; text-transform:uppercase; text-align:center; margin-bottom:12px; }
   .plan-day-items { display:flex; flex-direction:column; gap:10px; }
   .plan-day-empty { font-family:'DM Sans',sans-serif; font-size:13px; color:rgba(26,16,9,0.45); text-align:center; padding:24px 0; }
-  .plan-day-pill { border:none; border-radius:999px; padding:10px 14px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:800; color:#fff; text-align:left; cursor:pointer; }
+  .plan-day-pill { border:none; border-radius:10px; padding:10px 12px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:800; color:#fff; text-align:left; cursor:pointer; white-space:normal; min-height:48px; }
+  .planning-open-hint { display:block; margin-top:3px; font-size:10px; font-weight:800; opacity:0.82; text-transform:uppercase; letter-spacing:.4px; }
   .plan-add-btn { border:1.5px dashed var(--border); background:rgba(255,255,255,0.72); color:var(--text-dim); border-radius:999px; padding:7px 12px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:800; cursor:pointer; }
   .plan-cell-add { position:absolute; right:6px; top:5px; width:22px; height:22px; border-radius:50%; border:none; background:#fff; color:var(--papaya); font-size:16px; line-height:20px; font-weight:800; cursor:pointer; box-shadow:0 2px 7px rgba(0,0,0,0.08); }
+  .month-grid .plan-cell-add { width:18px; height:18px; font-size:13px; line-height:16px; right:5px; top:5px; }
   .cal-cell { position:relative; }
   .planning-notes { margin-top:18px; position:relative; border-radius:0; padding:34px 28px 24px; min-height:220px; background:url('assets/note-paper.png') center/cover no-repeat; }
   .planning-notes-title { font-family:'Cormorant Garamond',serif; font-size:26px; text-transform:uppercase; text-align:center; margin-bottom:10px; }
   .planning-notes textarea { width:100%; min-height:125px; border:1.5px dashed transparent; outline:none; resize:vertical; background:transparent; border-radius:0; padding:14px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
   .planning-notes textarea:focus { border-color:rgba(26,16,9,0.32); }
   .vpill { display:block; padding:4px 6px; border-radius:6px; margin-bottom:2px; font-size:10px; font-weight:600; line-height:1.2; cursor:grab; border:none; width:100%; text-align:left; font-family:'DM Sans',sans-serif; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:opacity 0.15s; touch-action:none; }
+  .month-item { display:block; width:100%; border:none; border-radius:4px; padding:3px 5px; margin-bottom:3px; font-size:11px; line-height:1.05; font-weight:800; color:#fff; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .month-more { font-size:10px; color:#6f5b4b; font-weight:800; padding:2px 3px; }
   .rdv-postit { display:block; padding:9px 9px 7px; margin:3px 0 4px; border-radius:0; width:100%; text-align:left; cursor:pointer; font-family:'Nothing You Could Do',cursive; background:url('assets/note-paper.png') center/cover no-repeat #F8F4EF; border:none; box-shadow:1px 2px 5px rgba(0,0,0,0.13); transform:rotate(-1.2deg); transition:transform 0.15s; }
   .rdv-postit:hover { transform:rotate(0deg) scale(1.02); }
   .rdv-postit-title { font-size:14px; font-weight:700; line-height:1.1; color:#36261c; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
@@ -677,7 +684,7 @@
           <button class="mnav-btn" onclick="changePlanningPeriod(1)">›</button>
         </div>
         <div class="planning-actions">
-          <button class="planning-reset" onclick="promptAddRdv()">+ RDV</button>
+          <button class="planning-reset" onclick="promptPlanningAdd()">+ Ajouter</button>
           <button class="planning-reset" onclick="resetPlanning()">Reset planning</button>
         </div>
         <div class="cal-days-header">
@@ -1009,6 +1016,26 @@
     </div>
   </div>
 
+  <!-- MODAL AJOUT PLANNING -->
+  <div class="modal-overlay" id="modal-planning-add">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Ajouter au planning</div>
+        <button class="modal-close" onclick="closeModal('modal-planning-add')">✕</button>
+      </div>
+      <div class="form-row"><label class="input-label">Type de contenu</label>
+        <select class="input" id="planning-add-type">
+          <option value="post">Post</option>
+          <option value="story">Story</option>
+          <option value="video">Vidéo</option>
+          <option value="rdv">RDV</option>
+        </select>
+      </div>
+      <div class="form-row"><label class="input-label">Date</label><input class="input" id="planning-add-date" type="date"></div>
+      <button class="btn btn-paradise" style="width:100%" onclick="continuePlanningAdd()">Continuer →</button>
+    </div>
+  </div>
+
   <!-- MODAL CRÉER CONTENU (Page 2) -->
   <div class="modal-overlay" id="modal-content">
     <div class="modal">
@@ -1082,6 +1109,7 @@ let selectedPlanDate=new Date();
 let dragId=null; let currentFicheId=null; let clientsCache={};
 let currentPage='trends'; let currentContentTab='trends';
 let currentCompany='lf'; let companyUploadTarget=null;
+let pendingContentKind='video';
 const LOCAL_PREFIX='cmtool-demo-v2:';
 const memoryStore={};
 
@@ -1401,12 +1429,14 @@ function openModal(id){document.getElementById(id).classList.add('open');}
 function closeModal(id){document.getElementById(id).classList.remove('open');}
 function toggleMS(btn){btn.classList.toggle('selected');}
 function switchModalTab(tab,btn){
+  pendingContentKind=tab==='story'?'story':'video';
   document.querySelectorAll('.modal-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.modal-form').forEach(f=>f.classList.remove('active'));
   document.getElementById('mf-'+tab).classList.add('active');
 }
 function openContentModal(type='video',date=''){
+  pendingContentKind=type==='post'?'post':(type==='story'?'story':'video');
   const isStoryTab=type==='story';
   openModal('modal-content');
   document.querySelectorAll('.modal-tab').forEach((t,i)=>t.classList.toggle('active',isStoryTab?i===1:i===0));
@@ -1422,11 +1452,18 @@ function openContentModal(type='video',date=''){
   if(client) client.value=first;
 }
 function promptPlanningAdd(date){
-  const choice=(prompt('Ajouter quoi ? Tape : rdv, post, story ou video','post')||'').trim().toLowerCase();
-  if(!choice) return;
-  if(choice.startsWith('rdv')){promptAddRdv(date);return;}
-  if(choice.startsWith('story')){openContentModal('story',date);return;}
-  openContentModal('video',date);
+  const type=document.getElementById('planning-add-type');
+  const dateInput=document.getElementById('planning-add-date');
+  if(type) type.value='post';
+  if(dateInput) dateInput.value=date||dateISO(selectedPlanDate);
+  openModal('modal-planning-add');
+}
+function continuePlanningAdd(){
+  const type=document.getElementById('planning-add-type')?.value||'post';
+  const date=document.getElementById('planning-add-date')?.value||dateISO(selectedPlanDate);
+  closeModal('modal-planning-add');
+  if(type==='rdv'){promptAddRdv(date);return;}
+  openContentModal(type,date);
 }
 
 // ===== UTILS =====
@@ -1437,6 +1474,8 @@ function getPlans(str){
   return p;}catch{return [];}
 }
 function isStory(r){return (r.fields['Note de tournage']||'').includes('[STORY]');}
+function isPost(r){return (r.fields['Note de tournage']||'').includes('[POST]');}
+function isVideo(r){return !isStory(r)&&!isPost(r);}
 function pillClass(r){
   if(isStory(r)) return 'vp-story';
   const s=r.fields['Statut']||'';
@@ -2288,6 +2327,7 @@ async function createVideo(){
   if(produit)brief+=`Produit/Sujet : ${produit}\n`;
   if(ambiance)brief+=`Ambiance : ${ambiance}\n`;
   if(note)brief+=`Brief : ${note}`;
+  if(pendingContentKind==='post') brief+=`${brief?'\n':''}[POST]`;
   const fields={'Titre':`${titre} — ${acc.name}`,'Statut':'A filmer','Note de tournage':brief.trim()};
   const date=document.getElementById('cv-date').value;if(date)Object.assign(fields,publishDatePayload(date));
   if(clientId)fields['Client']=[clientId];
@@ -2388,6 +2428,7 @@ function rdvPostitHtml(r){
   return `<div class="rdv-postit" onclick="openRdvDetail('${r.id}')">
     <div class="rdv-postit-title">📌 ${time}${htmlSafe(r.titre)}</div>
     ${client}
+    <span class="planning-open-hint">voir la fiche</span>
   </div>`;
 }
 function openRdvDetail(id){
@@ -2422,32 +2463,50 @@ function createRdv(){
   document.getElementById('rdv-msg').style.color='#2F4731';
   setTimeout(()=>{closeModal('modal-rdv');renderCal();},600);
 }
-function planPillHtml(r,extraClass=''){
+function planPillHtml(r,extraClass='',options={}){
   const title=htmlSafe((r.fields['Titre']||'Vidéo').replace(/\s—\s.*/,''));
   const pc=`vpill ${pillClass(r)} ${accountClass(r)} ${extraClass}`;
-  return `<button class="${pc}" draggable="true" ondragstart="dragStart(event,'${r.id}')" ondragend="dragEnd(event)" onmousedown="startLP(event,'${r.id}')" onmouseup="cancelLP()" onmouseleave="cancelLP()" ontouchstart="startLP(event,'${r.id}')" ontouchend="cancelLP()" ontouchmove="cancelLP()" onclick="openFiche('${r.id}')">${title}</button>`;
+  const hint=options.hint?'<span class="planning-open-hint">voir la fiche</span>':'';
+  return `<button class="${pc}" draggable="true" ondragstart="dragStart(event,'${r.id}')" ondragend="dragEnd(event)" onmousedown="startLP(event,'${r.id}')" onmouseup="cancelLP()" onmouseleave="cancelLP()" ontouchstart="startLP(event,'${r.id}')" ontouchend="cancelLP()" ontouchmove="cancelLP()" onclick="openFiche('${r.id}')"><span>${title}</span>${hint}</button>`;
+}
+function monthItemHtml(r){
+  const title=htmlSafe((r.fields['Titre']||'Vidéo').replace(/\s—\s.*/,''));
+  const pc=`month-item ${pillClass(r)} ${accountClass(r)}`;
+  return `<button class="${pc}" draggable="true" ondragstart="dragStart(event,'${r.id}')" ondragend="dragEnd(event)" onclick="openFiche('${r.id}')">${title}</button>`;
+}
+function monthRdvHtml(r){
+  const time=r.heure?`${htmlSafe(r.heure)} `:'';
+  return `<button class="month-item vp-acc-cm" onclick="openRdvDetail('${r.id}')">${time}${htmlSafe(r.titre)}</button>`;
 }
 function renderPlanningDay(){
   const iso=dateISO(selectedPlanDate);
   const records=recordsForDate(selectedPlanDate);
-  const posts=records.filter(r=>!isStory(r));
+  const posts=records.filter(isPost);
+  const videos=records.filter(isVideo);
   const stories=records.filter(r=>isStory(r));
+  const rdvs=rdvForDate(selectedPlanDate);
   document.querySelector('.cal-days-header').style.display='none';
-  document.getElementById('cal-grid').style.gridTemplateColumns='1fr';
-  document.getElementById('cal-grid').style.gridAutoRows='auto';
+  const grid=document.getElementById('cal-grid');
+  grid.className='cal-grid day-grid';
+  grid.style.gridTemplateColumns='1fr';
+  grid.style.gridAutoRows='auto';
   document.getElementById('cal-label').textContent=selectedPlanDate.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
-  document.getElementById('cal-grid').innerHTML=`<div class="plan-day-layout" style="grid-column:1/-1">
+  grid.innerHTML=`<div class="plan-day-layout" style="grid-column:1/-1">
     <section class="plan-day-card large">
       <div class="plan-day-title">Post</div>
-      <div class="plan-day-items">${posts.length?posts.map(r=>planPillHtml(r,'plan-day-pill')).join(''):'<div class="plan-day-empty">Aucun post prévu.</div>'}<button class="plan-add-btn" onclick="openContentModal('video','${iso}')">+ Ajouter</button></div>
+      <div class="plan-day-items">${posts.length?posts.map(r=>planPillHtml(r,'plan-day-pill',{hint:true})).join(''):'<div class="plan-day-empty">Aucun post prévu.</div>'}<button class="plan-add-btn" onclick="openContentModal('post','${iso}')">+ Ajouter</button></div>
+    </section>
+    <section class="plan-day-card large">
+      <div class="plan-day-title">Vidéo</div>
+      <div class="plan-day-items">${videos.length?videos.map(r=>planPillHtml(r,'plan-day-pill',{hint:true})).join(''):'<div class="plan-day-empty">Aucune vidéo prévue.</div>'}<button class="plan-add-btn" onclick="openContentModal('video','${iso}')">+ Ajouter</button></div>
     </section>
     <section class="plan-day-card large">
       <div class="plan-day-title">Story</div>
-      <div class="plan-day-items">${stories.length?stories.map(r=>planPillHtml(r,'plan-day-pill')).join(''):'<div class="plan-day-empty">Aucune story prévue.</div>'}<button class="plan-add-btn" onclick="openContentModal('story','${iso}')">+ Ajouter</button></div>
+      <div class="plan-day-items">${stories.length?stories.map(r=>planPillHtml(r,'plan-day-pill',{hint:true})).join(''):'<div class="plan-day-empty">Aucune story prévue.</div>'}<button class="plan-add-btn" onclick="openContentModal('story','${iso}')">+ Ajouter</button></div>
     </section>
     <section class="plan-day-card large">
       <div class="plan-day-title">RDV</div>
-      <div class="plan-day-items">${rdvForDate(selectedPlanDate).length?rdvForDate(selectedPlanDate).map(rdvPostitHtml).join(''):'<div class="plan-day-empty">Aucun RDV prévu.</div>'}<button class="plan-add-btn" onclick="promptAddRdv('${iso}')">+ Ajouter</button></div>
+      <div class="plan-day-items">${rdvs.length?rdvs.map(rdvPostitHtml).join(''):'<div class="plan-day-empty">Aucun RDV prévu.</div>'}<button class="plan-add-btn" onclick="promptAddRdv('${iso}')">+ Ajouter</button></div>
     </section>
   </div>`;
   setupTouchDrag();
@@ -2458,9 +2517,11 @@ function renderPlanningWeek(){
   const days=[...Array(7)].map((_,i)=>{const d=new Date(start);d.setDate(start.getDate()+i);return d;});
   document.querySelector('.cal-days-header').style.display='none';
   document.getElementById('cal-label').textContent=`Semaine ${start.getDate()}-${days[6].getDate()}`;
-  document.getElementById('cal-grid').style.gridTemplateColumns='1fr';
-  document.getElementById('cal-grid').style.gridAutoRows='auto';
-  document.getElementById('cal-grid').innerHTML=days.map(date=>{
+  const grid=document.getElementById('cal-grid');
+  grid.className='cal-grid week-grid';
+  grid.style.gridTemplateColumns='1fr';
+  grid.style.gridAutoRows='auto';
+  grid.innerHTML=days.map(date=>{
     const isToday=today.toDateString()===date.toDateString();
     const sels=recordsForDate(date);
     const rdvs=rdvForDate(date);
@@ -2473,7 +2534,7 @@ function renderPlanningWeek(){
         <div class="week-day-date ${isToday?'today-n':''}">${date.toLocaleDateString('fr-FR',{day:'2-digit',month:'short'})}</div>
       </div>
       <div class="week-day-items">
-        ${sels.map(r=>planPillHtml(r)).join('')}
+        ${sels.map(r=>planPillHtml(r,'',{hint:true})).join('')}
         ${rdvs.map(rdvPostitHtml).join('')}
         ${empty?'<div class="plan-day-empty" style="padding:8px 0;text-align:left">Aucun contenu prévu.</div>':''}
         <button class="plan-add-btn" onclick="promptPlanningAdd('${iso}')">+ Ajouter</button>
@@ -2505,8 +2566,10 @@ function renderPlanningMonth(){
     }
   });
   document.querySelector('.cal-days-header').style.display='grid';
-  document.getElementById('cal-grid').style.gridTemplateColumns='repeat(7,1fr)';
-  document.getElementById('cal-grid').style.gridAutoRows='128px';
+  const grid=document.getElementById('cal-grid');
+  grid.className='cal-grid month-grid';
+  grid.style.gridTemplateColumns='repeat(7,1fr)';
+  grid.style.gridAutoRows='132px';
   document.getElementById('cal-label').textContent=`${MONTHS[curMonth]} ${curYear}`;
   let html='';
   for(let i=0;i<startDow;i++)html+=`<div class="cal-cell empty"></div>`;
@@ -2514,16 +2577,19 @@ function renderPlanningMonth(){
     const isToday=today.getDate()===day&&today.getMonth()===curMonth&&today.getFullYear()===curYear;
     const sels=byDay[day]||[];
     const rdvs=byDayRdv[day]||[];
+    const items=[...sels.map(monthItemHtml),...rdvs.map(monthRdvHtml)];
+    const visible=items.slice(0,4).join('');
+    const more=items.length>4?`<div class="month-more">+${items.length-4} autre${items.length-4>1?'s':''}</div>`:'';
     html+=`<div class="cal-cell ${isToday?'today':''}" data-day="${day}" ondragover="dragOver(event,${day})" ondrop="dropOn(event,${day})" ondragleave="this.classList.remove('drag-over')">
       <div class="cal-dnum ${isToday?'today-n':''}">${day}</div>
       <button class="plan-cell-add" onclick="promptPlanningAdd('${curYear}-${String(curMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}')">+</button>
-      ${sels.map(r=>planPillHtml(r)).join('')}
-      ${rdvs.map(rdvPostitHtml).join('')}
+      ${visible}
+      ${more}
     </div>`;
   }
   const rem=(startDow+lastDay.getDate())%7;
   if(rem>0)for(let i=0;i<7-rem;i++)html+=`<div class="cal-cell empty"></div>`;
-  document.getElementById('cal-grid').innerHTML=html;
+  grid.innerHTML=html;
   setupTouchDrag();
 }
 function renderCal(){
