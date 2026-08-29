@@ -364,10 +364,10 @@
   .company-keywords { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
   .company-keyword-tag { font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:rgba(255,255,255,0.18); border-radius:999px; padding:6px 12px; }
   .company-keyword-more { width:100%; text-align:center; margin-top:14px; background:none; border:none; color:#fff; opacity:0.8; font-size:20px; letter-spacing:3px; cursor:pointer; line-height:1; }
-  .company-note { position:relative; grid-column:span 2; min-height:190px; padding:26px 28px; border-radius:22px; overflow:hidden; background:url('assets/company-note-paper.png') center/cover no-repeat #fff; display:grid; grid-template-columns:auto minmax(0,1fr); gap:24px; align-items:center; }
-  .company-note textarea { width:100%; min-height:150px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; border-radius:14px; padding:12px; font-family:'Nothing You Could Do',cursive; font-size:23px; line-height:1.35; color:#1c1714; }
+  .company-colors-card { min-height:190px; display:flex; align-items:center; justify-content:center; background:#fff; border-radius:18px; }
+  .company-note { position:relative; min-height:190px; padding:24px 20px; border-radius:18px; overflow:hidden; background:url('assets/company-note-paper-v2.png') center/cover no-repeat #fff; display:flex; align-items:center; }
+  .company-note textarea { width:100%; min-height:132px; border:1.5px dashed transparent; resize:vertical; outline:none; background:transparent; border-radius:14px; padding:12px; font-family:'Nothing You Could Do',cursive; font-size:21px; line-height:1.32; color:#1c1714; }
   .company-note textarea:focus { border-color:rgba(26,16,9,0.32); }
-  .company-note .company-swatches { position:static; display:grid; grid-template-columns:1fr; gap:14px; align-items:center; }
   .company-swatches { display:flex; flex-direction:column; gap:24px; align-items:center; }
   .company-swatch { width:72px; height:72px; border-radius:50%; border:0; padding:0; cursor:pointer; overflow:hidden; background:transparent; }
   .company-swatch::-webkit-color-swatch-wrapper { padding:0; }
@@ -406,9 +406,9 @@
     .company-keywords { gap:5px; }
     .company-keyword-tag { font-size:10px; padding:4px 7px; }
     .company-keyword-more { margin-top:6px; font-size:14px; }
-    .company-note { min-height:126px; padding:8px; border-radius:14px; gap:8px; }
-    .company-note textarea { min-height:74px; font-size:16px; padding:6px; }
-    .company-note .company-swatches { gap:7px; }
+    .company-colors-card { min-height:126px; border-radius:12px; }
+    .company-note { min-height:126px; padding:10px; border-radius:12px; }
+    .company-note textarea { min-height:92px; font-size:16px; padding:6px; }
     .company-swatch, .company-swatch-add { width:44px; height:44px; font-size:18px; }
   }
 
@@ -1795,7 +1795,7 @@ function defaultCompanyProfiles(){
       font:'Cormorant Garamond',
       note:'Le Foyer est un bistrot et bar à vin français situé à Ebisu.',
       logo:'assets/logo-lefoyer.png',
-      photos:['assets/lf-charcuterie.jpg','assets/lf-bavette-frites.jpg','assets/lf-fouees-vin.jpg']
+      photos:['assets/company-lf-coq-au-vin.png','assets/company-lf-tartare.png','assets/lf-charcuterie.jpg','assets/lf-bavette-frites.jpg','assets/lf-fouees-vin.jpg']
     },
     cpc:{
       name:'CPC',
@@ -1805,7 +1805,7 @@ function defaultCompanyProfiles(){
       font:'Barlow Condensed',
       note:'CPC est un site d’import export spécialisé en TCG japonais.',
       logo:'assets/logo-cpc.png',
-      photos:['assets/cpc-pikachu-card.png','assets/cpc-mew-card.png','assets/cpc-onepiece-box.png','assets/cpc-30th-banner.png']
+      photos:['assets/company-cpc-cards.png','assets/company-cpc-display-30.png','assets/company-cpc-mewtwo.png','assets/cpc-onepiece-box.png','assets/cpc-30th-banner.png']
     },
     cm:{
       name:'CM au Japon',
@@ -1872,10 +1872,7 @@ function renderCompanyDetail(){
     ${c.colors.map((color,i)=>`<input class="company-swatch" type="color" value="${htmlSafe(color)}" oninput="saveCompanyColor(${i},this.value)">`).join('')}
     <button class="company-swatch-add" onclick="addCompanyColor()">+</button>
   </div>`;
-  const photoCard=(src,i)=>{
-    const shape=i===0?'wide':(i%4===1?'tall':(i%5===3?'wide':''));
-    return `<button class="company-photo ${shape}" onclick="uploadCompanyAsset('photo-${i}')"><img src="${src}" alt=""></button>`;
-  };
+  const photoCard=(src,i)=>`<button class="company-photo" onclick="uploadCompanyAsset('photo-${i}')"><img src="${src}" alt=""></button>`;
   const photoCards=photos.map(photoCard);
   el.innerHTML=`<div class="company-moodboard">
     <div class="company-identity">
@@ -1889,12 +1886,13 @@ function renderCompanyDetail(){
         <div class="company-keywords">${keywordTags.map(k=>`<span class="company-keyword-tag">${htmlSafe(k)}</span>`).join('')}</div>
         <button class="company-keyword-more" onclick="addCompanyKeyword()">•••</button>
       </div>
-      ${photoCards.slice(1,2).join('')}
-      <div class="company-note">
+      <div class="company-colors-card">
         ${swatches}
+      </div>
+      <div class="company-note">
         <textarea oninput="saveCompanyField('note',this.value)" placeholder="Notes de marque...">${htmlSafe(c.note)}</textarea>
       </div>
-      ${photoCards.slice(2,4).join('')}
+      ${photoCards.slice(1,4).join('')}
       <div class="company-panel square" style="background:${htmlSafe(c.colors[0])}">
         <div class="company-panel-title" onclick="editCompanyFont()">Mes polices</div>
         <div class="company-font-preview" style="font-family:${htmlSafe(c.font)},serif">ABCDEF<br>GHIJKL<br>MNOPQ<br>RSTUVW<br>XYZ</div>
